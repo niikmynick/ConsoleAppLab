@@ -1,0 +1,5 @@
+package Commands
+
+class CommandReceiver {
+
+}

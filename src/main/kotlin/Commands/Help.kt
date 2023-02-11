@@ -1,4 +1,0 @@
-package Commands
-
-class Help {
-}
