@@ -3,7 +3,7 @@ import BasicClasses.Coordinates
 import BasicClasses.SpaceMarine
 
 class Creator {
-    fun createSpaceMarine() {
+    fun createSpaceMarine(): SpaceMarine {
         print("Enter name:  ")
         val name = readln()
         print("Enter X: ")
