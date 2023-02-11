@@ -11,7 +11,6 @@ class Creator {
         print("Enter loyalty [frue / false]:  ")
         val loyal = readln().lowercase().toBooleanStrict()
 
-
         val category = categoryReader()
         print("Enter Melee weapon:  ")
         val weapon = weaponReader()
