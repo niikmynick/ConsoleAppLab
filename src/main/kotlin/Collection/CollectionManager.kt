@@ -1,0 +1,4 @@
+package Collection
+
+class CollectionManager {
+}
