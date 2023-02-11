@@ -1,4 +1,11 @@
 package Commands
 
-class Exit {
+class Exit : Command(){
+    override fun writeInfo() {
+        TODO("Not yet implemented")
+    }
+
+    override fun execute() {
+        TODO("Not yet implemented")
+    }
 }

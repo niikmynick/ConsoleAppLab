@@ -1,4 +1,11 @@
 package Commands
 
-class Execute_script {
+class Execute_script : Command(){
+    override fun writeInfo() {
+        TODO("Not yet implemented")
+    }
+
+    override fun execute() {
+        TODO("Not yet implemented")
+    }
 }

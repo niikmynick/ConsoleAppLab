@@ -1,4 +1,11 @@
 package Commands
 
-class Clear {
+class Clear :Command(){
+    override fun writeInfo() {
+        TODO("Not yet implemented")
+    }
+
+    override fun execute() {
+        TODO("Not yet implemented")
+    }
 }

@@ -3,7 +3,7 @@ package BasicClasses
 import java.util.Date
 import Identificator
 
-class SpaceMarine(private val name: String, //Поле не может быть null, Строка не может быть пустой
+data class SpaceMarine(private val name: String, //Поле не может быть null, Строка не может быть пустой
     private val coordinates: Coordinates, //Поле не может быть null
     private val health: Int, //Поле может быть null, Значение поля должно быть больше 0
     private val loyal: Boolean,
@@ -22,5 +22,9 @@ class SpaceMarine(private val name: String, //Поле не может быть 
     }
     fun getCreationDate(): Date {
         return creationDate
+    }
+
+    fun getName(): String {
+        return name
     }
 }
