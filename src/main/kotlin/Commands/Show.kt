@@ -1,6 +1,6 @@
-package Commands.ConsoleCommands
+package Commands
 
-class Print_unique_melee_weapon : Command(){
+class Show : Command() {
     override fun writeInfo() {
         TODO("Not yet implemented")
     }
