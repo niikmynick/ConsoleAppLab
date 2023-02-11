@@ -1,4 +1,4 @@
-package Collection
+package Utils
 
 class CollectionManager {
 }

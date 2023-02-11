@@ -1,7 +1,7 @@
 package BasicClasses
 
 import java.util.Date
-import Identificator
+import Utils.Identificator
 
 data class SpaceMarine(private val name: String, //Поле не может быть null, Строка не может быть пустой
     private val coordinates: Coordinates, //Поле не может быть null
