@@ -22,6 +22,7 @@ class Help {
             println("Help is available for the following commands:")
             for (key in list.keys) {
                 println("- $key")
+
             }
             println("For information on a command, type HELP <command name>")
         } else {
