@@ -1,3 +1,7 @@
+import BasicClasses.Chapter
+import BasicClasses.Coordinates
+import BasicClasses.SpaceMarine
+
 class Creator {
     fun createSpaceMarine() {
         print("Enter name:  ")
@@ -17,7 +21,10 @@ class Creator {
         print("Enter Chapter name:  ")
         val chapterName = readln()
         print("Enter marines count: ")
-        val marinesCount = readln().toLongOrNull()
+        val marineCount = readln().toLongOrNull()
+
+        val person = SpaceMarine(name, Coordinates(x, y), health, loyal, category, weapon, Chapter(chapterName, marineCount))
+        return person
     }
 
     fun createCoordinates() {
