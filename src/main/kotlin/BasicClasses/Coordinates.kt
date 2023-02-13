@@ -1,7 +1,7 @@
 package BasicClasses
 
-class Coordinates(X: Double, Y: Long) {
-    private val x = X
-    private val y = Y //Поле не может быть null
+data class Coordinates(val xinput: Double, val yinput: Long) {
+    private var x = xinput
+    private var y = yinput //Поле не может быть null
 
 }

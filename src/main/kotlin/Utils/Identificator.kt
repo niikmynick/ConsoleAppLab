@@ -2,7 +2,7 @@ package Utils
 
 import java.util.*
 import kotlin.random.Random
-
+// TODO: dont think is needed anymore
 class Identificator {
     private val idSet = TreeSet<Int>()
 
