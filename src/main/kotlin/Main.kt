@@ -1,3 +1,4 @@
+import Utils.Console
 import BasicClasses.*
 import Utils.SpaceMarineCollection
 import java.util.Date
@@ -29,4 +30,6 @@ fun main(args: Array<String>) {
     println("The average health is ${coll.getAverageHealth()}")
 
 
+    val console = Console()
+    console.startInteractiveMode()
 }

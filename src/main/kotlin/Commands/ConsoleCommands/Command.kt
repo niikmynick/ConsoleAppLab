@@ -1,4 +1,4 @@
-package Commands
+package Commands.ConsoleCommands
 
 abstract class Command {
     abstract fun writeInfo()

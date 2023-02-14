@@ -1,6 +1,6 @@
 package Commands.ConsoleCommands
 
-class Help {
+class Help : Command() {
     fun help(command: String) {
         val list = mapOf("help" to "Выводит справку по доступным командам",
             "info" to "Выводит информацию о коллекции (тип, дата инициализации, количество элементов и т.д.)",
@@ -22,10 +22,19 @@ class Help {
             println("Help is available for the following commands:")
             for (key in list.keys) {
                 println("- $key")
+
             }
             println("For information on a command, type HELP <command name>")
         } else {
             println(list[command])
         }
+    }
+
+    override fun writeInfo() {
+        TODO("Not yet implemented")
+    }
+
+    override fun execute() {
+        TODO("Not yet implemented")
     }
 }
