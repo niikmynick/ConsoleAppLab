@@ -3,21 +3,31 @@ package Utils
 import BasicClasses.SpaceMarine
 import java.util.TreeSet
 
-class SpaceMarineCollection(vararg spaceMarine: SpaceMarine) : TreeSet<SpaceMarine>() {
+class CollectionManager(vararg list: SpaceMarine) : TreeSet<SpaceMarine>() {
     init {
-        for(sm in spaceMarine) {
-            this.add(sm)
+        for (spaceMarine in list) {
+            this.add(spaceMarine)
         }
     }
 
-    fun getAverageHealth(): Int {
+    fun info() {}
+    fun show() {}
+    fun update() {}
+    fun removeID() {}
+    fun save() {}
+    fun addMax() {}
+    fun removeGreater() {}
+    fun removeLower() {}
+    fun averageHealth(): Int {
         var sum = 0
-        for (i in this) {
-            if (i.getHealth() != null) {
-                sum += i.getHealth()!!
+        for (element in this) {
+            if (element.getHealth() != null) {
+                sum += element.getHealth()!!
             }
         }
         return sum / this.size
     }
+    fun groupByName() {}
+    fun uniqueWeapons() {}
 
 }
