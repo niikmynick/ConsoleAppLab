@@ -5,16 +5,13 @@ import Utils.CollectionManager
 import Utils.Creator
 
 class Add : Command() {
-    val spaceMarine = Creator().createSpaceMarine()
     override fun writeInfo() {
         TODO("Not yet implemented")
     }
 
-    override fun execute(element: Any) {
-        if (element is SpaceMarine) {
-            CollectionManager().add(element)
-        } else {
-            TODO() // trow exception
-        }
+    override fun execute() {
+        val spaceMarine = Creator().createSpaceMarine()
+        CollectionManager().add(spaceMarine)
+        println("Space Marine ${spaceMarine.getName()} has been created and added to the collection")
     }
 }
