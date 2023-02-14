@@ -1,7 +1,11 @@
 package Commands.ConsoleCommands
 
 class Help : Command() {
-    fun help(command: String) {
+    override fun writeInfo() {
+        TODO("Not yet implemented")
+    }
+
+    override fun execute() {
         val list = mapOf("help" to "Выводит справку по доступным командам",
             "info" to "Выводит информацию о коллекции (тип, дата инициализации, количество элементов и т.д.)",
             "show" to "Выводит все элементы коллекции в строковом представлении",
@@ -18,23 +22,32 @@ class Help : Command() {
             "average_of_health" to "Выводит среднее значение поля health для всех элементов коллекции",
             "group_counting_by_name" to "Группирует элементы коллекции по значению поля name, выводит количество элементов в каждой группе",
             "print_unique_melee_weapon" to "Выводит уникальные значения поля meleeWeapon всех элементов в коллекции")
-        if (command == "000000") {
-            println("Help is available for the following commands:")
-            for (key in list.keys) {
-                println("- $key")
 
-            }
-            println("For information on a command, type HELP <command name>")
-        } else {
-            println(list[command])
+        println("Help is available for the following commands:")
+        for (key in list.keys) {
+            println("- $key")
         }
-    }
 
-    override fun writeInfo() {
-        TODO("Not yet implemented")
-    }
+        println("""
+            For information on a command, type HELP <command name>
+            To exit help menu type EXIT
+            """)
+        var query: List<String> = readln().trim().lowercase().split(" ")
 
-    override fun execute() {
-        TODO("Not yet implemented")
+        while (query[0] != "exit") {
+            if ((query.size == 2) and (query[0] == "help")) {
+                println(list[query[1]])
+                query = readln().trim().lowercase().split(" ")
+            } else if (query.size > 2) {
+                println("Too much arguments. Try again: ")
+                query = readln().trim().lowercase().split(" ")
+            } else {
+                println("""
+            For information on a command, type HELP <command name>
+            To exit help menu type EXIT
+            """)
+                query = readln().trim().lowercase().split(" ")
+            }
+        }
     }
 }

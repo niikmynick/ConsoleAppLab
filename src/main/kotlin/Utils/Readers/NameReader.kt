@@ -3,10 +3,11 @@ package Utils.Readers
 class NameReader {
     companion object {
         fun read(): String {
+            println("Enter name of the new Space Marine: ")
             var name:String = readln().trim()
 
             while (name.equals(null)) {
-                println("Enter name of the new Space Marine: ")
+                println("You need to enter the name: ")
                 name = readln().trim()
             }
 

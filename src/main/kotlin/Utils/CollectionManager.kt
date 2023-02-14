@@ -3,13 +3,7 @@ package Utils
 import BasicClasses.SpaceMarine
 import java.util.TreeSet
 
-class CollectionManager(vararg list: SpaceMarine) : TreeSet<SpaceMarine>() {
-    init {
-        for (spaceMarine in list) {
-            this.add(spaceMarine)
-        }
-    }
-
+class CollectionManager() : TreeSet<SpaceMarine>() {
     fun info() {}
     fun show() {}
     fun update() {}
