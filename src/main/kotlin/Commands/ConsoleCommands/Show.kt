@@ -1,4 +1,11 @@
 package Commands.ConsoleCommands
 
-class Show {
+class Show : Command() {
+    override fun writeInfo() {
+        TODO("Not yet implemented")
+    }
+
+    override fun execute() {
+        TODO("Not yet implemented")
+    }
 }
