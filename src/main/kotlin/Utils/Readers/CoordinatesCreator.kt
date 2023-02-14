@@ -2,9 +2,9 @@ package Utils.Readers
 
 import BasicClasses.Coordinates
 
-class CoordinatesReader : Reader() {
+class CoordinatesCreator {
     companion object {
-        fun read() : Coordinates {
+        fun create() : Coordinates {
             println("Enter value of X: ")
             var x:Double = readln().trim().toDouble()
 

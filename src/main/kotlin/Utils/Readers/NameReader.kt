@@ -1,6 +1,6 @@
 package Utils.Readers
 
-class NameReader : Reader() {
+class NameReader {
     companion object {
         fun read(): String {
             var name:String = readln().trim()

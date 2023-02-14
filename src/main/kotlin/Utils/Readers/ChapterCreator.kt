@@ -2,9 +2,9 @@ package Utils.Readers
 
 import BasicClasses.Chapter
 
-class ChapterReader : Reader() {
+class ChapterCreator {
     companion object {
-        fun read() : Chapter {
+        fun create() : Chapter {
             println("Enter name of the Chapter: ")
             var name:String = readln().trim()
 

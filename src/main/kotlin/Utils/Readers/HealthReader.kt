@@ -1,6 +1,6 @@
 package Utils.Readers
 
-class HealthReader : Reader() {
+class HealthReader {
     companion object {
         fun read(): Int {
             println("Enter health value: ")

@@ -1,6 +1,6 @@
 package Utils.Readers
 
-class LoyalnessReader : Reader() {
+class LoyalnessReader {
     companion object {
         fun read() : Boolean {
             println("Enter loyalness [true / false]: ")
