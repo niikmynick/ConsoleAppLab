@@ -8,7 +8,6 @@ import kotlin.math.abs
 data class SpaceMarine (
     private var name: String, //Поле не может быть null, Строка не может быть пустой
     private var coordinates: Coordinates, //Поле не может быть null
-    private val creationDate: Date, //Поле не может быть null, Значение этого поля должно генерироваться автоматически
     private var health: Int?, //Поле может быть null, Значение поля должно быть больше 0
     private var loyal: Boolean,
     private var category: AstartesCategory, //Поле не может быть null
@@ -23,6 +22,7 @@ data class SpaceMarine (
         }
     }
     private val id: Int = abs(UUID.randomUUID().hashCode()) //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+    private val creationDate: Date = Date() //Поле не может быть null, Значение этого поля должно генерироваться автоматически
     // TODO: idk if this is valid
 
 
