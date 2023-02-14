@@ -7,7 +7,7 @@ class Exit : Command() {
         TODO("Not yet implemented")
     }
 
-    override fun execute() {
+    override fun execute(element: Any) {
         println("Termination of work ...")
         println("Bye")
 

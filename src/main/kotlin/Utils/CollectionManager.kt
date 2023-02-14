@@ -1,18 +1,27 @@
 package Utils
 
 import BasicClasses.SpaceMarine
+import Utils.Readers.NameReader
+import java.util.Date
 import java.util.TreeSet
 
-class CollectionManager(vararg list: SpaceMarine) : TreeSet<SpaceMarine>() {
-    init {
-        for (spaceMarine in list) {
-            this.add(spaceMarine)
+class CollectionManager() : TreeSet<SpaceMarine>() {
+    private val date: Date = Date()
+    fun info() {
+        println("Tree Set of SpaceMarine: size=${this.size}, date=${this.date}")
+    }
+    fun show() {
+        for (element in this) {
+            println(element)
         }
     }
-
-    fun info() {}
-    fun show() {}
-    fun update() {}
+    fun update(id : Int) {
+        for (element in this) {
+            if (element.getId() == id) {
+                element.setName(NameReader.read())
+            }
+        }
+    }
     fun removeID() {}
     fun save() {}
     fun addMax() {}
