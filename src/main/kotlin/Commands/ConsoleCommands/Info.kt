@@ -5,7 +5,7 @@ class Info : Command() {
         TODO("Not yet implemented")
     }
 
-    override fun execute(element: Any) {
+    override fun execute() {
         TODO("Not yet implemented")
     }
 

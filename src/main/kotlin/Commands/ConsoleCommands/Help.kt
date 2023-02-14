@@ -5,7 +5,7 @@ class Help : Command() {
         TODO("Not yet implemented")
     }
 
-    override fun execute() {
+    override fun execute(vararg args:Any) {
         val list = mapOf("help" to "Выводит справку по доступным командам",
             "info" to "Выводит информацию о коллекции (тип, дата инициализации, количество элементов и т.д.)",
             "show" to "Выводит все элементы коллекции в строковом представлении",
@@ -38,9 +38,11 @@ class Help : Command() {
             if ((query.size == 2) and (query[0] == "help")) {
                 println(list[query[1]])
                 query = readln().trim().lowercase().split(" ")
+
             } else if (query.size > 2) {
                 println("Too much arguments. Try again: ")
                 query = readln().trim().lowercase().split(" ")
+
             } else {
                 println("""
             For information on a command, type HELP <command name>
