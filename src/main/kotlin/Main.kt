@@ -29,9 +29,6 @@ fun main(args: Array<String>) {
     }
     println("The average health is ${coll.getAverageHealth()}")
 
-    println(",jfgksege")
-
-
     val console = Console()
     console.startInteractiveMode()
 }
