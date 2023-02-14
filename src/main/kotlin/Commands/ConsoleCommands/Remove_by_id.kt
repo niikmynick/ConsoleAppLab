@@ -5,7 +5,7 @@ class Remove_by_id : Command() {
         TODO("Not yet implemented")
     }
 
-    override fun execute() {
+    override fun execute(element: Any) {
         TODO("Not yet implemented")
     }
 }
