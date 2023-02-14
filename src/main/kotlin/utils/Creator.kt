@@ -10,7 +10,7 @@ class Creator {
         val health = HealthReader.read()
         val loyal = LoyalnessReader.read()
         val category = CategoryReader.read()
-        val weapon = WeaponReader.read()
+        val weapon = MeleeWeaponReader.read()
         val chapter = ChapterCreator.create()
 
         return SpaceMarine(name, coordinates, health, loyal, category, weapon, chapter)

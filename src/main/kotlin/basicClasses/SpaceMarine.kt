@@ -22,7 +22,6 @@ data class SpaceMarine (
     }
     private val id: Int = abs(UUID.randomUUID().hashCode()) //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private val creationDate: Date = Date() //Поле не может быть null, Значение этого поля должно генерироваться автоматически
-    // TODO: idk if this is valid
 
 
     override fun compareTo(other: SpaceMarine): Int {

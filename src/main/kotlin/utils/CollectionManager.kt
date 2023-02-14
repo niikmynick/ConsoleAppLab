@@ -1,7 +1,7 @@
 package utils
 
 import basicClasses.SpaceMarine
-import utils.readers.NameReader
+import utils.readers.*
 import java.util.Date
 import java.util.TreeSet
 
@@ -19,6 +19,12 @@ class CollectionManager() : TreeSet<SpaceMarine>() {
         for (element in this) {
             if (element.getId() == id) {
                 element.setName(NameReader.read())
+                element.setCoordinates(CoordinatesCreator.create())
+                element.setHealth(HealthReader.read())
+                element.setLoyal(LoyalnessReader.read())
+                element.setCategory(CategoryReader.read())
+                element.setMeleeWeapon(MeleeWeaponReader.read())
+                element.setChapter(ChapterCreator.create())
             }
         }
     }

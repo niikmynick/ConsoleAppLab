@@ -2,7 +2,7 @@ package utils.readers
 
 import basicClasses.MeleeWeapon
 
-class WeaponReader : EnumReader() {
+class MeleeWeaponReader : EnumReader() {
     companion object {
         fun read(): MeleeWeapon {
             println("Enter Astartes category from the list ${MeleeWeapon.values()}: ")
