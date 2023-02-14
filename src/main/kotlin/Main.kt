@@ -1,6 +1,5 @@
-import BasicClasses.*
-import Utils.CollectionManager
-import Utils.Console
+import basicClasses.*
+import utils.CollectionManager
 
 fun main(args: Array<String>) {
     val s = SpaceMarine("Juan", Coordinates(3.4, 34), 100, true, AstartesCategory.ASSAULT, MeleeWeapon.POWER_BLADE, Chapter("One",112))
