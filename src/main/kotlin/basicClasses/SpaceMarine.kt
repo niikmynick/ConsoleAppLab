@@ -15,7 +15,6 @@ data class SpaceMarine (
     private var chapter: Chapter //Поле может быть null
     ) : Comparable<SpaceMarine>{
     init {
-        //if (id <= 0) throw SpaceMarineIdLessThanZero("Id value cannot be lower or equal to zero")
         if (name.isEmpty() or name.isBlank()) throw SpaceMarineNameIsNullBlankOrEmpty("Name cannot be null, blank or empty")
         else if (health != null) {
             if (health!! <= 0) throw SpaceMarineHealthIsLowerThanZero("Health value cannot be lower than zero")
@@ -23,7 +22,6 @@ data class SpaceMarine (
     }
     private val id: Int = abs(UUID.randomUUID().hashCode()) //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private val creationDate: Date = Date() //Поле не может быть null, Значение этого поля должно генерироваться автоматически
-    // TODO: idk if this is valid
 
 
     override fun compareTo(other: SpaceMarine): Int {
@@ -83,7 +81,6 @@ data class SpaceMarine (
         this.chapter = chapter
     }
 
-    class SpaceMarineIdLessThanZero(message: String?) : Exception(message)
     class SpaceMarineNameIsNullBlankOrEmpty(message: String?) : Exception(message)
     class SpaceMarineHealthIsLowerThanZero(message: String?) : Exception(message)
 
