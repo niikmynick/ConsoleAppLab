@@ -1,6 +1,6 @@
 package basicClasses
 
-data class Coordinates(
+data class Coordinates (
     private var x: Double,
     private var y: Long //Поле не может быть null
     ) {

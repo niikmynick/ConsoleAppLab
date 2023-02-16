@@ -2,11 +2,12 @@ package utils
 
 import commands.CommandInvoker
 import commands.consoleCommands.*
-
 class Console {
     fun startInteractiveMode() {
         val commandInvoker = CommandInvoker()
         val collection = CollectionManager()
+
+        var command:String
 
         commandInvoker.register("info", Info(collection))
         commandInvoker.register("show", Show(collection))
@@ -27,7 +28,6 @@ class Console {
         commandInvoker.register("help", Help(commandInvoker.getCommandsList()))
 
         println("Waiting for the user command ...")
-        var command:String
         do {
             print("$ ")
             command = readln().trim()

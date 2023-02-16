@@ -1,18 +1,27 @@
 package basicClasses
 
+import kotlinx.serialization.Serializable
+import utils.serializers.ChapterSerializer
+import utils.serializers.CoordinatesSerializer
 import java.util.Date
 import java.util.UUID
 import kotlin.math.abs
 
-
+@Serializable
 data class SpaceMarine (
     private var name: String, //Поле не может быть null, Строка не может быть пустой
+
+    @Serializable(with = CoordinatesSerializer::class)
     private var coordinates: Coordinates, //Поле не может быть null
+
     private var health: Int?, //Поле может быть null, Значение поля должно быть больше 0
     private var loyal: Boolean,
     private var category: AstartesCategory, //Поле не может быть null
     private var meleeWeapon: MeleeWeapon, //Поле может быть null
+
+    @Serializable(with = ChapterSerializer::class)
     private var chapter: Chapter //Поле может быть null
+
     ) : Comparable<SpaceMarine>{
     init {
         if (name.isEmpty() or name.isBlank()) throw SpaceMarineNameIsNullBlankOrEmpty("Name cannot be null, blank or empty")
@@ -21,7 +30,7 @@ data class SpaceMarine (
         }
     }
     private val id: Int = abs(UUID.randomUUID().hashCode()) //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
-    private val creationDate: Date = Date() //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+    private val creationDate:String = Date().toString() //Поле не может быть null, Значение этого поля должно генерироваться автоматически
 
 
     override fun compareTo(other: SpaceMarine): Int {
@@ -40,7 +49,7 @@ data class SpaceMarine (
     fun getCoordinates(): Coordinates {
         return coordinates
     }
-    fun getCreationDate(): Date {
+    fun getCreationDate(): String {
         return creationDate
     }
     fun getHealth(): Int? {
