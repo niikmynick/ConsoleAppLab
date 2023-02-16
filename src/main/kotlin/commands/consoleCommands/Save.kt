@@ -2,7 +2,7 @@ package commands.consoleCommands
 
 import utils.CollectionManager
 
-class Save : Command() {
+class Save (private val collection: CollectionManager) : Command() {
     override fun writeInfo() {
         println("Сохраняет коллекцию в файл")
     }

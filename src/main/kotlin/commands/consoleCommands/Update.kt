@@ -2,7 +2,7 @@ package commands.consoleCommands
 
 import utils.CollectionManager
 
-class Update : Command() {
+class Update (private val collection: CollectionManager) : Command() {
     override fun writeInfo() {
         println("Обновляет значение элемента коллекции по заданному id")
     }

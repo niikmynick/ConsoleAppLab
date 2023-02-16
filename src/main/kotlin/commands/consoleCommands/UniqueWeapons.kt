@@ -2,7 +2,7 @@ package commands.consoleCommands
 
 import utils.CollectionManager
 
-class UniqueWeapons : Command(){
+class UniqueWeapons (private val collection: CollectionManager) : Command(){
     override fun writeInfo() {
         println("Выводит уникальные значения поля meleeWeapon всех элементов в коллекции")
     }

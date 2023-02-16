@@ -6,25 +6,27 @@ import commands.consoleCommands.*
 class Console {
     fun startInteractiveMode() {
         val commandInvoker = CommandInvoker()
+        val collection = CollectionManager()
 
-        commandInvoker.register("info", Info())
-        commandInvoker.register("show", Show())
-        commandInvoker.register("add", Add())
-        commandInvoker.register("update_id", Update())
-        commandInvoker.register("remove_by_id", RemoveID())
-        commandInvoker.register("clear", Clear())
-        commandInvoker.register("save", Save())
+        commandInvoker.register("info", Info(collection))
+        commandInvoker.register("show", Show(collection))
+        commandInvoker.register("add", Add(collection))
+        commandInvoker.register("update_id", Update(collection))
+        commandInvoker.register("remove_by_id", RemoveID(collection))
+        commandInvoker.register("clear", Clear(collection))
+        commandInvoker.register("save", Save(collection))
         commandInvoker.register("execute_script", ScriptFromFile())
         commandInvoker.register("exit", Exit())
-        commandInvoker.register("add_if_max", Add())
-        commandInvoker.register("remove_greater", RemoveGreater())
-        commandInvoker.register("remove_lower", RemoveLower())
-        commandInvoker.register("average_of_health", HealthAverage())
-        commandInvoker.register("group_counting_by_name", GroupsByName())
-        commandInvoker.register("print_unique_melee_weapon", UniqueWeapons())
+        commandInvoker.register("add_if_max", AddMax(collection))
+        commandInvoker.register("remove_greater", RemoveGreater(collection))
+        commandInvoker.register("remove_lower", RemoveLower(collection))
+        commandInvoker.register("average_of_health", HealthAverage(collection))
+        commandInvoker.register("group_counting_by_name", GroupsByName(collection))
+        commandInvoker.register("print_unique_melee_weapon", UniqueWeapons(collection))
+
         commandInvoker.register("help", Help(commandInvoker.getCommandsList()))
 
-        println("Waiting for user command ...")
+        println("Waiting for the user command ...")
         var command:String
         do {
             print("$ ")
