@@ -4,10 +4,10 @@ import utils.CollectionManager
 
 class Save : Command() {
     override fun writeInfo() {
-        TODO("Not yet implemented")
+        println("Сохраняет коллекцию в файл")
     }
 
-    override fun execute(vararg args: Any) {
+    override fun execute(argument:String) {
         val flag = CollectionManager().save()
         if (flag) {
             println("Collection was saved successfully")

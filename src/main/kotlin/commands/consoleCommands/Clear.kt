@@ -4,10 +4,10 @@ import utils.CollectionManager
 
 class Clear : Command() {
     override fun writeInfo() {
-        TODO("Not yet implemented")
+        println("Очищает коллекцию")
     }
 
-    override fun execute(vararg args: Any) {
+    override fun execute(argument:String) {
         if (CollectionManager().size > 0) {
             println("Are you sure? This operation would delete all information about created Space Marines [Y / N] ")
             var answer = readln().trim().lowercase()

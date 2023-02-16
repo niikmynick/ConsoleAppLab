@@ -5,14 +5,17 @@ import basicClasses.MeleeWeapon
 class WeaponReader : EnumReader() {
     companion object {
         fun read(): MeleeWeapon {
-            println("Enter Astartes category from the list ${MeleeWeapon.values()}: ")
-            var category = readln().trim()
-
-            while (!enumContains<MeleeWeapon>(category)) {
-                println("Seems like entered category doesn't exist. Try again: ")
-                category = readln().trim()
+            println("Enter Weapon category from the list: ")
+            for (weapon in MeleeWeapon.values()) {
+                println(weapon)
             }
-            return MeleeWeapon.valueOf(category)
+            var weapon = readln().trim().uppercase()
+
+            while (!enumContains<MeleeWeapon>(weapon)) {
+                println("Seems like entered weapon type doesn't exist. Try again: ")
+                weapon = readln().trim().uppercase()
+            }
+            return MeleeWeapon.valueOf(weapon)
         }
 
     }

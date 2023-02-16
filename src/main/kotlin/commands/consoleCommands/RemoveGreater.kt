@@ -5,10 +5,10 @@ import utils.Creator
 
 class RemoveGreater : Command() {
     override fun writeInfo() {
-        TODO("Not yet implemented")
+        println("Удаляет из коллекции все элементы, превышающие заданный")
     }
 
-    override fun execute(vararg args: Any) {
+    override fun execute(argument:String) {
         val spaceMarine = Creator().createSpaceMarine()
         val amount : Int = CollectionManager().removeGreater(spaceMarine)
         println("Have been deleted $amount Space Marines")

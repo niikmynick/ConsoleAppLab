@@ -2,10 +2,10 @@ package commands.consoleCommands
 
 class ScriptFromFile : Command() {
     override fun writeInfo() {
-        TODO("Not yet implemented")
+        println("Считывает и исполняет скрипт из указанного файла (скрипт содержат команды в таком же виде, в котором их вводит пользователь в интерактивном режиме)")
     }
 
-    override fun execute(vararg args: Any) {
+    override fun execute(argument:String) {
         TODO("Not yet implemented")
     }
 }

@@ -1,14 +1,13 @@
 package commands.consoleCommands
 
 import utils.CollectionManager
-import kotlin.reflect.typeOf
 
 class RemoveID : Command() {
     override fun writeInfo() {
-        TODO("Not yet implemented")
+        println("Удаляет элемент из коллекции по его id")
     }
 
-    override fun execute(vararg args: Any) {
+    override fun execute(argument:String) {
         val id = readln().trim().toInt()
         val name = CollectionManager().getByID(id).getName()
         CollectionManager().removeID(id)

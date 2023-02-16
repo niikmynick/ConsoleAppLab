@@ -5,10 +5,10 @@ import utils.Creator
 
 class RemoveLower : Command() {
     override fun writeInfo() {
-        TODO("Not yet implemented")
+        println("Удаляет из коллекции все элементы, меньшие, чем заданный")
     }
 
-    override fun execute(vararg args: Any) {
+    override fun execute(argument:String) {
         val spaceMarine = Creator().createSpaceMarine()
         val amount : Int = CollectionManager().removeLower(spaceMarine)
         println("Have been deleted $amount Space Marines")

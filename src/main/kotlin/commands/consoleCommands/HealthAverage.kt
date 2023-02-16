@@ -4,10 +4,10 @@ import utils.CollectionManager
 
 class HealthAverage : Command() {
     override fun writeInfo() {
-        TODO("Not yet implemented")
+        println("Выводит среднее значение поля health для всех элементов коллекции")
     }
 
-    override fun execute(vararg args: Any) {
+    override fun execute(argument:String) {
         println("An average health value is ${CollectionManager().averageHealth()}")
     }
 }

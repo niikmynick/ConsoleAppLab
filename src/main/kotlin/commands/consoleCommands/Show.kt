@@ -4,10 +4,10 @@ import utils.CollectionManager
 
 class Show : Command() {
     override fun writeInfo() {
-        TODO("Not yet implemented")
+        println("Выводит все элементы коллекции в строковом представлении")
     }
 
-    override fun execute(vararg args: Any) {
+    override fun execute(argument:String) {
         CollectionManager().show()
     }
 

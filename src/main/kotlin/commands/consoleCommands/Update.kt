@@ -4,10 +4,10 @@ import utils.CollectionManager
 
 class Update : Command() {
     override fun writeInfo() {
-        TODO("Not yet implemented")
+        println("Обновляет значение элемента коллекции по заданному id")
     }
 
-    override fun execute(vararg args: Any) {
+    override fun execute(argument:String) {
         val id = readln().trim().toInt()
         CollectionManager().update(id)
     }

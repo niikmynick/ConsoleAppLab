@@ -4,10 +4,10 @@ import utils.CollectionManager
 
 class Info : Command() {
     override fun writeInfo() {
-        TODO("Not yet implemented")
+        println("Выводит информацию о коллекции (тип, дата инициализации, количество элементов и т.д.)")
     }
 
-    override fun execute(vararg args: Any) {
+    override fun execute(argument:String) {
         println(CollectionManager().info())
     }
 

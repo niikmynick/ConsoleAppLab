@@ -5,10 +5,10 @@ import utils.Creator
 
 class AddMax : Command() {
     override fun writeInfo() {
-        TODO("Not yet implemented")
+        println("Добавляет новый элемент в коллекцию, если его значение превышает значение наибольшего элемента этой коллекции")
     }
 
-    override fun execute(vararg args: Any) {
+    override fun execute(argument:String) {
         val spaceMarine = Creator().createSpaceMarine()
         val flag:Boolean = CollectionManager().addMax(spaceMarine)
         if (flag) {
