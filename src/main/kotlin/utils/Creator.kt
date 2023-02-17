@@ -8,7 +8,7 @@ class Creator {
         val name = NameReader.read()
         val coordinates = CoordinatesCreator.create()
         val health = HealthReader.read()
-        val loyal = LoyalnessReader.read()
+        val loyal = LoyaltyReader.read()
         val category = CategoryReader.read()
         val weapon = WeaponReader.read()
         val chapter = ChapterCreator.create()

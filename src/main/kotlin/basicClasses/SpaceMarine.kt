@@ -6,6 +6,8 @@ import utils.serializers.CoordinatesSerializer
 import java.util.Date
 import java.util.UUID
 import kotlin.math.abs
+import exceptions.SpaceMarineHealthLowerThanZero
+import exceptions.SpaceMarineNameIsNullOrBlank
 
 @Serializable
 data class SpaceMarine (
@@ -24,9 +26,9 @@ data class SpaceMarine (
 
     ) : Comparable<SpaceMarine>{
     init {
-        if (name.isEmpty() or name.isBlank()) throw SpaceMarineNameIsNullBlankOrEmpty("Name cannot be null, blank or empty")
+        if (name.isNullOrBlank()) throw SpaceMarineNameIsNullOrBlank("Name cannot be null, blank or empty")
         else if (health != null) {
-            if (health!! <= 0) throw SpaceMarineHealthIsLowerThanZero("Health value cannot be lower than zero")
+            if (health!! <= 0) throw SpaceMarineHealthLowerThanZero("Health value cannot be lower than zero")
         }
     }
     private val id: Int = abs(UUID.randomUUID().hashCode()) //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
@@ -69,7 +71,9 @@ data class SpaceMarine (
     }
 
     fun setName(string: String) {
-        this.name = string
+        if (string.isNotEmpty()){
+            this.name = string
+        }
     }
     fun setCoordinates(coordinates: Coordinates) {
         this.coordinates = coordinates
@@ -89,9 +93,6 @@ data class SpaceMarine (
     fun setChapter(chapter: Chapter) {
         this.chapter = chapter
     }
-
-    class SpaceMarineNameIsNullBlankOrEmpty(message: String?) : Exception(message)
-    class SpaceMarineHealthIsLowerThanZero(message: String?) : Exception(message)
 
 
 }

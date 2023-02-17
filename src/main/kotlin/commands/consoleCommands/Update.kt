@@ -8,7 +8,18 @@ class Update (private val collection: CollectionManager) : Command() {
     }
 
     override fun execute(argument:String) {
-        val id = readln().trim().toInt()
-        CollectionManager().update(id)
+        println("Write the id of the object to change:")
+
+        var id : Int = -1
+        do {
+            try {
+                id = readln().trim().toInt()
+            } catch (e: Exception) {
+                println("Please enter a valid Int-type value of Id: ")
+            }
+
+        } while (id < 0)
+
+        collection.update(id)
     }
 }

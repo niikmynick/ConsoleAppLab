@@ -12,24 +12,41 @@ class CollectionManager() : TreeSet<SpaceMarine>() {
         return "Tree Set of SpaceMarine: size=${this.size}, date=${this.date}"
     }
     fun show() {
+        if (this.isEmpty()) {
+            println("Collection is empty")
+        }
         for (element in this) {
             println(element)
         }
     }
     fun update(id : Int) {
+        var found: Boolean = false
         for (element in this) {
             if (element.getId() == id) {
-                element.setName(NameReader.read())
-                element.setCoordinates(CoordinatesCreator.create())
-                element.setHealth(HealthReader.read())
-                element.setLoyal(LoyalnessReader.read())
-                element.setCategory(CategoryReader.read())
-                element.setMeleeWeapon(WeaponReader.read())
-                element.setChapter(ChapterCreator.create())
+                NameReader.update(element)
+                CoordinatesCreator.update(element)
+                HealthReader.update(element)
+                LoyaltyReader.update(element)
+                CategoryReader.update(element)
+                WeaponReader.update(element)
+                ChapterCreator.update(element)
+                found = true
+                break
             }
         }
+        if (!found) println("No element with Id=$id was found")
     }
-    fun removeID(id : Int) {}
+    fun removeID(id : Int) {
+        var found: Boolean = false
+        for (element in this) {
+            if (element.getId() == id) {
+                this.remove(element)
+                found = true
+                break
+            }
+        }
+        if (!found) println("No element with Id=$id was found")
+    }
     fun save() : Boolean {
         TODO() // should return true if save is done and false if error
     }
