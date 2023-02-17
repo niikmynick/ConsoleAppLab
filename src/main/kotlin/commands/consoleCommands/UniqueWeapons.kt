@@ -9,7 +9,7 @@ class UniqueWeapons (private val collection: CollectionManager) : Command(){
 
     override fun execute(argument:String) {
         println("Here is a list of weapons from our collection: ")
-        for (weapon in CollectionManager().uniqueWeapons()) {
+        for (weapon in collection.uniqueWeapons()) {
             println(weapon)
         }
     }

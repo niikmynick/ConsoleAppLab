@@ -10,7 +10,7 @@ class RemoveLower (private val collection: CollectionManager) : Command() {
 
     override fun execute(argument:String) {
         val spaceMarine = Creator().createSpaceMarine()
-        val amount : Int = CollectionManager().removeLower(spaceMarine)
+        val amount : Int = collection.removeLower(spaceMarine)
         println("Have been deleted $amount Space Marines")
     }
 }

@@ -9,7 +9,7 @@ class RemoveGreater (private val collection: CollectionManager) : Command() {
     }
 
     override fun execute(argument:String) {
-        val spaceMarine = Creator().createSpaceMarine()
+        val spaceMarine = Creator().createSpaceMarine() //TODO: should this command create another spacemarine?
         val amount : Int = collection.removeGreater(spaceMarine)
         println("Have been deleted $amount Space Marines")
     }

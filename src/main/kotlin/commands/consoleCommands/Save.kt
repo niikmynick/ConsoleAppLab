@@ -8,7 +8,7 @@ class Save (private val collection: CollectionManager) : Command() {
     }
 
     override fun execute(argument:String) {
-        val flag = CollectionManager().save()
+        val flag = collection.save()
         if (flag) {
             println("Collection was saved successfully")
         } else {

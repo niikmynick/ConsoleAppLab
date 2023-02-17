@@ -20,44 +20,53 @@ class CollectionManager() : TreeSet<SpaceMarine>() {
         }
     }
     fun update(id : Int) {
-        var found: Boolean = false
-        for (element in this) {
-            if (element.getId() == id) {
-                NameReader.update(element)
-                CoordinatesCreator.update(element)
-                HealthReader.update(element)
-                LoyaltyReader.update(element)
-                CategoryReader.update(element)
-                WeaponReader.update(element)
-                ChapterCreator.update(element)
-                found = true
-                break
-            }
-        }
-        if (!found) println("No element with Id=$id was found")
+        val element = this.getByID(id)
+        if (element != null) {
+            NameReader.update(element)
+            CoordinatesCreator.update(element)
+            HealthReader.update(element)
+            LoyaltyReader.update(element)
+            CategoryReader.update(element)
+            WeaponReader.update(element)
+            ChapterCreator.update(element)
+        } else println("No element with Id=$id was found")
+
     }
     fun removeID(id : Int) {
-        var found: Boolean = false
-        for (element in this) {
-            if (element.getId() == id) {
-                this.remove(element)
-                found = true
-                break
-            }
-        }
-        if (!found) println("No element with Id=$id was found")
+        val element = this.getByID(id)
+        if (element != null) {
+            this.remove(element)
+        } else println("No element with Id=$id was found")
     }
     fun save() : Boolean {
         TODO() // should return true if save is done and false if error
     }
     fun addMax(spaceMarine: SpaceMarine) : Boolean {
-        TODO() // should return true if element was added and false if not
+        if (spaceMarine > this.last()) {
+            this.add(spaceMarine)
+            return true
+        } else return false
     }
     fun removeGreater(spaceMarine: SpaceMarine) : Int {
-        TODO() // should return amount of deleted marines
+        var count = 0
+        while (this.isNotEmpty()) {
+            if (this.last() > spaceMarine) {
+                this.remove(this.last())
+                count++
+            } else return count
+        }
+        return count
     }
     fun removeLower(spaceMarine: SpaceMarine) : Int {
-        TODO() // should return amount of deleted marines
+        var count = 0
+        while (this.isNotEmpty()) {
+            if (this.first() < spaceMarine) {
+                this.remove(this.first())
+                count++
+            } else return count
+        }
+        return count
+
     }
     fun averageHealth(): Int {
         var sum = 0
@@ -66,14 +75,25 @@ class CollectionManager() : TreeSet<SpaceMarine>() {
                 sum += element.getHealth()!!
             }
         }
-        return sum / this.size
+        return if (this.isNotEmpty()) sum / this.size
+        else return 0
+
     }
     fun groupByName() {} // should print result
     fun uniqueWeapons() : Set<MeleeWeapon> {
-        TODO() // should return list of unique weapons
+        val weapons : MutableSet<MeleeWeapon> = mutableSetOf()
+        for (element in this) {
+            if (element.getMeleeWeapon() !in weapons) weapons.add(element.getMeleeWeapon())
+        }
+        return weapons
     }
-    fun getByID(id: Int) : SpaceMarine {
-        TODO() // should find spaceMarine object in list by its id and return
+    fun getByID(id: Int) : SpaceMarine? {
+        for (element in this) {
+            if (element.getId() == id) {
+                return element
+            }
+        }
+        return null
     }
 
 }

@@ -8,9 +8,24 @@ class RemoveID (private val collection: CollectionManager) : Command() {
     }
 
     override fun execute(argument:String) {
-        val id = readln().trim().toInt()
-        val name = collection.getByID(id).getName()
-        collection.removeID(id)
-        println("Space Marine $name has been deleted")
+        println("Write the id of the object to remove:")
+
+        var id : Int = -1
+        do {
+            try {
+                id = readln().trim().toInt()
+            } catch (e: Exception) {
+                println("Please enter a valid Int-type value of Id: ")
+            }
+
+        } while (id < 0)
+        if (collection.getByID(id) != null) {
+            val name = collection.getByID(id)!!.getName()
+            collection.removeID(id)
+            println("Space Marine $name has been deleted")
+        } else println("No element with Id=$id was found")
+
+
+
     }
 }
