@@ -1,7 +1,9 @@
 package basicClasses
 
 enum class AstartesCategory {
-    ASSAULT,
-    LIBRARIAN,
-    HELIX
+    INCEPTOR,
+    TACTICAL,
+    CHAPLAIN,
+    HELIX,
+    APOTHECARY
 }

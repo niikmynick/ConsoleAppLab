@@ -1,6 +1,5 @@
 package utils.readers
 
-import basicClasses.AstartesCategory
 import basicClasses.MeleeWeapon
 import basicClasses.SpaceMarine
 

@@ -3,12 +3,11 @@ package utils.readers
 import basicClasses.Chapter
 import basicClasses.SpaceMarine
 import exceptions.MarineCountIllegalValue
-import exceptions.SpaceMarineHealthLowerThanZero
 
 class ChapterCreator {
     companion object {
         fun create() : Chapter {
-            println("Enter name of the Chapter: ")
+            print("Enter name of the Chapter: ")
             var name:String = readln().trim()
 
             while (name.isEmpty()) {
@@ -16,14 +15,14 @@ class ChapterCreator {
                 name = readln().trim()
             }
 
-            println("Enter amount of Space Marines: ")
+            print("Enter amount of Space Marines: ")
             var marinecount : Long = -1
             do {
                 try {
                     marinecount = readln().trim().toLong()
                     if (marinecount !in 0..1000) throw MarineCountIllegalValue("Marine Count value is not within 0 and 1000")
                 } catch (e: Exception) {
-                    println("You need to enter Long-type value of Space Marines amount: ")
+                    print("You need to enter Long-type value of Space Marines amount: ")
                 }
 
             } while (marinecount !in 0..1000)
@@ -31,16 +30,16 @@ class ChapterCreator {
             return Chapter(name, marinecount)
         }
         fun update(element :SpaceMarine) {
-            println("Enter name of the Chapter (press enter to save existing parameter): ")
+            print("Enter name of the Chapter (press enter to save existing parameter): ")
             val name:String = readln()
             if (name.isNotEmpty()) {
                 element.getChapter().setName(name.trim())
             }
 
-            println("Enter amount of Space Marines (press enter to save existing parameter): ")
+            print("Enter amount of Space Marines (press enter to save existing parameter): ")
 
 
-            var marinecount : String? = null
+            var marinecount : String?
             do {
                 marinecount = readln()
                 if (marinecount.isNotEmpty()) {
@@ -48,7 +47,7 @@ class ChapterCreator {
                         marinecount.trim().toLong()
                         if (marinecount.trim().toLong() !in 0..1000) throw MarineCountIllegalValue("Marine Count value is not within 0 and 1000")
                     } catch (e: Exception) {
-                        println("You need to enter Long-type value of Space Marines amount: ")
+                        print("You need to enter Long-type value of Space Marines amount: ")
                         marinecount = null
                     }
                 }

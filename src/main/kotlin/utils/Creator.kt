@@ -4,7 +4,7 @@ import basicClasses.SpaceMarine
 import utils.readers.*
 
 class Creator {
-    fun createSpaceMarine(): SpaceMarine {
+    fun createSpaceMarine(collection: CollectionManager): SpaceMarine {
         val name = NameReader.read()
         val coordinates = CoordinatesCreator.create()
         val health = HealthReader.read()

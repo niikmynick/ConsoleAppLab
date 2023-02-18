@@ -1,18 +1,17 @@
 package utils.readers
 
 import basicClasses.SpaceMarine
-import exceptions.SpaceMarineHealthLowerThanZero
 
 class LoyaltyReader {
     companion object {
         fun read() : Boolean {
-            println("Enter loyalty [true / false]: ")
+            print("Enter loyalty [true / false]: ")
             var loyalty: Boolean? = null
             do {
                 try {
                     loyalty = readln().trim().lowercase().toBooleanStrict()
                 } catch (e: Exception) {
-                    println("You need to enter Boolean-type value of loyalty: ")
+                    print("You need to enter Boolean-type value of loyalty: ")
                 }
             } while (loyalty == null)
 
@@ -20,15 +19,15 @@ class LoyaltyReader {
         }
 
         fun update(element: SpaceMarine) {
-            println("Enter loyalty [true / false] (press enter to save existing parameter): ")
-            var str: String? = null
+            print("Enter loyalty [true / false] (press enter to save existing parameter): ")
+            var str: String?
             do {
                 str = readln().trim()
                 if (str.isNotEmpty()) {
                     try {
                         str.lowercase().toBooleanStrict()
                     } catch (e: Exception) {
-                        println("You need to enter Boolean-type value of loyalty: ")
+                        print("You need to enter Boolean-type value of loyalty: ")
                         str = null
                     }
                 }

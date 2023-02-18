@@ -18,12 +18,12 @@ class Console {
         commandInvoker.register("save", Save(collection))
         commandInvoker.register("execute_script", ScriptFromFile())
         commandInvoker.register("exit", Exit())
-        commandInvoker.register("add_if_max", AddMax(collection))
+        commandInvoker.register("add_if_min", AddMin(collection))
         commandInvoker.register("remove_greater", RemoveGreater(collection))
         commandInvoker.register("remove_lower", RemoveLower(collection))
-        commandInvoker.register("average_of_health", HealthAverage(collection))
-        commandInvoker.register("group_counting_by_name", GroupsByName(collection))
-        commandInvoker.register("print_unique_melee_weapon", UniqueWeapons(collection))
+        commandInvoker.register("remove_any_by_chapter", RemoveAnyChapter(collection))
+        commandInvoker.register("count_by_melee_weapon", CountByMeleeWeapon(collection))
+        commandInvoker.register("filter_by_chapter", FilterByChapter(collection))
 
         commandInvoker.register("help", Help(commandInvoker.getCommandsList()))
 

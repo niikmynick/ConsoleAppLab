@@ -4,11 +4,11 @@ import kotlin.system.exitProcess
 
 class Exit : Command() {
     override fun writeInfo() {
-        println("Завершает программу (без сохранения в файл)")
+        println("Exits the app (without saving data)")
     }
 
     override fun execute(argument:String) {
-        println("Termination of work ...")
+        println("Exiting ...")
         exitProcess(0)
     }
 }

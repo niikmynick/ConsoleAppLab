@@ -4,18 +4,18 @@ import utils.CollectionManager
 
 class RemoveID (private val collection: CollectionManager) : Command() {
     override fun writeInfo() {
-        println("Удаляет элемент из коллекции по его id")
+        println("Deletes the element with the provided id")
     }
 
     override fun execute(argument:String) {
-        println("Write the id of the object to remove:")
+        print("Write the id of the object to remove:")
 
-        var id : Int = -1
+        var id = -1L
         do {
             try {
-                id = readln().trim().toInt()
+                id = readln().trim().toLong()
             } catch (e: Exception) {
-                println("Please enter a valid Int-type value of Id: ")
+                print("Please enter a valid Long-type value of Id: ")
             }
 
         } while (id < 0)

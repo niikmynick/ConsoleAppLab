@@ -2,7 +2,7 @@ package commands.consoleCommands
 
 class ScriptFromFile : Command() {
     override fun writeInfo() {
-        println("Считывает и исполняет скрипт из указанного файла (скрипт содержат команды в таком же виде, в котором их вводит пользователь в интерактивном режиме)")
+        println("Reads and executes script from provided file (The script should have the same commands used in the interactive mode)")
     }
 
     override fun execute(argument:String) {

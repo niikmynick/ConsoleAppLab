@@ -2,7 +2,7 @@ package commands.consoleCommands
 
 class Help(private val list: Map<String, Command>) : Command() {
     override fun writeInfo() {
-        println("Выводит справку по доступным командам")
+        println("Prints info about all commands or a provided command")
     }
 
     override fun execute(argument:String) {

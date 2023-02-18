@@ -5,11 +5,11 @@ import utils.Creator
 
 class Add (private val collection: CollectionManager) : Command() {
     override fun writeInfo() {
-        println("Добавляет новый элемент в коллекцию")
+        println("Adds a new element into the collection")
     }
 
     override fun execute(argument:String) {
-        val spaceMarine = Creator().createSpaceMarine()
+        val spaceMarine = Creator().createSpaceMarine(collection)
         collection.add(spaceMarine)
         println("Space Marine ${spaceMarine.getName()} has been created and added to the collection")
     }

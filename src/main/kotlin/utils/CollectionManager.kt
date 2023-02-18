@@ -1,12 +1,13 @@
 package utils
 
+import basicClasses.Chapter
 import basicClasses.MeleeWeapon
 import basicClasses.SpaceMarine
 import utils.readers.*
 import java.util.Date
 import java.util.TreeSet
 
-class CollectionManager() : TreeSet<SpaceMarine>() {
+class CollectionManager : TreeSet<SpaceMarine>() {
     private val date: Date = Date()
     fun info() : String {
         return "Tree Set of SpaceMarine: size=${this.size}, date=${this.date}"
@@ -19,7 +20,7 @@ class CollectionManager() : TreeSet<SpaceMarine>() {
             println(element)
         }
     }
-    fun update(id : Int) {
+    fun update(id : Long) {
         val element = this.getByID(id)
         if (element != null) {
             NameReader.update(element)
@@ -32,7 +33,7 @@ class CollectionManager() : TreeSet<SpaceMarine>() {
         } else println("No element with Id=$id was found")
 
     }
-    fun removeID(id : Int) {
+    fun removeID(id : Long) {
         val element = this.getByID(id)
         if (element != null) {
             this.remove(element)
@@ -41,11 +42,11 @@ class CollectionManager() : TreeSet<SpaceMarine>() {
     fun save() : Boolean {
         TODO() // should return true if save is done and false if error
     }
-    fun addMax(spaceMarine: SpaceMarine) : Boolean {
-        if (spaceMarine > this.last()) {
+    fun addMin(spaceMarine: SpaceMarine) : Boolean {
+        return if (spaceMarine < this.first()) {
             this.add(spaceMarine)
-            return true
-        } else return false
+            true
+        } else false
     }
     fun removeGreater(spaceMarine: SpaceMarine) : Int {
         var count = 0
@@ -68,18 +69,6 @@ class CollectionManager() : TreeSet<SpaceMarine>() {
         return count
 
     }
-    fun averageHealth(): Int {
-        var sum = 0
-        for (element in this) {
-            if (element.getHealth() != null) {
-                sum += element.getHealth()!!
-            }
-        }
-        return if (this.isNotEmpty()) sum / this.size
-        else return 0
-
-    }
-    fun groupByName() {} // should print result
     fun uniqueWeapons() : Set<MeleeWeapon> {
         val weapons : MutableSet<MeleeWeapon> = mutableSetOf()
         for (element in this) {
@@ -87,13 +76,36 @@ class CollectionManager() : TreeSet<SpaceMarine>() {
         }
         return weapons
     }
-    fun getByID(id: Int) : SpaceMarine? {
+    fun getByID(id: Long) : SpaceMarine? {
         for (element in this) {
             if (element.getId() == id) {
                 return element
             }
         }
         return null
+    }
+    fun removeAnyElementWithChapter(chapter: Chapter) : Boolean {
+        for (element in this) {
+            if (element.getChapter() == chapter) {
+                remove(element)
+                return true
+            }
+        }
+        return false
+    }
+    fun countMeleeWeapons(weapon: MeleeWeapon) : Int {
+        var count = 0
+        for (element in this) {
+            if (element.getMeleeWeapon() == weapon) {
+                count++
+            }
+        }
+        return count
+    }
+    fun printByChapter(chapter: Chapter) {
+        for (element in this) {
+            if (element.getChapter() == chapter) println(element)
+        }
     }
 
 }
