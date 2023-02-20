@@ -2,12 +2,13 @@ package utils
 
 import commands.CommandInvoker
 import commands.consoleCommands.*
+
 class Console {
     fun startInteractiveMode() {
         val commandInvoker = CommandInvoker()
-        val collection = CollectionManager()
-
+        val fileManager = FileManager()
         var command:String
+        val collection = CollectionManager()
 
         commandInvoker.register("info", Info(collection))
         commandInvoker.register("show", Show(collection))
@@ -15,8 +16,8 @@ class Console {
         commandInvoker.register("update_id", Update(collection))
         commandInvoker.register("remove_by_id", RemoveID(collection))
         commandInvoker.register("clear", Clear(collection))
-        commandInvoker.register("save", Save(collection))
-        commandInvoker.register("execute_script", ScriptFromFile())
+        commandInvoker.register("save", Save(collection, fileManager.getFilename()))
+        commandInvoker.register("execute_script", ScriptFromFile(collection, commandInvoker))
         commandInvoker.register("exit", Exit())
         commandInvoker.register("add_if_min", AddMin(collection))
         commandInvoker.register("remove_greater", RemoveGreater(collection))
@@ -27,10 +28,11 @@ class Console {
 
         commandInvoker.register("help", Help(commandInvoker.getCommandsList()))
 
-        println("Waiting for the user command ...")
+        fileManager.load(collection)
+        println("Waiting for user prompt ...")
         do {
             print("$ ")
-            command = readln().trim()
+            command = readln().trim().lowercase()
             commandInvoker.executeCommand(command)
         } while (command != "exit")
     }

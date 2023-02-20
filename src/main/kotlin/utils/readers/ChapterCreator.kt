@@ -22,7 +22,7 @@ class ChapterCreator {
                     marinecount = readln().trim().toLong()
                     if (marinecount !in 0..1000) throw MarineCountIllegalValue("Marine Count value is not within 0 and 1000")
                 } catch (e: Exception) {
-                    print("You need to enter Long-type value of Space Marines amount: ")
+                    print("You need to enter a Long-type value between 0 and 1000: ")
                 }
 
             } while (marinecount !in 0..1000)
@@ -47,7 +47,7 @@ class ChapterCreator {
                         marinecount.trim().toLong()
                         if (marinecount.trim().toLong() !in 0..1000) throw MarineCountIllegalValue("Marine Count value is not within 0 and 1000")
                     } catch (e: Exception) {
-                        print("You need to enter Long-type value of Space Marines amount: ")
+                        print("You need to enter a Long-type value between 0 and 1000: ")
                         marinecount = null
                     }
                 }
