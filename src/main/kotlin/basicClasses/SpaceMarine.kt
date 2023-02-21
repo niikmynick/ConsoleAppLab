@@ -4,8 +4,6 @@ import exceptions.SpaceMarineHealthLowerThanZero
 import exceptions.SpaceMarineIdLowerThanZero
 import exceptions.SpaceMarineNameIsNullOrBlank
 import kotlinx.serialization.Serializable
-import utils.serializers.ChapterSerializer
-import utils.serializers.CoordinatesSerializer
 import java.time.LocalDate
 import java.util.*
 
@@ -14,16 +12,12 @@ import java.util.*
 data class SpaceMarine (
     private val id: Long = UUID.randomUUID().mostSignificantBits and Long.MAX_VALUE,//Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private var name: String, //Поле не может быть null, Строка не может быть пустой
-
-    @Serializable(with = CoordinatesSerializer::class)
     private var coordinates: Coordinates, //Поле не может быть null
     private val creationDate: String = LocalDate.now().toString(), //Поле не может быть null, Значение этого поля должно генерироваться автоматически
     private var health: Float?, //Поле может быть null, Значение поля должно быть больше 0
     private var loyal: Boolean,
     private var category: AstartesCategory, //Поле не может быть null
     private var meleeWeapon: MeleeWeapon, //Поле может быть null
-
-    @Serializable(with = ChapterSerializer::class)
     private var chapter: Chapter //Поле может быть null
 
     ) : Comparable<SpaceMarine>{

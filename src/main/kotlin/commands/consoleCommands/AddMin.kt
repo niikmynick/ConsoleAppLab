@@ -12,9 +12,9 @@ class AddMin (private val collection: CollectionManager) : Command() {
         val spaceMarine = Creator().createSpaceMarine(collection)
         val flag:Boolean = collection.addMin(spaceMarine)
         if (flag) {
-            println("Space Marine ${spaceMarine.getName()} has been added to list")
+            println("Space Marine ${spaceMarine.getName()} has been added to the list")
         } else {
-            println("Space Marine ${spaceMarine.getName()} has not been added to list")
+            println("Something went wrong ...\nSpace Marine ${spaceMarine.getName()} has not been added to the list")
         }
     }
 }

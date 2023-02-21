@@ -17,7 +17,7 @@ class Console {
         commandInvoker.register("remove_by_id", RemoveID(collection))
         commandInvoker.register("clear", Clear(collection))
         commandInvoker.register("save", Save(collection, fileManager.getFilename()))
-        commandInvoker.register("execute_script", ScriptFromFile())
+        commandInvoker.register("execute_script", ScriptFromFile(commandInvoker))
         commandInvoker.register("exit", Exit())
         commandInvoker.register("add_if_min", AddMin(collection))
         commandInvoker.register("remove_greater", RemoveGreater(collection))
@@ -27,6 +27,8 @@ class Console {
         commandInvoker.register("filter_by_chapter", FilterByChapter(collection))
 
         commandInvoker.register("help", Help(commandInvoker.getCommandsList()))
+
+        fileManager.load(collection)
 
         println("Waiting for the user command ...")
         do {

@@ -8,7 +8,7 @@ class CommandInvoker {
         list += name to command
     }
 
-    fun executeCommand(query:String) {
+    fun executeCommand(query: String) {
         when (query.split(" ").size) {
             1 -> {
                 list[query]?.execute("")

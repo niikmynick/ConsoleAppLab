@@ -1,5 +1,8 @@
 package basicClasses
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Coordinates (
     private var x: Double, //Поле не может быть null
     private var y: Int

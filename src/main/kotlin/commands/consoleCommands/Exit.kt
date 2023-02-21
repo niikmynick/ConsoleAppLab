@@ -8,7 +8,7 @@ class Exit : Command() {
     }
 
     override fun execute(argument:String) {
-        println("Exiting ...")
+        println("Finishing process ...")
         exitProcess(0)
     }
 }

@@ -2,7 +2,7 @@ package utils.readers
 
 import basicClasses.Chapter
 import basicClasses.SpaceMarine
-import exceptions.MarineCountIllegalValue
+import exceptions.MarinesCountValueError
 
 class ChapterCreator {
     companion object {
@@ -20,7 +20,7 @@ class ChapterCreator {
             do {
                 try {
                     marinecount = readln().trim().toLong()
-                    if (marinecount !in 0..1000) throw MarineCountIllegalValue("Marine Count value is not within 0 and 1000")
+                    if (marinecount !in 0..1000) throw MarinesCountValueError("Marine Count value is not within 0 and 1000")
                 } catch (e: Exception) {
                     print("You need to enter Long-type value of Space Marines amount: ")
                 }
@@ -45,7 +45,7 @@ class ChapterCreator {
                 if (marinecount.isNotEmpty()) {
                     try {
                         marinecount.trim().toLong()
-                        if (marinecount.trim().toLong() !in 0..1000) throw MarineCountIllegalValue("Marine Count value is not within 0 and 1000")
+                        if (marinecount.trim().toLong() !in 0..1000) throw MarinesCountValueError("Marine Count value is not within 0 and 1000")
                     } catch (e: Exception) {
                         print("You need to enter Long-type value of Space Marines amount: ")
                         marinecount = null

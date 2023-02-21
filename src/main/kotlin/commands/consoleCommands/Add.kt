@@ -10,7 +10,11 @@ class Add (private val collection: CollectionManager) : Command() {
 
     override fun execute(argument:String) {
         val spaceMarine = Creator().createSpaceMarine(collection)
-        collection.add(spaceMarine)
-        println("Space Marine ${spaceMarine.getName()} has been created and added to the collection")
+        val flag:Boolean = collection.add(spaceMarine)
+        if (flag) {
+            println("Space Marine ${spaceMarine.getName()} has been created and added to the list")
+        } else {
+            println("Something went wrong ...\nSpace Marine ${spaceMarine.getName()} has not been added to the list")
+        }
     }
 }

@@ -8,14 +8,14 @@ class RemoveID (private val collection: CollectionManager) : Command() {
     }
 
     override fun execute(argument:String) {
-        print("Write the id of the object to remove:")
+        print("Write the id of the object to remove:    ")
 
         var id = -1L
         do {
             try {
                 id = readln().trim().toLong()
             } catch (e: Exception) {
-                print("Please enter a valid Long-type value of Id: ")
+                print("Please enter a valid Long-type value of id:  ")
             }
 
         } while (id < 0)
