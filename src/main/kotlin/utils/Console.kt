@@ -5,6 +5,7 @@ import commands.consoleCommands.*
 class Console {
     fun startInteractiveMode() {
         val commandInvoker = CommandInvoker()
+        val fileManager = FileManager()
         val collection = CollectionManager()
 
         var command:String
@@ -15,7 +16,7 @@ class Console {
         commandInvoker.register("update_id", Update(collection))
         commandInvoker.register("remove_by_id", RemoveID(collection))
         commandInvoker.register("clear", Clear(collection))
-        commandInvoker.register("save", Save(collection))
+        commandInvoker.register("save", Save(collection, fileManager.getFilename()))
         commandInvoker.register("execute_script", ScriptFromFile())
         commandInvoker.register("exit", Exit())
         commandInvoker.register("add_if_min", AddMin(collection))
