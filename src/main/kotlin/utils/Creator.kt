@@ -3,7 +3,18 @@ package utils
 import basicClasses.SpaceMarine
 import utils.readers.*
 
+/**
+ * Creator
+ *
+ * @constructor Create Creator
+ */
 class Creator {
+    /**
+     * Create space marine
+     *
+     * @param collection
+     * @return
+     */
     fun createSpaceMarine(collection: CollectionManager): SpaceMarine {
         val name = NameReader.read()
         val coordinates = CoordinatesCreator.create()

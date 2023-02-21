@@ -7,6 +7,20 @@ import kotlinx.serialization.Serializable
 import java.time.LocalDate
 import java.util.*
 
+/**
+ * Space marine
+ *
+ * @property id
+ * @property name
+ * @property coordinates
+ * @property creationDate
+ * @property health
+ * @property loyal
+ * @property category
+ * @property meleeWeapon
+ * @property chapter
+ * @constructor Create Space marine
+ */
 
 @Serializable
 data class SpaceMarine (
@@ -47,53 +61,148 @@ data class SpaceMarine (
         return "SpaceMarine(id=$id ,name=$name, coordinates=$coordinates, creationDate=$creationDate, health=$health, loyal=$loyal, category=$category, meleeWeapon=$meleeWeapon, chapter=$chapter)"
     }
 
+    /**
+     * Get id
+     *
+     * @return id
+     */
     fun getId(): Long {
         return id
     }
+
+    /**
+     * Get name
+     *
+     * @return name
+     */
     fun getName(): String {
         return name
     }
+
+    /**
+     * Get coordinates
+     *
+     * @return coordinates
+     */
     fun getCoordinates(): Coordinates {
         return coordinates
     }
+
+    /**
+     * Get creation date
+     *
+     * @return creation date of this space marine
+     */
     fun getCreationDate(): String {
         return creationDate
     }
+
+    /**
+     * Get health
+     *
+     * @return health
+     */
     fun getHealth(): Float? {
         return health
     }
+
+    /**
+     * Get loyal
+     *
+     * @return loyalty
+     */
     fun getLoyal(): Boolean {
         return loyal
     }
+
+    /**
+     * Get category
+     *
+     * @return category
+     */
     fun getCategory(): AstartesCategory {
         return category
     }
+
+    /**
+     * Get melee weapon
+     *
+     * @return weapon
+     */
     fun getMeleeWeapon(): MeleeWeapon {
         return meleeWeapon
     }
+
+    /**
+     * Get chapter
+     *
+     * @return chapter
+     */
     fun getChapter(): Chapter {
         return chapter
     }
+
+    /**
+     * Set name
+     *
+     * @param string
+     */
     fun setName(string: String) {
         if (string.isNotEmpty()){
             this.name = string
         }
     }
+
+    /**
+     * Set coordinates
+     *
+     * @param coordinates
+     */
     fun setCoordinates(coordinates: Coordinates) {
         this.coordinates = coordinates
     }
+
+    /**
+     * Set health
+     *
+     * @param float
+     */
     fun setHealth(float: Float) {
         this.health = float
     }
+
+    /**
+     * Set loyal
+     *
+     * @param boolean
+     */
     fun setLoyal(boolean: Boolean) {
         this.loyal = boolean
     }
+
+    /**
+     * Set category
+     *
+     * @param category
+     */
     fun setCategory(category: AstartesCategory) {
         this.category = category
     }
+
+    /**
+     * Set melee weapon
+     *
+     * @param meleeWeapon
+     */
     fun setMeleeWeapon(meleeWeapon: MeleeWeapon) {
         this.meleeWeapon = meleeWeapon
     }
+
+    /**
+     * Set chapter
+     *
+     * @param chapter
+     */
     fun setChapter(chapter: Chapter) {
         this.chapter = chapter
     }

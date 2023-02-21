@@ -3,6 +3,12 @@ package commands.consoleCommands
 import utils.CollectionManager
 import utils.Creator
 
+/**
+ * Remove lower
+ *
+ * @property collection
+ * @constructor Create command Remove lower
+ */
 class RemoveLower (private val collection: CollectionManager) : Command() {
     override fun writeInfo() {
         println("Deletes from collection all elements lower than provided")

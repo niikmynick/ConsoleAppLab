@@ -5,16 +5,16 @@ import exceptions.MarinesCountValueError
 import kotlinx.serialization.Serializable
 
 /**
- * Chapter classification
+ * Chapter
  *
- * Implement chapter scope for Space Marine object
- *
- * @name identify name of the chapter
- * @marinesCount answers how many marines
+ * @property name
+ * @property marinesCount
+ * @constructor Create Chapter
  */
 
 @Serializable
 data class Chapter(
+
     private var name: String, //Поле не может быть null, Строка не может быть пустой
     private var marinesCount: Long //Значение поля должно быть больше 0, Максимальное значение поля: 1000
     ) {
@@ -23,15 +23,42 @@ data class Chapter(
         else if (marinesCount !in 0..1000) throw MarinesCountValueError("Marine Count value is not within 0 and 1000")
     }
 
+    /**
+     * Get name
+     *
+     * @return name of chapter
+     */
+
     fun getName() : String{
         return this.name
     }
+
+    /**
+     * Get marines count
+     *
+     * @return marines count
+     */
+
     fun getMarinesCount() : Long{
         return this.marinesCount
     }
+
+    /**
+     * Set name
+     *
+     * @param name
+     */
+
     fun setName(name: String) {
         this.name  = name
     }
+
+    /**
+     * Set marines count
+     *
+     * @param marinesCount
+     */
+
     fun setMarinesCount(marinesCount: Long) {
         this.marinesCount  = marinesCount
     }

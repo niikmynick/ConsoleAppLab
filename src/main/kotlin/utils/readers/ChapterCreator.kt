@@ -4,6 +4,11 @@ import basicClasses.Chapter
 import basicClasses.SpaceMarine
 import exceptions.MarinesCountValueError
 
+/**
+ * Chapter creator
+ *
+ * @constructor Create  Chapter creator
+ */
 class ChapterCreator {
     companion object {
         fun create() : Chapter {

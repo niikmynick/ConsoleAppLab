@@ -1,9 +1,14 @@
 package commands.consoleCommands
 
-import com.charleskorn.kaml.Yaml
 import commands.CommandInvoker
 import java.io.FileReader
 
+/**
+ * Script from file
+ *
+ * @property commandInvoker
+ * @constructor Create command Script from file
+ */
 class ScriptFromFile(private val commandInvoker: CommandInvoker): Command() {
     override fun writeInfo() {
         println("Reads and executes script from provided file (The script should have the same commands used in the interactive mode)")

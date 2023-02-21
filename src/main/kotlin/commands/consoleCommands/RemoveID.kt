@@ -2,6 +2,12 @@ package commands.consoleCommands
 
 import utils.CollectionManager
 
+/**
+ * Remove i d
+ *
+ * @property collection
+ * @constructor Create command remove_id
+ */
 class RemoveID (private val collection: CollectionManager) : Command() {
     override fun writeInfo() {
         println("Deletes the element with the provided id")

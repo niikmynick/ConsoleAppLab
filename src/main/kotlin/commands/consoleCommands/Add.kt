@@ -3,6 +3,12 @@ package commands.consoleCommands
 import utils.CollectionManager
 import utils.Creator
 
+/**
+ * Add
+ *
+ * @property collection
+ * @constructor Create command Add
+ */
 class Add (private val collection: CollectionManager) : Command() {
     override fun writeInfo() {
         println("Adds a new element into the collection")

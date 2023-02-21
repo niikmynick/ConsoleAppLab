@@ -2,6 +2,12 @@ package commands.consoleCommands
 
 import utils.CollectionManager
 
+/**
+ * Unique weapons
+ *
+ * @property collection
+ * @constructor Create command Unique weapons
+ */
 class UniqueWeapons (private val collection: CollectionManager) : Command(){
     override fun writeInfo() {
         println("Prints unique values of meleeWeapon from elements in the collection")

@@ -2,6 +2,12 @@ package commands.consoleCommands
 
 import utils.CollectionManager
 
+/**
+ * Update
+ *
+ * @property collection
+ * @constructor Create command Update
+ */
 class Update (private val collection: CollectionManager) : Command() {
     override fun writeInfo() {
         println("Updates values of the element with the provided id")

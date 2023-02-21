@@ -2,6 +2,11 @@ package utils.readers
 
 import basicClasses.SpaceMarine
 
+/**
+ * Name reader
+ *
+ * @constructor Create Name reader
+ */
 class NameReader {
     companion object {
         fun read(): String {

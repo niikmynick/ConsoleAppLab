@@ -3,6 +3,11 @@ package utils.readers
 import basicClasses.AstartesCategory
 import basicClasses.SpaceMarine
 
+/**
+ * Category reader
+ *
+ * @constructor Create Category reader
+ */
 class CategoryReader : EnumReader() {
     companion object {
         fun read(): AstartesCategory {

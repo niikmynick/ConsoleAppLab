@@ -2,6 +2,11 @@ package utils.readers
 
 import basicClasses.SpaceMarine
 
+/**
+ * Loyalty reader
+ *
+ * @constructor Create Loyalty reader
+ */
 class LoyaltyReader {
     companion object {
         fun read() : Boolean {

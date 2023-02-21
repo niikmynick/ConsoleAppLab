@@ -2,6 +2,12 @@ package commands.consoleCommands
 
 import utils.CollectionManager
 
+/**
+ * Clear
+ *
+ * @property collection
+ * @constructor Create command Clear
+ */
 class Clear (private val collection: CollectionManager) : Command() {
     override fun writeInfo() {
         println("Clears all elements in the collection")

@@ -3,6 +3,12 @@ package commands.consoleCommands
 import utils.CollectionManager
 import utils.readers.ChapterCreator
 
+/**
+ * Remove any chapter
+ *
+ * @property collection
+ * @constructor Create command Remove any chapter
+ */
 class RemoveAnyChapter(private val collection: CollectionManager) : Command() {
     override fun writeInfo() {
         println("Deletes an element with a provided chapter value")

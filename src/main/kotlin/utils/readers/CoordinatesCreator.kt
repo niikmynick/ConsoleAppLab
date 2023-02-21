@@ -3,6 +3,11 @@ package utils.readers
 import basicClasses.Coordinates
 import basicClasses.SpaceMarine
 
+/**
+ * Coordinates creator
+ *
+ * @constructor Create Coordinates creator
+ */
 class CoordinatesCreator {
     companion object {
         fun create() : Coordinates {

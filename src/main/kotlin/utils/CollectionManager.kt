@@ -10,11 +10,27 @@ import java.util.Date
 import java.util.TreeSet
 import com.charleskorn.kaml.Yaml
 
+/**
+ * Collection manager
+ *
+ * @constructor Create Collection manager
+ */
 class CollectionManager : TreeSet<SpaceMarine>() {
     private val date: Date = Date()
+
+    /**
+     * Info
+     *
+     * @return
+     */
     fun info() : String {
         return "Tree Set of SpaceMarine: size=${this.size}, date=${this.date}"
     }
+
+    /**
+     * Show collection
+     *
+     */
     fun show() {
         if (this.isEmpty()) {
             println("Collection is empty")
@@ -23,6 +39,12 @@ class CollectionManager : TreeSet<SpaceMarine>() {
             println(element)
         }
     }
+
+    /**
+     * Update element
+     *
+     * @param id
+     */
     fun update(id : Long) {
         val element = this.getByID(id)
         if (element != null) {
@@ -36,12 +58,25 @@ class CollectionManager : TreeSet<SpaceMarine>() {
         } else println("No element with Id=$id was found")
 
     }
+
+    /**
+     * Remove id
+     *
+     * @param id
+     */
     fun removeID(id : Long) {
         val element = this.getByID(id)
         if (element != null) {
             this.remove(element)
         } else println("No element with Id=$id was found")
     }
+
+    /**
+     * Save collection to file
+     *
+     * @param filename
+     * @return
+     */
     fun save(filename:String) : Boolean {
         return try {
             val file = FileOutputStream(filename)
@@ -58,12 +93,26 @@ class CollectionManager : TreeSet<SpaceMarine>() {
             false
         }
     }
+
+    /**
+     * Add min
+     *
+     * @param spaceMarine
+     * @return
+     */
     fun addMin(spaceMarine: SpaceMarine) : Boolean {
         return if (spaceMarine < this.first()) {
             this.add(spaceMarine)
             true
         } else false
     }
+
+    /**
+     * Remove greater
+     *
+     * @param spaceMarine
+     * @return
+     */
     fun removeGreater(spaceMarine: SpaceMarine) : Int {
         var count = 0
         while (this.isNotEmpty()) {
@@ -74,6 +123,13 @@ class CollectionManager : TreeSet<SpaceMarine>() {
         }
         return count
     }
+
+    /**
+     * Remove lower
+     *
+     * @param spaceMarine
+     * @return
+     */
     fun removeLower(spaceMarine: SpaceMarine) : Int {
         var count = 0
         while (this.isNotEmpty()) {
@@ -85,6 +141,12 @@ class CollectionManager : TreeSet<SpaceMarine>() {
         return count
 
     }
+
+    /**
+     * Unique weapons
+     *
+     * @return
+     */
     fun uniqueWeapons() : Set<MeleeWeapon> {
         val weapons : MutableSet<MeleeWeapon> = mutableSetOf()
         for (element in this) {
@@ -92,6 +154,13 @@ class CollectionManager : TreeSet<SpaceMarine>() {
         }
         return weapons
     }
+
+    /**
+     * Get by i d
+     *
+     * @param id
+     * @return
+     */
     fun getByID(id: Long) : SpaceMarine? {
         for (element in this) {
             if (element.getId() == id) {
@@ -100,6 +169,13 @@ class CollectionManager : TreeSet<SpaceMarine>() {
         }
         return null
     }
+
+    /**
+     * Remove any element with chapter
+     *
+     * @param chapter
+     * @return
+     */
     fun removeAnyElementWithChapter(chapter: Chapter) : Boolean {
         for (element in this) {
             if (element.getChapter() == chapter) {
@@ -109,6 +185,13 @@ class CollectionManager : TreeSet<SpaceMarine>() {
         }
         return false
     }
+
+    /**
+     * Count melee weapons
+     *
+     * @param weapon
+     * @return
+     */
     fun countMeleeWeapons(weapon: MeleeWeapon) : Int {
         var count = 0
         for (element in this) {
@@ -118,6 +201,12 @@ class CollectionManager : TreeSet<SpaceMarine>() {
         }
         return count
     }
+
+    /**
+     * Print by chapter
+     *
+     * @param chapter
+     */
     fun printByChapter(chapter: Chapter) {
         for (element in this) {
             if (element.getChapter() == chapter) println(element)

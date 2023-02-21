@@ -3,6 +3,11 @@ package utils.readers
 import basicClasses.SpaceMarine
 import exceptions.SpaceMarineHealthLowerThanZero
 
+/**
+ * Health reader
+ *
+ * @constructor Create Health reader
+ */
 class HealthReader {
     companion object {
         fun read(): Float {

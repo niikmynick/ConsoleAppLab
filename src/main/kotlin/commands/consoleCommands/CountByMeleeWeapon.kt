@@ -3,6 +3,12 @@ package commands.consoleCommands
 import utils.CollectionManager
 import utils.readers.WeaponReader
 
+/**
+ * Count by melee weapon
+ *
+ * @property collection
+ * @constructor Create command count_by_melee_weapon
+ */
 class CountByMeleeWeapon(private val collection: CollectionManager) : Command() {
     override fun writeInfo() {
         println("Prints the amount of elements with the provided weapon")

@@ -3,6 +3,11 @@ package utils.readers
 import basicClasses.MeleeWeapon
 import basicClasses.SpaceMarine
 
+/**
+ * Weapon reader
+ *
+ * @constructor Create Weapon reader
+ */
 class WeaponReader : EnumReader() {
     companion object {
         fun read(): MeleeWeapon {

@@ -2,6 +2,12 @@ package commands.consoleCommands
 
 import utils.CollectionManager
 
+/**
+ * Remove greater
+ *
+ * @property collection
+ * @constructor Create command Remove greater
+ */
 class RemoveGreater (private val collection: CollectionManager) : Command() {
     override fun writeInfo() {
         println("Deletes from collection all elements greater than provided")

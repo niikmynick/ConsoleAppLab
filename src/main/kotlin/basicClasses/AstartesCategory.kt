@@ -1,7 +1,9 @@
 package basicClasses
 
 /**
- * Enum with Astartes Categories
+ * Astartes category
+ *
+ * @constructor Create Astartes category
  */
 
 enum class AstartesCategory {

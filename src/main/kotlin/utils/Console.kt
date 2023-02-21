@@ -2,7 +2,17 @@ package utils
 
 import commands.CommandInvoker
 import commands.consoleCommands.*
+
+/**
+ * Console
+ *
+ * @constructor Create Console
+ */
 class Console {
+    /**
+     * Start interactive mode
+     *
+     */
     fun startInteractiveMode() {
         val commandInvoker = CommandInvoker()
         val fileManager = FileManager()

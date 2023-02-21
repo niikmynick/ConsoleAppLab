@@ -1,5 +1,11 @@
 package commands.consoleCommands
 
+/**
+ * Help
+ *
+ * @property list
+ * @constructor Create command Help
+ */
 class Help(private val list: Map<String, Command>) : Command() {
     override fun writeInfo() {
         println("Prints info about all commands or a provided command")
