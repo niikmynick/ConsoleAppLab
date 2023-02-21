@@ -2,11 +2,17 @@ package commands.consoleCommands
 
 import utils.CollectionManager
 
+/**
+ * Command clear: Clears all elements in the collection
+ * @param collection Gets current collection
+ * @property info Has info about command
+ */
 class Clear (private val collection: CollectionManager) : Command() {
-    override fun writeInfo() {
-        println("Clears all elements in the collection")
-    }
+    override val info: String = "Clears all elements in the collection"
 
+    /**
+     * todo
+     */
     override fun execute(argument:String) {
         if (collection.size > 0) {
             print("Are you sure? This operation will delete all elements [Y / N] ")

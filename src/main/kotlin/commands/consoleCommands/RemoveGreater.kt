@@ -2,28 +2,30 @@ package commands.consoleCommands
 
 import utils.CollectionManager
 
+/**
+ * Command remove_greater: Deletes from collection all elements greater than provided
+ * @param collection Current collection
+ * @property info Has info about command
+ */
 class RemoveGreater (private val collection: CollectionManager) : Command() {
-    override fun writeInfo() {
-        println("Deletes from collection all elements greater than provided")
-    }
+    override val info: String = "Deletes from collection all elements greater than provided (remove_greater {element.id})"
 
+    /**
+     * Removes all elements greater than element with id equal to [argument]
+     * @param argument id of element to compare
+     */
     override fun execute(argument:String) {
-        print("Write the id of the object to compare:")
-
-        var id = -1L
-        do {
-            try {
-                id = readln().trim().toLong()
-            } catch (e: Exception) {
-                print("Please enter a valid Long-type value of Id: ")
+        try {
+            val id = argument.trim().toLong()
+            if (collection.getByID(id) == null) println("No element with Id=$id was found")
+            else {
+                val amount : Int = collection.removeGreater(collection.getByID(id)!!)
+                println("$amount Space Marines have been deleted")
             }
-
-        } while (id < 0)
-        if (collection.getByID(id) == null) println("No element with Id=$id was found")
-        else {
-            val amount : Int = collection.removeGreater(collection.getByID(id)!!)
-            println("Have been deleted $amount Space Marines")
+        } catch (e: Exception) {
+            print("Invalid Long-type value of Id")
         }
+
 
     }
 }

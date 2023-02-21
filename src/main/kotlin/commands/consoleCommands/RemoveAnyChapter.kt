@@ -3,11 +3,17 @@ package commands.consoleCommands
 import utils.CollectionManager
 import utils.readers.ChapterCreator
 
+/**
+ * Command remove_any_by_chapter: Deletes an element with a provided chapter value
+ * @param collection Current collection
+ * @property info Has info about command
+ */
 class RemoveAnyChapter(private val collection: CollectionManager) : Command() {
-    override fun writeInfo() {
-        println("Deletes an element with a provided chapter value")
-    }
+    override val info: String = "Deletes an element with a provided chapter value"
 
+    /**
+     * todo
+     */
     override fun execute(argument:String) {
         val chapter = ChapterCreator.create()
         val flag = collection.removeAnyElementWithChapter(chapter)

@@ -2,10 +2,14 @@ package commands.consoleCommands
 
 import utils.CollectionManager
 
+/**
+ * Command save: Saves collection data into a file
+ * @param collection Current collection
+ * @param filename Name of the file where data will be saved
+ * @property info Has info about command
+ */
 class Save (private val collection: CollectionManager, private val filename: String) : Command() {
-    override fun writeInfo() {
-        println("Saves collection data into a file")
-    }
+    override val info: String = "Saves collection data into a file"
 
     override fun execute(argument:String) {
         val flag = collection.save(filename)
