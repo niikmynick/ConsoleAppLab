@@ -1,0 +1,98 @@
+id: 3956583913119825962
+name: "1"
+coordinates:
+  x: 1.0
+  y: 1
+creationDate: "2023-02-21"
+health: null
+loyal: false
+category: "HELIX"
+meleeWeapon: "POWER_FIST"
+chapter:
+  name: "1"
+  marineCount: 1
+#ENDOFSPACEMARINE
+id: 2521124566054094152
+name: "234"
+coordinates:
+  x: 32.0
+  y: 423
+creationDate: "2023-02-20"
+health: 4.0
+loyal: true
+category: "HELIX"
+meleeWeapon: "POWER_FIST"
+chapter:
+  name: "32"
+  marineCount: 65
+#ENDOFSPACEMARINE
+id: 3412941854251958939
+name: "E"
+coordinates:
+  x: 45.0
+  y: 3
+creationDate: "2023-02-20"
+health: 45.0
+loyal: false
+category: "HELIX"
+meleeWeapon: "POWER_SWORD"
+chapter:
+  name: "A"
+  marineCount: 34
+#ENDOFSPACEMARINE
+id: 2471199127305930074
+name: "I"
+coordinates:
+  x: 34.0
+  y: 34
+creationDate: "2023-02-20"
+health: null
+loyal: false
+category: "APOTHECARY"
+meleeWeapon: "POWER_FIST"
+chapter:
+  name: "A"
+  marineCount: 22
+#ENDOFSPACEMARINE
+id: 1809452068660989515
+name: "Juan"
+coordinates:
+  x: 999.0
+  y: 999
+creationDate: "2023-02-20"
+health: 999.0
+loyal: true
+category: "TACTICAL"
+meleeWeapon: "LIGHTING_CLAW"
+chapter:
+  name: "A"
+  marineCount: 1
+#ENDOFSPACEMARINE
+id: 7344262715532070250
+name: "Tom"
+coordinates:
+  x: 0.0
+  y: 0
+creationDate: "2023-02-20"
+health: 1.0
+loyal: false
+category: "APOTHECARY"
+meleeWeapon: "POWER_SWORD"
+chapter:
+  name: "A"
+  marineCount: 444
+#ENDOFSPACEMARINE
+id: 5703097573201562096
+name: "d"
+coordinates:
+  x: 3.0
+  y: 4
+creationDate: "2023-02-20"
+health: 2.0
+loyal: true
+category: "HELIX"
+meleeWeapon: "POWER_SWORD"
+chapter:
+  name: "3"
+  marineCount: 3
+#ENDOFSPACEMARINE
