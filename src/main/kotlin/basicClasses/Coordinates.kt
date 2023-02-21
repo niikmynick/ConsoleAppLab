@@ -2,6 +2,15 @@ package basicClasses
 
 import kotlinx.serialization.Serializable
 
+/**
+ * Coordinates x y
+ *
+ * Implement coordinates scope for Space Marine object
+ *
+ * @x identify x-coordinates
+ * @y identify y--coordinates
+ */
+
 @Serializable
 data class Coordinates (
     private var x: Double, //Поле не может быть null

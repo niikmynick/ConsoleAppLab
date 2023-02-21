@@ -54,7 +54,7 @@ class ChapterCreator {
             } while (marinecount == null)
 
             if (marinecount.isNotEmpty()) {
-                element.getChapter().setMarinecount(marinecount.trim().toLong())
+                element.getChapter().setMarinesCount(marinecount.trim().toLong())
             }
 
         }

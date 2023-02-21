@@ -4,6 +4,15 @@ import exceptions.BlankChapterName
 import exceptions.MarinesCountValueError
 import kotlinx.serialization.Serializable
 
+/**
+ * Chapter classification
+ *
+ * Implement chapter scope for Space Marine object
+ *
+ * @name identify name of the chapter
+ * @marinesCount answers how many marines
+ */
+
 @Serializable
 data class Chapter(
     private var name: String, //Поле не может быть null, Строка не может быть пустой
@@ -17,14 +26,14 @@ data class Chapter(
     fun getName() : String{
         return this.name
     }
-    fun getMarinecount() : Long{
+    fun getMarinesCount() : Long{
         return this.marinesCount
     }
     fun setName(name: String) {
         this.name  = name
     }
-    fun setMarinecount(marinecount: Long) {
-        this.marinesCount  = marinecount
+    fun setMarinesCount(marinesCount: Long) {
+        this.marinesCount  = marinesCount
     }
 
 
