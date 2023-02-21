@@ -2,7 +2,9 @@ package basicClasses
 
 import exceptions.ChapterNameIsBlank
 import exceptions.MarineCountIllegalValue
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Chapter(
     private var name: String, //Поле не может быть null, Строка не может быть пустой
     private var marinecount: Long //Значение поля должно быть больше 0, Максимальное значение поля: 1000

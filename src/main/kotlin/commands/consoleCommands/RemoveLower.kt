@@ -1,7 +1,6 @@
 package commands.consoleCommands
 
 import utils.CollectionManager
-import utils.Creator
 
 class RemoveLower (private val collection: CollectionManager) : Command() {
     override fun writeInfo() {

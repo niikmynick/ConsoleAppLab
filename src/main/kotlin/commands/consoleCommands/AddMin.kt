@@ -9,7 +9,7 @@ class AddMin (private val collection: CollectionManager) : Command() {
     }
 
     override fun execute(argument:String) {
-        val spaceMarine = Creator().createSpaceMarine(collection)
+        val spaceMarine = Creator().createSpaceMarine()
         val flag:Boolean = collection.addMin(spaceMarine)
         if (flag) {
             println("Space Marine ${spaceMarine.getName()} has been added to list")

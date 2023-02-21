@@ -4,8 +4,7 @@ import exceptions.SpaceMarineHealthLowerThanZero
 import exceptions.SpaceMarineIdLowerThanZero
 import exceptions.SpaceMarineNameIsNullOrBlank
 import kotlinx.serialization.Serializable
-import utils.serializers.ChapterSerializer
-import utils.serializers.CoordinatesSerializer
+import utils.serializers.LocalDateSerializer
 import java.time.LocalDate
 import java.util.*
 
@@ -15,15 +14,16 @@ data class SpaceMarine (
     private val id: Long = UUID.randomUUID().mostSignificantBits and Long.MAX_VALUE,//Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private var name: String, //Поле не может быть null, Строка не может быть пустой
 
-    @Serializable(with = CoordinatesSerializer::class)
+
     private var coordinates: Coordinates, //Поле не может быть null
-    private val creationDate: String = LocalDate.now().toString(), //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+    @Serializable(with = LocalDateSerializer::class)
+    private val creationDate: LocalDate = LocalDate.now(), //Поле не может быть null, Значение этого поля должно генерироваться автоматически
     private var health: Float?, //Поле может быть null, Значение поля должно быть больше 0
     private var loyal: Boolean,
     private var category: AstartesCategory, //Поле не может быть null
     private var meleeWeapon: MeleeWeapon, //Поле может быть null
 
-    @Serializable(with = ChapterSerializer::class)
+
     private var chapter: Chapter //Поле может быть null
 
     ) : Comparable<SpaceMarine>{
@@ -33,7 +33,7 @@ data class SpaceMarine (
                 loyal: Boolean,
                 category: AstartesCategory,
                 meleeWeapon: MeleeWeapon,
-                chapter: Chapter) : this((UUID.randomUUID().mostSignificantBits and Long.MAX_VALUE), name, coordinates, LocalDate.now().toString(),health, loyal, category, meleeWeapon, chapter)
+                chapter: Chapter) : this((UUID.randomUUID().mostSignificantBits and Long.MAX_VALUE), name, coordinates, LocalDate.now(),health, loyal, category, meleeWeapon, chapter)
 
     constructor() : this("Juan", Coordinates(0.0, 0), 1F, false, AstartesCategory.HELIX, MeleeWeapon.POWER_FIST, Chapter("a",1))
 
@@ -62,7 +62,7 @@ data class SpaceMarine (
     fun getCoordinates(): Coordinates {
         return coordinates
     }
-    fun getCreationDate(): String {
+    fun getCreationDate(): LocalDate {
         return creationDate
     }
     fun getHealth(): Float? {
@@ -88,7 +88,7 @@ data class SpaceMarine (
     fun setCoordinates(coordinates: Coordinates) {
         this.coordinates = coordinates
     }
-    fun setHealth(float: Float) {
+    fun setHealth(float: Float?) {
         this.health = float
     }
     fun setLoyal(boolean: Boolean) {

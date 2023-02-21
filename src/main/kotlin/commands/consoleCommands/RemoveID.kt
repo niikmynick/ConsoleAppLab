@@ -1,5 +1,6 @@
 package commands.consoleCommands
 
+import exceptions.SpaceMarineNotFound
 import utils.CollectionManager
 
 class RemoveID (private val collection: CollectionManager) : Command() {
@@ -8,24 +9,16 @@ class RemoveID (private val collection: CollectionManager) : Command() {
     }
 
     override fun execute(argument:String) {
-        print("Write the id of the object to remove:")
-
-        var id = -1L
-        do {
+        var id = 0L
             try {
-                id = readln().trim().toLong()
+                id = argument.trim().toLong()
+                if (collection.getByID(id) != null) {
+                    val name = collection.getByID(id)!!.getName()
+                    collection.removeID(id)
+                    println("Space Marine $name has been deleted")
+                } else throw SpaceMarineNotFound("No element with Id=$id was found")
             } catch (e: Exception) {
-                print("Please enter a valid Long-type value of Id: ")
+                println("No element with Id=$id was found")
             }
-
-        } while (id < 0)
-        if (collection.getByID(id) != null) {
-            val name = collection.getByID(id)!!.getName()
-            collection.removeID(id)
-            println("Space Marine $name has been deleted")
-        } else println("No element with Id=$id was found")
-
-
-
     }
 }

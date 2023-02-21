@@ -3,7 +3,10 @@ package utils
 import basicClasses.Chapter
 import basicClasses.MeleeWeapon
 import basicClasses.SpaceMarine
+import com.charleskorn.kaml.Yaml
 import utils.readers.*
+import java.io.FileOutputStream
+import java.io.OutputStreamWriter
 import java.util.Date
 import java.util.TreeSet
 
@@ -39,8 +42,22 @@ class CollectionManager : TreeSet<SpaceMarine>() {
             this.remove(element)
         } else println("No element with Id=$id was found")
     }
-    fun save() : Boolean {
-        TODO() // should return true if save is done and false if error
+    fun save(filename: String) : Boolean {
+        return try {
+            val file = FileOutputStream(filename)
+
+            val output = OutputStreamWriter(file)
+            for (element in this) {
+                output.write(Yaml.default.encodeToString(SpaceMarine.serializer(), element))
+                output.write("\n#ENDOFSPACEMARINE\n")
+            }
+            output.close()
+            true
+        } catch (e: Exception) {
+            println(e.toString())
+            false
+        }
+
     }
     fun addMin(spaceMarine: SpaceMarine) : Boolean {
         return if (spaceMarine < this.first()) {
