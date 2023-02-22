@@ -1,15 +1,16 @@
 package utils.readers
 
 import basicClasses.SpaceMarine
+import java.util.*
 
 class LoyaltyReader {
     companion object {
-        fun read() : Boolean {
+        fun read(sc: Scanner) : Boolean {
             print("Enter loyalty [true / false]: ")
             var loyalty: Boolean? = null
             do {
                 try {
-                    loyalty = readln().trim().lowercase().toBooleanStrict()
+                    loyalty = sc.nextLine().trim().lowercase().toBooleanStrict()
                 } catch (e: Exception) {
                     print("You need to enter Boolean-type value of loyalty: ")
                 }
@@ -18,11 +19,11 @@ class LoyaltyReader {
             return loyalty
         }
 
-        fun update(element: SpaceMarine) {
+        fun update(element: SpaceMarine, sc:Scanner) {
             print("Enter loyalty [true / false] (press enter to save existing parameter): ")
             var str: String?
             do {
-                str = readln().trim()
+                str = sc.nextLine().trim()
                 if (str.isNotEmpty()) {
                     try {
                         str.lowercase().toBooleanStrict()

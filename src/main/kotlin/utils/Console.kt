@@ -2,6 +2,7 @@ package utils
 
 import commands.CommandInvoker
 import commands.consoleCommands.*
+import java.util.Scanner
 
 class Console {
     fun startInteractiveMode() {
@@ -9,6 +10,7 @@ class Console {
         val fileManager = FileManager()
         var command:String
         val collection = CollectionManager()
+        val scanner = Scanner(System.`in`)
 
         commandInvoker.register("info", Info(collection))
         commandInvoker.register("show", Show(collection))
@@ -33,7 +35,7 @@ class Console {
         do {
             print("$ ")
             command = readln().trim().lowercase()
-            commandInvoker.executeCommand(command)
+            commandInvoker.executeCommand(command, scanner)
         } while (command != "exit")
     }
 }

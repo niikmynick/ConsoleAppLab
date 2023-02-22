@@ -17,7 +17,7 @@ class ScriptFromFile(val collection: CollectionManager, val commandInvoker: Comm
     /**
      * todo
      */
-    override fun execute(argument:String) {
+    override fun execute(argument:String, sc: Scanner) {
         try {
             val filereader = FileReader(argument)
             val commandlist = filereader.readText()
@@ -26,7 +26,7 @@ class ScriptFromFile(val collection: CollectionManager, val commandInvoker: Comm
             val scanner = Scanner(commandlist)
             while (scanner.hasNextLine()) {
                 val command: String = scanner.nextLine()
-                commandInvoker.executeCommand(command)
+                commandInvoker.executeCommand(command, scanner)
             }
             scanner.close()
             } catch (e: Exception) {

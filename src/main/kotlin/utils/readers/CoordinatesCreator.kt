@@ -2,15 +2,16 @@ package utils.readers
 
 import basicClasses.Coordinates
 import basicClasses.SpaceMarine
+import java.util.Scanner
 
 class CoordinatesCreator {
     companion object {
-        fun create() : Coordinates {
+        fun create(sc:Scanner) : Coordinates {
             print("Enter value of X: ")
             var x : Double? = null
             do {
                 try {
-                    x = readln().trim().toDouble()
+                    x = sc.nextLine().trim().toDouble()
                 } catch (e: Exception) {
                     print("You need to enter Double-type value of X .. ")
                 }
@@ -21,7 +22,7 @@ class CoordinatesCreator {
             var y : Int? = null
             do {
                 try {
-                    y = readln().trim().toInt()
+                    y = sc.nextLine().trim().toInt()
                 } catch (e: Exception) {
                     print("You need to enter Int-type value of Y: ")
                 }
@@ -30,11 +31,11 @@ class CoordinatesCreator {
             return Coordinates(x, y)
         }
 
-        fun update(element: SpaceMarine) {
+        fun update(element: SpaceMarine, sc:Scanner) {
             print("Enter value of X (press enter to save existing parameter): ")
             var x: String?
             do {
-                x = readln().trim()
+                x = sc.nextLine().trim()
                 if (x.isNotEmpty()) {
                     try {
                         x.toDouble()
@@ -52,7 +53,7 @@ class CoordinatesCreator {
             print("Enter value of Y (press enter to save existing parameter): ")
             var y: String?
             do {
-                y = readln().trim()
+                y = sc.nextLine().trim()
                 if (y.isNotEmpty()) {
                     try {
                         y.toInt()

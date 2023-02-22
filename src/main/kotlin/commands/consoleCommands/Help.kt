@@ -1,5 +1,7 @@
 package commands.consoleCommands
 
+import java.util.*
+
 /**
  * Command help: Prints info about all commands or a provided command
  * @param list Map with all commands
@@ -11,7 +13,7 @@ class Help(private val list: Map<String, Command>) : Command() {
     /**
      * Shows all commands when no argument was provided or shows info about provided command
      */
-    override fun execute(argument:String) {
+    override fun execute(argument:String, sc: Scanner) {
         when (argument.length) {
             0 -> {
                 println("Help is available for the following commands:")

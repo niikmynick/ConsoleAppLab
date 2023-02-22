@@ -22,9 +22,10 @@ class FileManager {
 
         try {
             val filereader = FileReader(collectionFileName)
-            val datalist = filereader.readText().split("\n#ENDOFSPACEMARINE\n")
+            val datalist = filereader.readText().split("#ENDOFSPACEMARINE")
             for (data in datalist) {
-                if (data.isNotEmpty()) {
+                data.trim()
+                if (data.isNotBlank()) {
                     val spacemarine = Yaml.default.decodeFromString(SpaceMarine.serializer(), data)
                     collection.add(spacemarine)
                 }

@@ -1,6 +1,7 @@
 package commands.consoleCommands
 
 import utils.CollectionManager
+import java.util.*
 
 /**
  * Command info: Prints info about the collection (type, creation date, amount of elements)
@@ -10,7 +11,7 @@ import utils.CollectionManager
 class Info (private val collection: CollectionManager) : Command() {
     override val info: String = "Prints info about the collection (type, creation date, amount of elements)"
 
-    override fun execute(argument:String) {
+    override fun execute(argument:String, sc: Scanner) {
         println(collection.info())
     }
 

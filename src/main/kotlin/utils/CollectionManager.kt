@@ -7,8 +7,7 @@ import com.charleskorn.kaml.Yaml
 import utils.readers.*
 import java.io.FileOutputStream
 import java.io.OutputStreamWriter
-import java.util.Date
-import java.util.TreeSet
+import java.util.*
 
 class CollectionManager : TreeSet<SpaceMarine>() {
     private val date: Date = Date()
@@ -23,16 +22,16 @@ class CollectionManager : TreeSet<SpaceMarine>() {
             println(element)
         }
     }
-    fun update(id : Long) {
+    fun update(id : Long, sc: Scanner) {
         val element = this.getByID(id)
         if (element != null) {
-            NameReader.update(element)
-            CoordinatesCreator.update(element)
-            HealthReader.update(element)
-            LoyaltyReader.update(element)
-            CategoryReader.update(element)
-            WeaponReader.update(element)
-            ChapterCreator.update(element)
+            NameReader.update(element, sc)
+            CoordinatesCreator.update(element, sc)
+            HealthReader.update(element, sc)
+            LoyaltyReader.update(element, sc)
+            CategoryReader.update(element, sc)
+            WeaponReader.update(element, sc)
+            ChapterCreator.update(element, sc)
         } else println("No element with Id=$id was found")
 
     }

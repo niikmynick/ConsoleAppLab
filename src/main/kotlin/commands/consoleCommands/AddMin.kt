@@ -2,6 +2,7 @@ package commands.consoleCommands
 
 import utils.CollectionManager
 import utils.Creator
+import java.util.*
 
 /**
  * Command add_if_min: Adds a new element into the collection if its value is lower than the lowest element in the collection
@@ -14,8 +15,8 @@ class AddMin (private val collection: CollectionManager) : Command() {
     /**
      * todo
      */
-    override fun execute(argument:String) {
-        val spaceMarine = Creator().createSpaceMarine()
+    override fun execute(argument:String, sc: Scanner) {
+        val spaceMarine = Creator().createSpaceMarine(sc)
         val flag:Boolean = collection.addMin(spaceMarine)
         if (flag) {
             println("Space Marine ${spaceMarine.getName()} has been added to list")

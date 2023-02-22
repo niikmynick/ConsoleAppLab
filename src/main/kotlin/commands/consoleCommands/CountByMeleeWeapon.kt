@@ -3,6 +3,7 @@ package commands.consoleCommands
 import basicClasses.MeleeWeapon
 import utils.CollectionManager
 import utils.readers.EnumReader
+import java.util.*
 
 /**
  * Command count_by_melee_weapon: Prints the amount of elements with the provided weapon
@@ -15,7 +16,7 @@ class CountByMeleeWeapon(private val collection: CollectionManager) : Command() 
     /**
      * @param argument Contains [MeleeWeapon] that should be searched in collection
      */
-    override fun execute(argument: String) {
+    override fun execute(argument: String, sc: Scanner) {
         val weapon : MeleeWeapon
         if (collection.isNotEmpty()) {
             if (EnumReader.enumContains<MeleeWeapon>(argument.trim().uppercase())) {
