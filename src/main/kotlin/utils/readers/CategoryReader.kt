@@ -4,8 +4,16 @@ import basicClasses.AstartesCategory
 import basicClasses.SpaceMarine
 import java.util.*
 
+/**
+ * Class containing readers for [AstartesCategory]
+ */
 class CategoryReader : EnumReader() {
     companion object {
+        /**
+         * Prints all values from [AstartesCategory] and reads entered value
+         * @param sc Is where a new line is gotten
+         * @return [AstartesCategory] from entered value
+         */
         fun read(sc: Scanner): AstartesCategory {
             println("Enter Astartes category from the list: ")
             for (category in AstartesCategory.values()) {
@@ -20,6 +28,12 @@ class CategoryReader : EnumReader() {
 
             return AstartesCategory.valueOf(category)
         }
+
+        /**
+         * Sets a new [AstartesCategory] for provided element
+         * @param element [SpaceMarine] object that is modified
+         * @param sc Is where a new line is gotten
+         */
         fun update(element: SpaceMarine, sc:Scanner) {
             println("Enter Astartes category from the list (press enter to save existing parameter): ")
             for (category in AstartesCategory.values()) {

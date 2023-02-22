@@ -14,6 +14,7 @@ class CountByMeleeWeapon(private val collection: CollectionManager) : Command() 
     override val info: String = "Prints the amount of elements with the provided weapon as argument\n (count_by_melee_weapon {MeleeWeapon})"
 
     /**
+     * Prints the amount of Space Marines with the provided weapon
      * @param argument Contains [MeleeWeapon] that should be searched in collection
      */
     override fun execute(argument: String, sc: Scanner) {

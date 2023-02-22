@@ -5,8 +5,16 @@ import basicClasses.SpaceMarine
 import exceptions.MarineCountIllegalValue
 import java.util.*
 
+/**
+ * Class containing readers for [Chapter]
+ */
 class ChapterCreator {
     companion object {
+        /**
+         * Creates and returns a new [Chapter] object
+         * @param sc Is where a new line is gotten
+         * @return [Chapter] from entered values
+         */
         fun create(sc: Scanner) : Chapter {
             print("Enter name of the Chapter: ")
             var name:String = sc.nextLine().trim()
@@ -30,6 +38,12 @@ class ChapterCreator {
 
             return Chapter(name, marinecount)
         }
+
+        /**
+         * Sets a new [Chapter] for provided element
+         * @param element [SpaceMarine] object that is modified
+         * @param sc Is where a new line is gotten
+         */
         fun update(element :SpaceMarine, sc:Scanner) {
             print("Enter name of the Chapter (press enter to save existing parameter): ")
             val name:String = sc.nextLine()

@@ -4,8 +4,16 @@ import basicClasses.Coordinates
 import basicClasses.SpaceMarine
 import java.util.Scanner
 
+/**
+ * Class containing readers for [Coordinates]
+ */
 class CoordinatesCreator {
     companion object {
+        /**
+         * Creates and returns a new [Coordinates] object
+         * @param sc Is where a new line is gotten
+         * @return [Coordinates] from entered values
+         */
         fun create(sc:Scanner) : Coordinates {
             print("Enter value of X: ")
             var x : Double? = null
@@ -31,6 +39,11 @@ class CoordinatesCreator {
             return Coordinates(x, y)
         }
 
+        /**
+         * Sets a new [Coordinates] for provided element
+         * @param element [SpaceMarine] object that is modified
+         * @param sc Is where a new line is gotten
+         */
         fun update(element: SpaceMarine, sc:Scanner) {
             print("Enter value of X (press enter to save existing parameter): ")
             var x: String?

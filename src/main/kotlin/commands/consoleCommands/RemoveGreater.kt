@@ -13,6 +13,7 @@ class RemoveGreater (private val collection: CollectionManager) : Command() {
 
     /**
      * Removes all elements greater than element with id equal to [argument]
+     * Prints the amount of Space Marines deleted
      * @param argument id of element to compare
      */
     override fun execute(argument:String, sc: Scanner) {

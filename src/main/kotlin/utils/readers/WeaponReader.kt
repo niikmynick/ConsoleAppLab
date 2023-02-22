@@ -4,8 +4,16 @@ import basicClasses.MeleeWeapon
 import basicClasses.SpaceMarine
 import java.util.*
 
+/**
+ * Class containing readers for [MeleeWeapon]
+ */
 class WeaponReader : EnumReader() {
     companion object {
+        /**
+         * Prints all values from [MeleeWeapon] and reads entered value
+         * @param sc Is where a new line is gotten
+         * @return [MeleeWeapon] from entered value
+         */
         fun read(sc: Scanner): MeleeWeapon {
             println("Enter Weapon category from the list: ")
             for (weapon in MeleeWeapon.values()) {
@@ -20,6 +28,11 @@ class WeaponReader : EnumReader() {
             return MeleeWeapon.valueOf(weapon)
         }
 
+        /**
+         * Sets a new [MeleeWeapon] for provided element
+         * @param element [SpaceMarine] object that is modified
+         * @param sc Is where a new line is gotten
+         */
         fun update(element: SpaceMarine, sc:Scanner) {
             println("Enter Weapon category from the list (press enter to save existing parameter): ")
             for (weapon in MeleeWeapon.values()) {

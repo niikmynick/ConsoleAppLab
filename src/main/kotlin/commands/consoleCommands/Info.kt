@@ -11,6 +11,9 @@ import java.util.*
 class Info (private val collection: CollectionManager) : Command() {
     override val info: String = "Prints info about the collection (type, creation date, amount of elements)"
 
+    /**
+     * Calls and prints [CollectionManager.info]
+     */
     override fun execute(argument:String, sc: Scanner) {
         println(collection.info())
     }

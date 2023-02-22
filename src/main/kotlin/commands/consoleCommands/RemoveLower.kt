@@ -11,10 +11,12 @@ import java.util.*
 class RemoveLower (private val collection: CollectionManager) : Command() {
     override val info: String = "Deletes from collection all elements lower than provided (remove_lower {element.id})"
 
+
     /**
-    * Removes all elements lower than element with id equal to [argument]
-    * @param argument id of element to compare
-    */
+     * Removes all elements lower than element with id equal to argument
+     * Prints the amount of Space Marines deleted
+     * @param argument id of element to compare
+     */
     override fun execute(argument:String, sc: Scanner) {
         try {
             val id = sc.nextLine().trim().toLong()

@@ -3,8 +3,16 @@ package utils.readers
 import basicClasses.SpaceMarine
 import java.util.Scanner
 
+/**
+ * Class containing readers for [SpaceMarine.name]
+ */
 class NameReader {
     companion object {
+        /**
+         * Reads and gives a valid [SpaceMarine.name] value
+         * @param sc Is where a new line is gotten
+         * @return [SpaceMarine.name] value
+         */
         fun read(sc:Scanner): String {
             print("Enter name of the new Space Marine: ")
             var name:String = sc.nextLine().trim()
@@ -17,6 +25,11 @@ class NameReader {
             return name
         }
 
+        /**
+         * Sets a new [SpaceMarine.name] for provided element
+         * @param element [SpaceMarine] object that is modified
+         * @param sc Is where a new line is gotten
+         */
         fun update(element: SpaceMarine, sc:Scanner) {
             print("Enter new name for Space Marine (press enter to save existing parameter): ")
             val string: String = sc.nextLine()

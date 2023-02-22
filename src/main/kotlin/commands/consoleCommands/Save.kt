@@ -12,6 +12,9 @@ import java.util.*
 class Save (private val collection: CollectionManager, private val filename: String) : Command() {
     override val info: String = "Saves collection data into a file"
 
+    /**
+     * Saves collection into file provided in [filename]
+     */
     override fun execute(argument:String, sc: Scanner) {
         val flag = collection.save(filename)
         if (flag) {

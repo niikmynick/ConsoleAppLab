@@ -13,7 +13,9 @@ class AddMin (private val collection: CollectionManager) : Command() {
     override val info: String = "Adds a new element into the collection if its value is lower than the lowest element in the collection"
 
     /**
-     * todo
+     * Creates a Space Marine and adds it into the collection if its lower than the lowest element in the collection
+     * Prints whether the Space Marine was added or not
+     * @param sc Is given to creator
      */
     override fun execute(argument:String, sc: Scanner) {
         val spaceMarine = Creator().createSpaceMarine(sc)

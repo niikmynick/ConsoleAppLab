@@ -2,22 +2,24 @@ package utils
 
 import basicClasses.SpaceMarine
 import com.charleskorn.kaml.Yaml
-import io.github.cdimascio.dotenv.Dotenv
-import io.github.cdimascio.dotenv.dotenv
 import java.io.FileReader
+import java.util.Properties
 
-class FileManager {
+/**
+ * Class that contains environment variables and handles files
+ * @property collectionFileName String containing file name
+ */
+class FileManager(p:Properties) {
 
-    private val env = dotenv()
-    private val collectionFileName = env["COLLECTION_FILENAME"]
-
-    fun getEnv() : Dotenv {
-        return env
-    }
+    private val collectionFileName = p.getProperty("COLLECTION_FILENAME")
     fun getFilename() : String {
         return collectionFileName
     }
 
+    /**
+     * Reads data from the file provided in [collectionFileName] and adds objects to [collection]
+     * @param collection Current collection
+     */
     fun load(collection: CollectionManager) {
 
         try {

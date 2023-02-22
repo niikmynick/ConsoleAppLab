@@ -10,6 +10,9 @@ import java.util.*
 class UniqueWeapons (private val collection: CollectionManager) : Command(){
     override val info: String = "Prints unique values of meleeWeapon from elements in the collection"
 
+    /**
+     *
+     */
     override fun execute(argument:String, sc: Scanner) {
         println("Here is a list of weapons from our collection: ")
         for (weapon in collection.uniqueWeapons()) {

@@ -13,7 +13,8 @@ class FilterByChapter(private val collection: CollectionManager) : Command() {
     override val info: String = "Prints elements with the provided chapter"
 
     /**
-     * todo
+     * Creates a [basicClasses.Chapter] and prints all elements with such Chapter
+     * @param sc Is given to creator
      */
     override fun execute(argument: String, sc: Scanner) {
         val chapter = ChapterCreator.create(sc)

@@ -12,8 +12,6 @@ import java.util.*
 /**
  * Main class used as element in [utils.CollectionManager]
  *
- * Is [Serializable], implements [Comparable]
- *
  * @param id Defined automatically or with given value, positive only
  * @param name Cannot be null or empty
  * @param coordinates Cannot be null

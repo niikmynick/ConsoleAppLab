@@ -12,6 +12,7 @@ class Help(private val list: Map<String, Command>) : Command() {
 
     /**
      * Shows all commands when no argument was provided or shows info about provided command
+     * @param argument Name of the command
      */
     override fun execute(argument:String, sc: Scanner) {
         when (argument.length) {

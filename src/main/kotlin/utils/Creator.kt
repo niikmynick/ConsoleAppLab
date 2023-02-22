@@ -4,7 +4,15 @@ import basicClasses.SpaceMarine
 import utils.readers.*
 import java.util.Scanner
 
+/**
+ * Creator of Space Marines
+ */
 class Creator {
+    /**
+     * Gets [sc] and provides to readers/creators. Then creates a Space Marine with user prompt
+     * @param sc Given to readers/creators
+     * @return [SpaceMarine] object
+     */
     fun createSpaceMarine(sc:Scanner): SpaceMarine {
         val name = NameReader.read(sc)
         val coordinates = CoordinatesCreator.create(sc)

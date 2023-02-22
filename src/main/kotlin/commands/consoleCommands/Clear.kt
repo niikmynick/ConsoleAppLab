@@ -12,7 +12,8 @@ class Clear (private val collection: CollectionManager) : Command() {
     override val info: String = "Clears all elements in the collection"
 
     /**
-     * todo
+     * Clears all elements in the collection
+     * @param sc Is where a new line is gotten
      */
     override fun execute(argument:String, sc: Scanner) {
         if (collection.size > 0) {

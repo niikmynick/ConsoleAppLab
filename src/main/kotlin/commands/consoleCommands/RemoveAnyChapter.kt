@@ -13,7 +13,9 @@ class RemoveAnyChapter(private val collection: CollectionManager) : Command() {
     override val info: String = "Deletes an element with a provided chapter value"
 
     /**
-     * todo
+     * Deletes first found Space Marine with a [basicClasses.Chapter] value equal to created
+     * Prints whether a Space Marine was deleted or not
+     * @param sc Is given to creator
      */
     override fun execute(argument:String, sc: Scanner) {
         val chapter = ChapterCreator.create(sc)

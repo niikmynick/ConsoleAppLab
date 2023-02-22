@@ -14,7 +14,8 @@ class Add (private val collection: CollectionManager) : Command() {
     override val info = "Adds a new element into the collection"
 
     /**
-     * todo
+     * Creates a Space Marine and adds it into the collection
+     * @param sc Is given to creator
      */
     override fun execute(argument:String, sc:Scanner) {
         val spaceMarine = Creator().createSpaceMarine(sc)
