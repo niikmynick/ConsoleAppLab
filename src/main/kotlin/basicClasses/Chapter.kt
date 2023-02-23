@@ -11,7 +11,6 @@ import kotlinx.serialization.Serializable
  * @property marineCount Has to be between 0 and 1000
  * @constructor Creates Chapter with [name] and [marineCount]
  */
-
 @Serializable
 data class Chapter(
     private var name: String, //Поле не может быть null, Строка не может быть пустой
