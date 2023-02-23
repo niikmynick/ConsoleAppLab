@@ -1,24 +1,38 @@
 package utils.readers
 
 import basicClasses.SpaceMarine
+import java.util.Scanner
 
+/**
+ * Class containing readers for [SpaceMarine.name]
+ */
 class NameReader {
     companion object {
-        fun read(): String {
+        /**
+         * Reads and gives a valid [SpaceMarine.name] value
+         * @param sc Is where a new line is gotten
+         * @return [SpaceMarine.name] value
+         */
+        fun read(sc:Scanner): String {
             print("Enter name of the new Space Marine: ")
-            var name:String = readln().trim()
+            var name:String = sc.nextLine().trim()
 
             while (name.isEmpty()) {
                 print("You need to enter the name: ")
-                name = readln().trim()
+                name = sc.nextLine().trim()
             }
 
             return name
         }
 
-        fun update(element: SpaceMarine) {
+        /**
+         * Sets a new [SpaceMarine.name] for provided element
+         * @param element [SpaceMarine] object that is modified
+         * @param sc Is where a new line is gotten
+         */
+        fun update(element: SpaceMarine, sc:Scanner) {
             print("Enter new name for Space Marine (press enter to save existing parameter): ")
-            val string: String = readln()
+            val string: String = sc.nextLine()
             if (string.isNotEmpty()) {
                 element.setName(string.trim())
             }

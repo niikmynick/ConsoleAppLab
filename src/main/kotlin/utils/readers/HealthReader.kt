@@ -2,15 +2,24 @@ package utils.readers
 
 import basicClasses.SpaceMarine
 import exceptions.SpaceMarineHealthLowerThanZero
+import java.util.*
 
+/**
+ * Class containing readers for [SpaceMarine.health]
+ */
 class HealthReader {
     companion object {
-        fun read(): Float? {
+        /**
+         * Reads and gives a valid [SpaceMarine.health] value
+         * @param sc Is where a new line is gotten
+         * @return [SpaceMarine.health] value
+         */
+        fun read(sc: Scanner): Float? {
             print("Enter health value (\\null for null value): ")
             var health = 0F
             do {
                 try {
-                    val str = readln()
+                    val str = sc.nextLine()
                     if (str == "\\null") {
                         return null
                     } else {
@@ -26,11 +35,16 @@ class HealthReader {
 
             return health
         }
-        fun update(element: SpaceMarine) {
+        /**
+         * Sets a new [SpaceMarine.health] for provided element
+         * @param element [SpaceMarine] object that is modified
+         * @param sc Is where a new line is gotten
+         */
+        fun update(element: SpaceMarine, sc:Scanner) {
             print("Enter new health value (press enter to save existing parameter, \\null for null value): ")
             var str: String?
             do {
-                str = readln()
+                str = sc.nextLine()
                 if (str.isNotEmpty()) {
                     if (str == "\\null") {
                         element.setHealth(null)

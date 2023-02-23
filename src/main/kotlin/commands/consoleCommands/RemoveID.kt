@@ -2,6 +2,7 @@ package commands.consoleCommands
 
 import exceptions.SpaceMarineNotFound
 import utils.CollectionManager
+import java.util.*
 
 /**
  * Command remove_by_id: Deletes the element with the provided id
@@ -15,7 +16,7 @@ class RemoveID (private val collection: CollectionManager) : Command() {
      * Deletes element with id equal to provided in argument
      * @param argument id of the element to delete
      */
-    override fun execute(argument:String) {
+    override fun execute(argument:String, sc: Scanner) {
         try {
             val id = argument.trim().toLong()
             if (collection.getByID(id) != null) {

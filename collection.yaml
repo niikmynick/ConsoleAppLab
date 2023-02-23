@@ -1,3 +1,17 @@
+id: 3723089662604037651
+name: "010"
+coordinates:
+  x: 0.0
+  y: 0
+creationDate: "2023-02-22"
+health: 1.0
+loyal: false
+category: "HELIX"
+meleeWeapon: "POWER_SWORD"
+chapter:
+  name: "asdfg"
+  marineCount: 0
+#ENDOFSPACEMARINE
 id: 3956583913119825962
 name: "1"
 coordinates:
@@ -39,6 +53,20 @@ meleeWeapon: "POWER_SWORD"
 chapter:
   name: "A"
   marineCount: 34
+#ENDOFSPACEMARINE
+id: 5870153455164935915
+name: "From file"
+coordinates:
+  x: 34.0
+  y: 43
+creationDate: "2023-02-22"
+health: 34.0
+loyal: false
+category: "INCEPTOR"
+meleeWeapon: "POWER_SWORD"
+chapter:
+  name: "File"
+  marineCount: 10
 #ENDOFSPACEMARINE
 id: 2471199127305930074
 name: "I"
@@ -95,4 +123,18 @@ meleeWeapon: "POWER_SWORD"
 chapter:
   name: "3"
   marineCount: 3
+#ENDOFSPACEMARINE
+id: 2891138628930063117
+name: "ff"
+coordinates:
+  x: 33.0
+  y: 22
+creationDate: "2023-02-22"
+health: null
+loyal: false
+category: "APOTHECARY"
+meleeWeapon: "LIGHTING_CLAW"
+chapter:
+  name: "1"
+  marineCount: 1
 #ENDOFSPACEMARINE

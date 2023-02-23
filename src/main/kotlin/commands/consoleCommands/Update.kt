@@ -1,6 +1,7 @@
 package commands.consoleCommands
 
 import utils.CollectionManager
+import java.util.*
 
 /**
  * Command update_id: Updates values of the element with the provided id
@@ -13,11 +14,12 @@ class Update (private val collection: CollectionManager) : Command() {
     /**
      * Calls [CollectionManager.update] with provided id equal to [argument]
      * @param argument id of the element to update
+     * @param sc Given to [CollectionManager.update]
      */
-    override fun execute(argument:String) {
+    override fun execute(argument:String, sc: Scanner) {
         try {
             val id = argument.trim().toLong()
-            collection.update(id)
+            collection.update(id, sc)
         } catch (e: Exception) {
             print("Invalid Long-type value of Id")
         }

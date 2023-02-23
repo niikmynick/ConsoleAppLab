@@ -2,14 +2,27 @@ package utils
 
 import commands.CommandInvoker
 import commands.consoleCommands.*
+import java.util.Scanner
 
+/**
+ * Class that handles commands and provides them all needed parameters
+ * @property properties Contains system properties
+ * @property commandInvoker See [CommandInvoker]
+ * @property fileManager Used for loading data to collection
+ * @property collection Current collection
+ * @property scanner Set to [System.in]
+ */
 class Console {
-    fun startInteractiveMode() {
-        val commandInvoker = CommandInvoker()
-        val fileManager = FileManager()
-        var command:String
-        val collection = CollectionManager()
+    private val properties = System.getProperties()
+    private val commandInvoker = CommandInvoker()
+    private val fileManager = FileManager(properties)
+    val collection = CollectionManager()
+    val scanner = Scanner(System.`in`)
 
+    /**
+     * Registers commands and waits for user prompt
+     */
+    fun startInteractiveMode() {
         commandInvoker.register("info", Info(collection))
         commandInvoker.register("show", Show(collection))
         commandInvoker.register("add", Add(collection))
@@ -30,10 +43,11 @@ class Console {
 
         fileManager.load(collection)
         println("Waiting for user prompt ...")
+        var command:String
         do {
             print("$ ")
             command = readln().trim().lowercase()
-            commandInvoker.executeCommand(command)
+            commandInvoker.executeCommand(command, scanner)
         } while (command != "exit")
     }
 }

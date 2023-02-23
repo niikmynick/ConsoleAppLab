@@ -2,6 +2,7 @@ package commands.consoleCommands
 
 import utils.CollectionManager
 import utils.Creator
+import java.util.Scanner
 
 
 /**
@@ -13,10 +14,11 @@ class Add (private val collection: CollectionManager) : Command() {
     override val info = "Adds a new element into the collection"
 
     /**
-     * todo
+     * Creates a Space Marine and adds it into the collection
+     * @param sc Is given to creator
      */
-    override fun execute(argument:String) {
-        val spaceMarine = Creator().createSpaceMarine()
+    override fun execute(argument:String, sc:Scanner) {
+        val spaceMarine = Creator().createSpaceMarine(sc)
         collection.add(spaceMarine)
         println("Space Marine ${spaceMarine.getName()} has been created and added to the collection")
     }

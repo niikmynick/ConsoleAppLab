@@ -6,8 +6,6 @@ import kotlinx.serialization.Serializable
 /**
  * Coordinates class used as property in [SpaceMarine]
  *
- * Is serializable
- *
  * @property x Cannot be null
  * @property y Cannot be null
  * @constructor Creates Coordinates with [x] and [y]

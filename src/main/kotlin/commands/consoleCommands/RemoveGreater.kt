@@ -1,6 +1,7 @@
 package commands.consoleCommands
 
 import utils.CollectionManager
+import java.util.*
 
 /**
  * Command remove_greater: Deletes from collection all elements greater than provided
@@ -12,9 +13,10 @@ class RemoveGreater (private val collection: CollectionManager) : Command() {
 
     /**
      * Removes all elements greater than element with id equal to [argument]
+     * Prints the amount of Space Marines deleted
      * @param argument id of element to compare
      */
-    override fun execute(argument:String) {
+    override fun execute(argument:String, sc: Scanner) {
         try {
             val id = argument.trim().toLong()
             if (collection.getByID(id) == null) println("No element with Id=$id was found")
