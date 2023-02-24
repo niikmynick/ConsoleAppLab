@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MainKtTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-02-24T15:10:22" hostname="MSI" time="0.121">
+<testsuite name="MainKtTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-02-24T15:14:37" hostname="MSI" time="0.127">
   <properties/>
-  <testcase name="testSum()" classname="MainKtTest" time="0.121"/>
+  <testcase name="testSum()" classname="MainKtTest" time="0.127"/>
   <system-out><![CDATA[Loaded 2 elements successfully
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>

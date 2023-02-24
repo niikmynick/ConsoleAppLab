@@ -27,7 +27,7 @@ class Help(private val list: Map<String, Command>) : Command() {
                 for (key in list.keys) {
                     output += "- ${key.uppercase()}\n"
                 }
-                output += "For information on a command, type HELP {command name}\n"
+                output += "For information on a command, type HELP {command name}"
             }
             else -> {
                 output += list[argument.lowercase()]?.getInfo().toString()

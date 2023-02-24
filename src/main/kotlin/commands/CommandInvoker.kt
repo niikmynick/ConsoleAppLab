@@ -37,18 +37,18 @@ class CommandInvoker {
         when (query.split(" ").size) {
             1 -> {
                 if (query in list) {
-                    print(list[query]?.execute("", sc))
+                    print("${list[query]?.execute("", sc)}\n")
                 } else
                     throw CommandNotFound("Command $query does not exist\n")
 
             }
             2 -> {
-                if (query in list) {
+                if (query.split(" ")[0] in list) {
                     val command = query.split(" ")[0]
                     val argument = query.split(" ")[1]
-                    print(list[command]?.execute(argument, sc))
+                    print("${list[command]?.execute(argument, sc)}\n")
                 } else
-                    throw CommandNotFound("Command ${query[0]} does not exist\n")
+                    throw CommandNotFound("Command ${query.split(" ")[0]} does not exist\n")
             }
             else -> println("Too much arguments. Try again: ")
         }
