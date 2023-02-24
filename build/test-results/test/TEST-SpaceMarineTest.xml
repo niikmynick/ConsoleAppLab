@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="SpaceMarineTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-02-24T19:16:08" hostname="MSI" time="0.046">
+  <properties/>
+  <testcase name="compareTo()" classname="SpaceMarineTest" time="0.035"/>
+  <testcase name="getDate()" classname="SpaceMarineTest" time="0.01"/>
+  <system-out><![CDATA[2023-02-24
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
