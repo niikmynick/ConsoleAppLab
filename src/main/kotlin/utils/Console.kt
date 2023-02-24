@@ -2,6 +2,7 @@ package utils
 
 import commands.CommandInvoker
 import commands.consoleCommands.*
+import java.io.File
 import java.util.Scanner
 
 /**
@@ -13,6 +14,16 @@ import java.util.Scanner
  * @property scanner Set to [System.in]
  */
 class Console {
+    companion object {
+        private var countOfInstances = 0
+    }
+
+    init {
+        countOfInstances++
+        File("collection$countOfInstances.yaml").createNewFile()
+        System.setProperty("COLLECTION_FILENAME","collection$countOfInstances.yaml")
+    }
+
     private val properties = System.getProperties()
     val commandInvoker = CommandInvoker()
     private val fileManager = FileManager(properties)

@@ -1,3 +1,4 @@
+clear
 add
 F
 34
@@ -38,10 +39,5 @@ inceptor
 power_sword
 File
 10
-show
-info
-save
 clear
-y
-show
 exit

@@ -1,28 +1,56 @@
-id: 4238139039642437786
-name: "Alex"
+id: 4394620254658841380
+name: "F"
 coordinates:
-  x: 33.0
-  y: 60
+  x: 34.0
+  y: 43
 creationDate: "2023-02-24"
-health: null
+health: 34.0
 loyal: false
 category: "INCEPTOR"
 meleeWeapon: "POWER_SWORD"
 chapter:
-  name: "Duo"
-  marinesCount: 1
+  name: "File"
+  marinesCount: 10
 #ENDOFSPACEMARINE
-id: 5287538626690041959
-name: "Nick"
+id: 7877359728853142935
+name: "ef"
 coordinates:
-  x: 66.0
-  y: 120
+  x: 34.0
+  y: 43
 creationDate: "2023-02-24"
-health: 67.0
-loyal: true
-category: "TACTICAL"
-meleeWeapon: "LIGHTING_CLAW"
+health: 34.0
+loyal: false
+category: "INCEPTOR"
+meleeWeapon: "POWER_SWORD"
 chapter:
-  name: "Solo"
-  marinesCount: 17
+  name: "File"
+  marinesCount: 10
+#ENDOFSPACEMARINE
+id: 598560945794139356
+name: "fewdcbuik"
+coordinates:
+  x: 34.0
+  y: 43
+creationDate: "2023-02-24"
+health: 34.0
+loyal: false
+category: "INCEPTOR"
+meleeWeapon: "POWER_SWORD"
+chapter:
+  name: "File"
+  marinesCount: 10
+#ENDOFSPACEMARINE
+id: 8860847645923364583
+name: "htrtnygnf"
+coordinates:
+  x: 34.0
+  y: 43
+creationDate: "2023-02-24"
+health: 34.0
+loyal: false
+category: "INCEPTOR"
+meleeWeapon: "POWER_SWORD"
+chapter:
+  name: "File"
+  marinesCount: 10
 #ENDOFSPACEMARINE
