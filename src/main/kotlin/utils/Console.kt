@@ -49,7 +49,12 @@ class Console {
         do {
             print("$ ")
             command = readln().trim().lowercase()
-            commandInvoker.executeCommand(command, scanner)
+            try {
+                commandInvoker.executeCommand(command, scanner)
+            } catch (e:Exception) {
+                println(e.message.toString())
+            }
+
         } while (command != "exit")
     }
 }

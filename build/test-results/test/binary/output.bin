@@ -1,18 +1,46 @@
  Loaded 2 elements successfully
- Loaded 2 elements successfully
- Loaded 2 elements successfully
-4nofile (The system cannot find the file specified)
-ºEnter name of the new Space Marine: Enter value of X: Enter value of Y: Enter health value (\null for null value): Enter loyalty [true / false]: Enter Astartes category from the list: 
-
+°Enter new name for Space Marine (press enter to save existing parameter): Enter value of X (press enter to save existing parameter): Enter value of Y (press enter to save existing parameter): Enter new health value (press enter to save existing parameter, \null for null value): Enter loyalty [true / false] (press enter to save existing parameter): Enter Astartes category from the list (press enter to save existing parameter): 
+
 INCEPTOR
-
+
 TACTICAL
-
+
 CHAPLAIN
-HELIX
-APOTHECARY
-'Enter Weapon category from the list: 
-POWER_SWORD
-LIGHTING_CLAW
-POWER_FIST
-:Enter name of the Chapter: Enter amount of Space Marines: 
+HELIX
+APOTHECARY
+PEnter Weapon category from the list (press enter to save existing parameter): 
+POWER_SWORD
+LIGHTING_CLAW
+POWER_FIST
+ŒEnter name of the Chapter (press enter to save existing parameter): Enter amount of Space Marines (press enter to save existing parameter):  Loaded 2 elements successfully
+°Enter new name for Space Marine (press enter to save existing parameter): Enter value of X (press enter to save existing parameter): Enter value of Y (press enter to save existing parameter): Enter new health value (press enter to save existing parameter, \null for null value): Enter loyalty [true / false] (press enter to save existing parameter): Enter Astartes category from the list (press enter to save existing parameter): 
+
+INCEPTOR
+
+TACTICAL
+
+CHAPLAIN
+HELIX
+APOTHECARY
+PEnter Weapon category from the list (press enter to save existing parameter): 
+POWER_SWORD
+LIGHTING_CLAW
+POWER_FIST
+ŒEnter name of the Chapter (press enter to save existing parameter): Enter amount of Space Marines (press enter to save existing parameter):  Loaded 2 elements successfully
+ Loaded 2 elements successfully
+ Loaded 2 elements successfully
+ Loaded 2 elements successfully
+ºEnter name of the new Space Marine: Enter value of X: Enter value of Y: Enter health value (\null for null value): Enter loyalty [true / false]: Enter Astartes category from the list: 
+
+INCEPTOR
+
+TACTICAL
+
+CHAPLAIN
+HELIX
+APOTHECARY
+'Enter Weapon category from the list: 
+POWER_SWORD
+LIGHTING_CLAW
+POWER_FIST
+:Enter name of the Chapter: Enter amount of Space Marines: 	 Loaded 2 elements successfully

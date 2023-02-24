@@ -30,7 +30,12 @@ class ScriptFromFile(private val commandInvoker: CommandInvoker): Command() {
             var count = 0
             while (scanner.hasNextLine()) {
                 val command: String = scanner.nextLine()
-                commandInvoker.executeCommand(command, scanner)
+                try {
+                    commandInvoker.executeCommand(command, scanner)
+                } catch (e:Exception){
+                    return e.message.toString()
+                }
+
                 count += 1
             }
             scanner.close()

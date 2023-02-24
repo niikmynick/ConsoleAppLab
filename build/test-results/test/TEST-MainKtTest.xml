@@ -1,14 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MainKtTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2023-02-24T16:47:48" hostname="LAPTOP-KHFL9B9N" time="0.116">
+<testsuite name="MainKtTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2023-02-24T18:07:53" hostname="LAPTOP-KHFL9B9N" time="0.122">
   <properties/>
-  <testcase name="help()" classname="MainKtTest" time="0.101"/>
-  <testcase name="show()" classname="MainKtTest" time="0.003"/>
-  <testcase name="clear()" classname="MainKtTest" time="0.002"/>
-  <testcase name="addElement()" classname="MainKtTest" time="0.009"/>
+  <testcase name="falseUpdate()" classname="MainKtTest" time="0.102"/>
+  <testcase name="trueUpdate()" classname="MainKtTest" time="0.003"/>
+  <testcase name="help()" classname="MainKtTest" time="0.003"/>
+  <testcase name="show()" classname="MainKtTest" time="0.002"/>
+  <testcase name="clear()" classname="MainKtTest" time="0.003"/>
+  <testcase name="addElement()" classname="MainKtTest" time="0.008"/>
   <system-out><![CDATA[Loaded 2 elements successfully
+Enter new name for Space Marine (press enter to save existing parameter): Enter value of X (press enter to save existing parameter): Enter value of Y (press enter to save existing parameter): Enter new health value (press enter to save existing parameter, \null for null value): Enter loyalty [true / false] (press enter to save existing parameter): Enter Astartes category from the list (press enter to save existing parameter): 
+INCEPTOR
+TACTICAL
+CHAPLAIN
+HELIX
+APOTHECARY
+Enter Weapon category from the list (press enter to save existing parameter): 
+POWER_SWORD
+LIGHTING_CLAW
+POWER_FIST
+Enter name of the Chapter (press enter to save existing parameter): Enter amount of Space Marines (press enter to save existing parameter): Loaded 2 elements successfully
+Enter new name for Space Marine (press enter to save existing parameter): Enter value of X (press enter to save existing parameter): Enter value of Y (press enter to save existing parameter): Enter new health value (press enter to save existing parameter, \null for null value): Enter loyalty [true / false] (press enter to save existing parameter): Enter Astartes category from the list (press enter to save existing parameter): 
+INCEPTOR
+TACTICAL
+CHAPLAIN
+HELIX
+APOTHECARY
+Enter Weapon category from the list (press enter to save existing parameter): 
+POWER_SWORD
+LIGHTING_CLAW
+POWER_FIST
+Enter name of the Chapter (press enter to save existing parameter): Enter amount of Space Marines (press enter to save existing parameter): Loaded 2 elements successfully
 Loaded 2 elements successfully
 Loaded 2 elements successfully
-nofile (The system cannot find the file specified)
+Loaded 2 elements successfully
 Enter name of the new Space Marine: Enter value of X: Enter value of Y: Enter health value (\null for null value): Enter loyalty [true / false]: Enter Astartes category from the list: 
 INCEPTOR
 TACTICAL
