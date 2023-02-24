@@ -30,7 +30,7 @@ class Help(private val list: Map<String, Command>) : Command() {
                 output += "For information on a command, type HELP {command name}\n"
             }
             else -> {
-                output += "${list[argument.lowercase()]?.getInfo().toString()}\n"
+                output += list[argument.lowercase()]?.getInfo().toString()
             }
         }
         return output
