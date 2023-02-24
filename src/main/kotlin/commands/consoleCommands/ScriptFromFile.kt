@@ -36,8 +36,8 @@ class ScriptFromFile(private val commandInvoker: CommandInvoker): Command() {
             scanner.close()
             return when (count) {
                 0 -> "The file does not contain commands\n"
-                1 -> "Has been executed $count command\n"
-                else -> "Has been executed $count commands\n"
+                1 -> "$count command has been executed\n"
+                else -> "$count commands have been executed\n"
             }
 
         } catch (e: Exception) {
