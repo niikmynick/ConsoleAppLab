@@ -1,8 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MainKtTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-02-24T15:14:37" hostname="MSI" time="0.127">
+<testsuite name="MainKtTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-02-24T18:34:32" hostname="MSI" time="0.071">
   <properties/>
-  <testcase name="testSum()" classname="MainKtTest" time="0.127"/>
-  <system-out><![CDATA[Loaded 2 elements successfully
+  <testcase name="infoWorkTest()" classname="MainKtTest" time="0.041"/>
+  <testcase name="scriptWorkTest()" classname="MainKtTest" time="0.027"/>
+  <testcase name="multiUserWorkTest()" classname="MainKtTest" time="0.001"/>
+  <system-out><![CDATA[collection1.yaml (Не удается найти указанный файл)
+collection2.yaml (Не удается найти указанный файл)
+The collection is already empty
+
+Enter name of the new Space Marine: Enter value of X: Enter value of Y: Enter health value (\null for null value): Enter loyalty [true / false]: Enter Astartes category from the list: 
+INCEPTOR
+TACTICAL
+CHAPLAIN
+HELIX
+APOTHECARY
+Enter Weapon category from the list: 
+POWER_SWORD
+LIGHTING_CLAW
+POWER_FIST
+Enter name of the Chapter: Enter amount of Space Marines: Space Marine F has been created and added to the list
+
+Enter name of the new Space Marine: Enter value of X: Enter value of Y: Enter health value (\null for null value): Enter loyalty [true / false]: Enter Astartes category from the list: 
+INCEPTOR
+TACTICAL
+CHAPLAIN
+HELIX
+APOTHECARY
+Enter Weapon category from the list: 
+POWER_SWORD
+LIGHTING_CLAW
+POWER_FIST
+Enter name of the Chapter: Enter amount of Space Marines: Space Marine ef has been created and added to the list
+
+Enter name of the new Space Marine: Enter value of X: Enter value of Y: Enter health value (\null for null value): Enter loyalty [true / false]: Enter Astartes category from the list: 
+INCEPTOR
+TACTICAL
+CHAPLAIN
+HELIX
+APOTHECARY
+Enter Weapon category from the list: 
+POWER_SWORD
+LIGHTING_CLAW
+POWER_FIST
+Enter name of the Chapter: Enter amount of Space Marines: Space Marine fewdcbuik has been created and added to the list
+
+Enter name of the new Space Marine: Enter value of X: Enter value of Y: Enter health value (\null for null value): Enter loyalty [true / false]: Enter Astartes category from the list: 
+INCEPTOR
+TACTICAL
+CHAPLAIN
+HELIX
+APOTHECARY
+Enter Weapon category from the list: 
+POWER_SWORD
+LIGHTING_CLAW
+POWER_FIST
+Enter name of the Chapter: Enter amount of Space Marines: Space Marine htrtnygnf has been created and added to the list
+
+Done. There is nothing in the collection now ...
+
+Finishing process ...
+
+collection3.yaml (Не удается найти указанный файл)
+collection4.yaml (Не удается найти указанный файл)
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
