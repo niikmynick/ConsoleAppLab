@@ -150,7 +150,6 @@ data class SpaceMarine (
     fun getChapter(): Chapter {
         return chapter
     }
-
     /**
      * Sets new name only if string is not empty
      */
@@ -211,6 +210,4 @@ data class SpaceMarine (
     fun setChapter(chapter: Chapter) {
         this.chapter = chapter
     }
-
-
 }
