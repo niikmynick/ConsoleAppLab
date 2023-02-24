@@ -1,16 +1,18 @@
  Loaded 2 elements successfully
-4nofile (The system cannot find the file specified)
-ºEnter name of the new Space Marine: Enter value of X: Enter value of Y: Enter health value (\null for null value): Enter loyalty [true / false]: Enter Astartes category from the list: 
-
+ Loaded 2 elements successfully
+ Loaded 2 elements successfully
+4nofile (The system cannot find the file specified)
+ºEnter name of the new Space Marine: Enter value of X: Enter value of Y: Enter health value (\null for null value): Enter loyalty [true / false]: Enter Astartes category from the list: 
+
 INCEPTOR
-
+
 TACTICAL
-
+
 CHAPLAIN
-HELIX
-APOTHECARY
-'Enter Weapon category from the list: 
-POWER_SWORD
-LIGHTING_CLAW
-POWER_FIST
-:Enter name of the Chapter: Enter amount of Space Marines: 
+HELIX
+APOTHECARY
+'Enter Weapon category from the list: 
+POWER_SWORD
+LIGHTING_CLAW
+POWER_FIST
+:Enter name of the Chapter: Enter amount of Space Marines: 

@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MainKtTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-02-24T15:44:03" hostname="LAPTOP-KHFL9B9N" time="0.139">
+<testsuite name="MainKtTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2023-02-24T16:47:48" hostname="LAPTOP-KHFL9B9N" time="0.116">
   <properties/>
-  <testcase name="testSum()" classname="MainKtTest" time="0.128"/>
-  <testcase name="addElement()" classname="MainKtTest" time="0.01"/>
+  <testcase name="help()" classname="MainKtTest" time="0.101"/>
+  <testcase name="show()" classname="MainKtTest" time="0.003"/>
+  <testcase name="clear()" classname="MainKtTest" time="0.002"/>
+  <testcase name="addElement()" classname="MainKtTest" time="0.009"/>
   <system-out><![CDATA[Loaded 2 elements successfully
+Loaded 2 elements successfully
+Loaded 2 elements successfully
 nofile (The system cannot find the file specified)
 Enter name of the new Space Marine: Enter value of X: Enter value of Y: Enter health value (\null for null value): Enter loyalty [true / false]: Enter Astartes category from the list: 
 INCEPTOR
