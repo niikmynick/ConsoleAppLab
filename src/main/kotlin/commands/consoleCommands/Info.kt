@@ -19,8 +19,8 @@ class Info (private val collection: CollectionManager) : Command() {
     /**
      * Calls and prints [CollectionManager.info]
      */
-    override fun execute(argument:String, sc: Scanner) {
-        println(collection.info())
+    override fun execute(argument:String, sc: Scanner): String {
+        return collection.info()
     }
 
 }

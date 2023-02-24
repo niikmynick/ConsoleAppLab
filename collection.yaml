@@ -1,0 +1,28 @@
+id: 4238139039642437786
+name: "Alex"
+coordinates:
+  x: 33.0
+  y: 60
+creationDate: "2023-02-24"
+health: null
+loyal: false
+category: "INCEPTOR"
+meleeWeapon: "POWER_SWORD"
+chapter:
+  name: "Duo"
+  marinesCount: 1
+#ENDOFSPACEMARINE
+id: 5287538626690041959
+name: "Nick"
+coordinates:
+  x: 66.0
+  y: 120
+creationDate: "2023-02-24"
+health: 67.0
+loyal: true
+category: "TACTICAL"
+meleeWeapon: "LIGHTING_CLAW"
+chapter:
+  name: "Solo"
+  marinesCount: 17
+#ENDOFSPACEMARINE

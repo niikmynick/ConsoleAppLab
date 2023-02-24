@@ -1,6 +1,7 @@
 package commands
 
 import commands.consoleCommands.Command
+import exceptions.CommandNotFound
 import java.util.Scanner
 
 /**
@@ -16,7 +17,7 @@ class CommandInvoker {
     /**
      * Register
      *
-     * Adds commands to [list]
+     * Add commands to [list]
      *
      * @param name Name of the command in its console representation
      * @param command A [Command] object
@@ -35,12 +36,19 @@ class CommandInvoker {
     fun executeCommand(query:String, sc:Scanner) {
         when (query.split(" ").size) {
             1 -> {
-                list[query]?.execute("", sc)
+                if (query in list) {
+                    print(list[query]?.execute("", sc))
+                } else
+                    throw CommandNotFound("Command $query does not exist\n")
+
             }
             2 -> {
-                val command = query.split(" ")[0]
-                val argument = query.split(" ")[1]
-                list[command]?.execute(argument, sc)
+                if (query in list) {
+                    val command = query.split(" ")[0]
+                    val argument = query.split(" ")[1]
+                    print(list[command]?.execute(argument, sc))
+                } else
+                    throw CommandNotFound("Command ${query[0]} does not exist\n")
             }
             else -> println("Too much arguments. Try again: ")
         }

@@ -20,12 +20,12 @@ class Save (private val collection: CollectionManager, private val filename: Str
     /**
      * Saves collection into file provided in [filename]
      */
-    override fun execute(argument:String, sc: Scanner) {
+    override fun execute(argument:String, sc: Scanner): String {
         val flag = collection.save(filename)
-        if (flag) {
-            println("Collection was saved successfully")
+        return if (flag) {
+            "Collection was saved successfully\n"
         } else {
-            println("Collection cannot be saved. An error occurred ...")
+            "Collection cannot be saved. An error occurred ...\n"
         }
     }
 }

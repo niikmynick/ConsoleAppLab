@@ -21,12 +21,12 @@ class Update (private val collection: CollectionManager) : Command() {
      * @param argument id of the element to update
      * @param sc Given to [CollectionManager.update]
      */
-    override fun execute(argument:String, sc: Scanner) {
-        try {
+    override fun execute(argument:String, sc: Scanner): String {
+        return try {
             val id = argument.trim().toLong()
             collection.update(id, sc)
         } catch (e: Exception) {
-            print("Invalid Long-type value of Id")
+            e.message.toString()
         }
     }
 }

@@ -1,5 +1,6 @@
 package commands.consoleCommands
 
+import exceptions.SpaceMarineNotFound
 import utils.CollectionManager
 import utils.Creator
 import java.util.Scanner
@@ -22,11 +23,14 @@ class RemoveAnyChapter(private val collection: CollectionManager) : Command() {
      * Prints whether a Space Marine was deleted or not
      * @param sc Is given to creator
      */
-    override fun execute(argument:String, sc: Scanner) {
+    override fun execute(argument:String, sc: Scanner): String {
         val chapter = Creator.createChapter(sc)
         val flag = collection.removeAnyElementWithChapter(chapter)
-        if (flag) println("A Space Marine with Chapter=$chapter has been removed")
-        else println("No Space Marine has been removed")
+
+        return if (flag)
+            "A Space Marine with Chapter == $chapter has been removed\n"
+        else
+            throw SpaceMarineNotFound("No element with chapter == $chapter was found\n")
     }
 
 }

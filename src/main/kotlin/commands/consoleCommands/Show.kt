@@ -19,8 +19,8 @@ class Show (private val collection: CollectionManager) : Command() {
     /**
      * Calls [CollectionManager.show]
      */
-    override fun execute(argument:String, sc: Scanner) {
-        collection.show()
+    override fun execute(argument:String, sc: Scanner): String {
+        return collection.show()
     }
 
 }

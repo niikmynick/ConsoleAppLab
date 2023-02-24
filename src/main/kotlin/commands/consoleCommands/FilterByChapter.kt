@@ -21,9 +21,10 @@ class FilterByChapter(private val collection: CollectionManager) : Command() {
      * Creates a [basicClasses.Chapter] and prints all elements with such Chapter
      * @param sc Is given to creator
      */
-    override fun execute(argument: String, sc: Scanner) {
+    override fun execute(argument: String, sc: Scanner): String {
         val chapter = Creator.createChapter(sc)
-        collection.printByChapter(chapter)
+
+        return collection.printByChapter(chapter)
     }
 
 }

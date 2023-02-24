@@ -24,5 +24,5 @@ abstract class Command {
      * @param argument
      * @param sc
      */
-    abstract fun execute(argument:String, sc:Scanner)
+    abstract fun execute(argument:String, sc:Scanner): String
 }

@@ -19,19 +19,20 @@ class Help(private val list: Map<String, Command>) : Command() {
      * Shows all commands when no argument was provided or shows info about provided command
      * @param argument Name of the command
      */
-    override fun execute(argument:String, sc: Scanner) {
+    override fun execute(argument:String, sc: Scanner): String {
+        var output = ""
         when (argument.length) {
             0 -> {
-                println("Help is available for the following commands:")
+                output += "Help is available for the following commands:\n"
                 for (key in list.keys) {
-                    println("- ${key.uppercase()}")
+                    output += "- ${key.uppercase()}\n"
                 }
-                println("For information on a command, type HELP {command name}")
-
+                output += "For information on a command, type HELP {command name}\n"
             }
             else -> {
-                println(list[argument.lowercase()]?.getInfo())
+                output += "${list[argument.lowercase()]?.getInfo().toString()}\n"
             }
         }
+        return output
     }
 }

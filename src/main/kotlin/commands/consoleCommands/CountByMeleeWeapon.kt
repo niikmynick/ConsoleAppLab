@@ -22,19 +22,21 @@ class CountByMeleeWeapon(private val collection: CollectionManager) : Command() 
      * Prints the amount of Space Marines with the provided weapon
      * @param argument Contains [MeleeWeapon] that should be searched in collection
      */
-    override fun execute(argument: String, sc: Scanner) {
+    override fun execute(argument: String, sc: Scanner): String {
         val weapon : MeleeWeapon
-        if (collection.isNotEmpty()) {
+        return if (collection.isNotEmpty()) {
+
             if (EnumReader.enumContains<MeleeWeapon>(argument.trim().uppercase())) {
                 weapon = MeleeWeapon.valueOf(argument.trim().uppercase())
                 val count = collection.countMeleeWeapons(weapon)
-                println("Elements with weapon $weapon found: $count")
+
+                "Elements with weapon $weapon found: $count\n"
+
             } else {
-                println("No MeleeWeapon named ${argument.trim()} was found")
+                "No MeleeWeapon named ${argument.trim()} was found\n"
             }
-        }
-        else {
-            println("The collection is empty")
+        } else {
+            "The collection is empty\n"
         }
     }
 

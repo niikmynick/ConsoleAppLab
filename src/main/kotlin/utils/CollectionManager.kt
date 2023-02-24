@@ -7,7 +7,9 @@ import utils.readers.*
 import java.io.FileOutputStream
 import java.io.OutputStreamWriter
 import com.charleskorn.kaml.Yaml
+import exceptions.SpaceMarineNotFound
 import java.util.*
+
 
 /**
  * A [TreeSet] collection of [SpaceMarine]
@@ -22,19 +24,22 @@ class CollectionManager : TreeSet<SpaceMarine>() {
      * @return Formatted string with [size] and [date] values
      */
     fun info() : String {
-        return "Tree Set of SpaceMarine: size=${this.size}, date=${this.date}"
+        return "Tree Set of SpaceMarine: size=${this.size}, date=${this.date}\n"
     }
 
     /**
      * Prints all elements of the collection
      */
-    fun show() {
+    fun show(): String {
+        var output = ""
         if (this.isEmpty()) {
-            println("Collection is empty")
+            output += "Collection is empty\n"
+        } else {
+            for (element in this) {
+                output += "$element\n"
+            }
         }
-        for (element in this) {
-            println(element)
-        }
+        return output
     }
 
     /**
@@ -42,9 +47,9 @@ class CollectionManager : TreeSet<SpaceMarine>() {
      * @param id id of the element to update
      * @param sc Given to updaters
      */
-    fun update(id : Long, sc: Scanner) {
+    fun update(id : Long, sc: Scanner): String {
         val element = this.getByID(id)
-        if (element != null) {
+        return if (element != null) {
             NameReader.update(element, sc)
             Updater.updateCoordinates(element, sc)
             HealthReader.update(element, sc)
@@ -52,7 +57,10 @@ class CollectionManager : TreeSet<SpaceMarine>() {
             CategoryReader.update(element, sc)
             WeaponReader.update(element, sc)
             Updater.updateChapter(element, sc)
-        } else println("No element with Id=$id was found")
+
+            "Element with id == $id has been updated\n"
+        } else
+            "No element with Id=$id was found\n"
 
     }
 
@@ -60,11 +68,14 @@ class CollectionManager : TreeSet<SpaceMarine>() {
      * Removes element with provided [id]
      * @param id id of the element to update
      */
-    fun removeID(id : Long) {
+    fun removeID(id : Long): String {
         val element = this.getByID(id)
         if (element != null) {
             this.remove(element)
-        } else println("No element with Id=$id was found")
+            return "Space Marine ${element.getName()} has been deleted\n"
+
+        } else
+            throw SpaceMarineNotFound("No element with id == $id was found\n")
     }
 
     /**
@@ -82,9 +93,11 @@ class CollectionManager : TreeSet<SpaceMarine>() {
                 output.write("\n#ENDOFSPACEMARINE\n")
             }
             output.close()
+
             true
         } catch (e: Exception) {
-            println(e.toString())
+            println(e.message.toString())
+
             false
         }
 
@@ -98,8 +111,10 @@ class CollectionManager : TreeSet<SpaceMarine>() {
     fun addMin(spaceMarine: SpaceMarine) : Boolean {
         return if (spaceMarine < this.first()) {
             this.add(spaceMarine)
+
             true
-        } else false
+        } else
+            false
     }
 
     /**
@@ -113,7 +128,8 @@ class CollectionManager : TreeSet<SpaceMarine>() {
             if (this.last() > spaceMarine) {
                 this.remove(this.last())
                 count++
-            } else return count
+            } else
+                return count
         }
         return count
     }
@@ -129,22 +145,11 @@ class CollectionManager : TreeSet<SpaceMarine>() {
             if (this.first() < spaceMarine) {
                 this.remove(this.first())
                 count++
-            } else return count
+            } else
+                return count
         }
         return count
 
-    }
-
-    /**
-     * Creates a list of unique [MeleeWeapon] found as values in elements of collection
-     * @return List of unique [MeleeWeapon]
-     */
-    fun uniqueWeapons() : Set<MeleeWeapon> {
-        val weapons : MutableSet<MeleeWeapon> = mutableSetOf()
-        for (element in this) {
-            if (element.getMeleeWeapon() !in weapons) weapons.add(element.getMeleeWeapon())
-        }
-        return weapons
     }
 
     /**
@@ -195,10 +200,12 @@ class CollectionManager : TreeSet<SpaceMarine>() {
      * Prints all elements with provided [Chapter]
      * @param chapter Chapter searched in elements of collection
      */
-    fun printByChapter(chapter: Chapter) {
+    fun printByChapter(chapter: Chapter): String {
+        var output = ""
         for (element in this) {
-            if (element.getChapter() == chapter) println(element)
+            if (element.getChapter() == chapter) output += "$element\n"
         }
+        return output
     }
 
 }

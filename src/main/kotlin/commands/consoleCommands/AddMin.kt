@@ -18,17 +18,18 @@ class AddMin (private val collection: CollectionManager) : Command() {
     }
 
     /**
-     * Creates a Space Marine and adds it into the collection if its lower than the lowest element in the collection
+     * Creates a Space Marine and add it into the collection if it lower than the lowest element in the collection
      * Prints whether the Space Marine was added or not
      * @param sc Is given to creator
      */
-    override fun execute(argument:String, sc: Scanner) {
+    override fun execute(argument:String, sc: Scanner): String {
         val spaceMarine = Creator.createSpaceMarine(sc)
         val flag:Boolean = collection.addMin(spaceMarine)
-        if (flag) {
-            println("Space Marine ${spaceMarine.getName()} has been added to the list")
+
+        return if (flag) {
+            "Space Marine ${spaceMarine.getName()} has been added to the list\n"
         } else {
-            println("Something went wrong ...\nSpace Marine ${spaceMarine.getName()} has not been added to the list")
+            ("Something went wrong ...\nSpace Marine ${spaceMarine.getName()} has not been added to the list\n")
         }
     }
 }

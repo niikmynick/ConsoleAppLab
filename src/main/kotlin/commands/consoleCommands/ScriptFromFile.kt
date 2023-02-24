@@ -20,21 +20,28 @@ class ScriptFromFile(private val commandInvoker: CommandInvoker): Command() {
     /**
      * Runs script and redirects contents in script to [commandInvoker]
      */
-    override fun execute(argument:String, sc: Scanner) {
+    override fun execute(argument:String, sc: Scanner): String {
         try {
             val file = FileReader(argument)
             val commandsList = file.readText()
             file.close()
 
             val scanner = Scanner(commandsList)
+            var count = 0
             while (scanner.hasNextLine()) {
                 val command: String = scanner.nextLine()
                 commandInvoker.executeCommand(command, scanner)
+                count += 1
             }
             scanner.close()
-        } catch (e: Exception) {
-            println(e.message)
-        }
+            return when (count) {
+                0 -> "The file does not contain commands\n"
+                1 -> "Has been executed $count command\n"
+                else -> "Has been executed $count commands\n"
+            }
 
+        } catch (e: Exception) {
+            return e.message.toString()
+        }
     }
 }

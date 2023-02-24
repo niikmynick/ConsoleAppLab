@@ -1,5 +1,6 @@
 package commands.consoleCommands
 
+import exceptions.SpaceMarineNotFound
 import utils.CollectionManager
 import java.util.Scanner
 
@@ -21,16 +22,20 @@ class RemoveLower (private val collection: CollectionManager) : Command() {
      * Prints the amount of Space Marines deleted
      * @param argument id of element to compare
      */
-    override fun execute(argument:String, sc: Scanner) {
-        try {
+    override fun execute(argument:String, sc: Scanner): String {
+        return try {
             val id = sc.nextLine().trim().toLong()
-            if (collection.getByID(id) == null) println("No element with Id=$id was found")
+
+            if (collection.getByID(id) == null)
+                throw SpaceMarineNotFound("No element with id == $id was found\n")
+
             else {
                 val amount : Int = collection.removeLower(collection.getByID(id)!!)
-                println("$amount Space Marines have been deleted")
+
+                "$amount Space Marines have been deleted\n"
             }
         } catch (e: Exception) {
-            print("Invalid Long-type value of Id")
+            e.message.toString()
         }
 
     }

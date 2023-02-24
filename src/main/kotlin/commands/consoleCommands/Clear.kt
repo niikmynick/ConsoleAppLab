@@ -20,21 +20,27 @@ class Clear (private val collection: CollectionManager) : Command() {
      * Clears all elements in the collection
      * @param sc Is where a new line is gotten
      */
-    override fun execute(argument:String, sc: Scanner) {
-        if (collection.size > 0) {
-            print("Are you sure? This operation will delete all elements [Y / N] ")
-            var answer = sc.nextLine().trim().lowercase()
-            while ((answer != "y") and (answer != "n")) {
-                print("Please, enter your answer in a correct form (Y - yes, N - no)")
-                answer = sc.nextLine().trim().lowercase()
-            }
-            if (answer == "y") {
-                collection.clear()
-                println("Done. There is nothing in the list now ... ")
-            }
+    override fun execute(argument:String, sc: Scanner): String  {
+        return if (collection.size > 0) {
+            collection.clear()
+            "Done. There is nothing in the collection now ...\n"
         } else {
-            println("The collection is already empty ")
+            "The collection is already empty\n"
         }
 
+//        if (collection.size > 0) {
+//            print("Are you sure? This operation will delete all elements [Y / N] ")
+//            var answer = sc.nextLine().trim().lowercase()
+//            while ((answer != "y") and (answer != "n")) {
+//                print("Please, enter your answer in a correct form (Y - yes, N - no)")
+//                answer = sc.nextLine().trim().lowercase()
+//            }
+//            if (answer == "y") {
+//                collection.clear()
+//                println("Done. There is nothing in the list now ... ")
+//            }
+//        } else {
+//            println("The collection is already empty ")
+//        }
     }
 }

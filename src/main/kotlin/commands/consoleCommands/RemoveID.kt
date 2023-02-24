@@ -1,6 +1,5 @@
 package commands.consoleCommands
 
-import exceptions.SpaceMarineNotFound
 import utils.CollectionManager
 import java.util.Scanner
 
@@ -21,16 +20,12 @@ class RemoveID (private val collection: CollectionManager) : Command() {
      * Deletes element with id equal to provided in argument
      * @param argument id of the element to delete
      */
-    override fun execute(argument:String, sc: Scanner) {
-        try {
+    override fun execute(argument:String, sc: Scanner): String {
+        return try {
             val id = argument.trim().toLong()
-            if (collection.getByID(id) != null) {
-                val name = collection.getByID(id)!!.getName()
-                collection.removeID(id)
-                println("Space Marine $name has been deleted")
-            } else throw SpaceMarineNotFound("No element with Id=$id was found")
+            collection.removeID(id)
         } catch (e: Exception) {
-            println("No element with Id=${argument.trim()} was found")
+            e.message.toString()
         }
     }
 }
