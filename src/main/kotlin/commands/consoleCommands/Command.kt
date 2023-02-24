@@ -2,21 +2,27 @@ package commands.consoleCommands
 
 import kotlinx.serialization.Serializable
 import java.util.Scanner
+
 /**
- * Abstract command description
+ * Command
+ *
+ * @constructor Create empty Command
  */
 @Serializable
 abstract class Command {
+
     /**
-     * Write info
+     * Get info
      *
+     * @return
      */
-    abstract fun writeInfo()
+    abstract fun getInfo(): String
 
     /**
      * Execute
      *
      * @param argument
+     * @param sc
      */
     abstract fun execute(argument:String, sc:Scanner)
 }

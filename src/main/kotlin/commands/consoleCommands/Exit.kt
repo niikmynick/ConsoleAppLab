@@ -9,8 +9,8 @@ import kotlin.system.exitProcess
  * @constructor Create command Exit
  */
 class Exit : Command() {
-    override fun writeInfo() {
-        println("Exits the app (without saving data)")
+    override fun getInfo(): String {
+        return "Exits the app (without saving data)"
     }
     /**
      * Closes program using [exitProcess] with status 0

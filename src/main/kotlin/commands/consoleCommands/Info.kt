@@ -12,8 +12,8 @@ import java.util.Scanner
  * @constructor Create command Info
  */
 class Info (private val collection: CollectionManager) : Command() {
-    override fun writeInfo() {
-        println("Prints info about the collection (type, creation date, amount of elements)")
+    override fun getInfo(): String {
+        return "Prints info about the collection (type, creation date, amount of elements)"
     }
 
     /**

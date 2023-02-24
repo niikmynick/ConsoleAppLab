@@ -14,8 +14,8 @@ import java.util.*
  * @constructor Create command count_by_melee_weapon
  */
 class CountByMeleeWeapon(private val collection: CollectionManager) : Command() {
-    override fun writeInfo() {
-        println("Prints the amount of elements with the provided weapon")
+    override fun getInfo(): String {
+        return "Prints the amount of elements with the provided weapon"
     }
 
     /**

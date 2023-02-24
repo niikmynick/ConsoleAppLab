@@ -1,46 +1,51 @@
-package utils.readers
+package utils
 
+import basicClasses.Chapter
 import basicClasses.Coordinates
 import basicClasses.SpaceMarine
-import java.util.Scanner
+import exceptions.MarinesCountValueError
+import java.util.*
 
 /**
- * Coordinates creator
+ * Updater
  *
- * Class containing readers for [Coordinates]
- *
- * @constructor Create Coordinates creator
+ * @constructor Create Updater
  */
-class CoordinatesCreator {
+class Updater {
     companion object {
         /**
-         * Creates and returns a new [Coordinates] object
+         * Sets a new [Chapter] for provided element
+         * @param element [SpaceMarine] object that is modified
          * @param sc Is where a new line is gotten
-         * @return [Coordinates] from entered values
          */
-        fun create(sc:Scanner) : Coordinates {
-            print("Enter value of X: ")
-            var x : Double? = null
+        fun updateChapter(element : SpaceMarine, sc: Scanner) {
+            print("Enter name of the Chapter (press enter to save existing parameter): ")
+            val name:String = sc.nextLine()
+            if (name.isNotEmpty()) {
+                element.getChapter().setName(name.trim())
+            }
+
+            print("Enter amount of Space Marines (press enter to save existing parameter): ")
+
+
+            var marinecount : String?
             do {
-                try {
-                    x = sc.nextLine().trim().toDouble()
-                } catch (e: Exception) {
-                    print("You need to enter Double-type value of X .. ")
+                marinecount = sc.nextLine()
+                if (marinecount.isNotEmpty()) {
+                    try {
+                        marinecount.trim().toLong()
+                        if (marinecount.trim().toLong() !in 0..1000) throw MarinesCountValueError("Marine Count value is not within 0 and 1000")
+                    } catch (e: Exception) {
+                        print("You need to enter a Long-type value between 0 and 1000: ")
+                        marinecount = null
+                    }
                 }
-            } while (x == null)
+            } while (marinecount == null)
 
+            if (marinecount.isNotEmpty()) {
+                element.getChapter().setMarinesCount(marinecount.trim().toLong())
+            }
 
-            print("Enter value of Y: ")
-            var y : Int? = null
-            do {
-                try {
-                    y = sc.nextLine().trim().toInt()
-                } catch (e: Exception) {
-                    print("You need to enter Int-type value of Y: ")
-                }
-            } while (y == null)
-
-            return Coordinates(x, y)
         }
 
         /**
@@ -48,7 +53,7 @@ class CoordinatesCreator {
          * @param element [SpaceMarine] object that is modified
          * @param sc Is where a new line is gotten
          */
-        fun update(element: SpaceMarine, sc:Scanner) {
+        fun updateCoordinates(element: SpaceMarine, sc:Scanner) {
             print("Enter value of X (press enter to save existing parameter): ")
             var x: String?
             do {

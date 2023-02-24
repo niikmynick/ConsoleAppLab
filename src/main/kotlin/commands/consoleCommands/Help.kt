@@ -11,8 +11,8 @@ import java.util.Scanner
  * @constructor Create command Help
  */
 class Help(private val list: Map<String, Command>) : Command() {
-    override fun writeInfo() {
-        println("Prints info about all commands or a provided command")
+    override fun getInfo(): String {
+        return "Prints info about all commands or a provided command"
     }
 
     /**
@@ -30,7 +30,7 @@ class Help(private val list: Map<String, Command>) : Command() {
 
             }
             else -> {
-                list[argument.lowercase()]?.writeInfo()
+                println(list[argument.lowercase()]?.getInfo())
             }
         }
     }

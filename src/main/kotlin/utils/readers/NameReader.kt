@@ -36,7 +36,7 @@ class NameReader {
          */
         fun update(element: SpaceMarine, sc:Scanner) {
             print("Enter new name for Space Marine (press enter to save existing parameter): ")
-            val string: String = readln()
+            val string: String = sc.nextLine().trim()
             if (string.isNotEmpty()) {
                 element.setName(string.trim())
             }

@@ -12,8 +12,8 @@ import java.util.Scanner
  * @constructor Create command Update
  */
 class Update (private val collection: CollectionManager) : Command() {
-    override fun writeInfo() {
-        println("Updates values of the element with the provided id")
+    override fun getInfo(): String {
+        return "Updates values of the element with the provided id"
     }
 
     /**

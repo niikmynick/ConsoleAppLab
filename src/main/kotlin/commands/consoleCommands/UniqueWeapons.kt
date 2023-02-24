@@ -12,8 +12,8 @@ import java.util.Scanner
  * @constructor Create command Unique weapons
  */
 class UniqueWeapons (private val collection: CollectionManager) : Command(){
-    override fun writeInfo() {
-        println("Prints unique values of meleeWeapon from elements in the collection")
+    override fun getInfo(): String {
+        return "Prints unique values of meleeWeapon from elements in the collection"
     }
 
     /**

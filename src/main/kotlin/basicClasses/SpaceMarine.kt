@@ -52,7 +52,7 @@ data class SpaceMarine (
     /**
      * @constructor Creates SpaceMarine with default parameters
      */
-    constructor() : this("Juan", Coordinates(0.0, 0), 1F, false, AstartesCategory.HELIX, MeleeWeapon.POWER_FIST, Chapter("a",1))
+    constructor() : this("Noname", Coordinates(0.0, 0), 1F, false, AstartesCategory.HELIX, MeleeWeapon.POWER_FIST, Chapter("a",1))
 
     init {
         if (name.isBlank()) throw SpaceMarineNameIsNullOrBlank("Name cannot be null, blank or empty")

@@ -12,8 +12,8 @@ import java.util.Scanner
  * @constructor Create command Remove lower
  */
 class RemoveLower (private val collection: CollectionManager) : Command() {
-    override fun writeInfo() {
-        println("Deletes from collection all elements lower than provided")
+    override fun getInfo(): String {
+        return "Deletes from collection all elements lower than provided"
     }
 
     /**

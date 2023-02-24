@@ -23,17 +23,17 @@ class FileManager(p:Properties) {
     fun load(collection: CollectionManager) {
 
         try {
-            val filereader = FileReader(collectionFileName)
-            val datalist = filereader.readText().split("#ENDOFSPACEMARINE")
+            val file = FileReader(collectionFileName)
+            val datalist = file.readText().split("#ENDOFSPACEMARINE")
             for (data in datalist) {
                 data.trim()
                 if (data.isNotBlank()) {
-                    val spacemarine = Yaml.default.decodeFromString(SpaceMarine.serializer(), data)
-                    collection.add(spacemarine)
+                    val spaceMarine = Yaml.default.decodeFromString(SpaceMarine.serializer(), data)
+                    collection.add(spaceMarine)
                 }
             }
 
-            filereader.close()
+            file.close()
             println("Loaded ${collection.size} elements successfully")
         } catch (e: Exception) {
             println(e.message)

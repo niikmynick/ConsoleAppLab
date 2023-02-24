@@ -2,7 +2,7 @@ package commands.consoleCommands
 
 import java.util.Scanner
 import utils.CollectionManager
-import utils.readers.ChapterCreator
+import utils.Creator
 
 /**
  * Filter by chapter
@@ -13,8 +13,8 @@ import utils.readers.ChapterCreator
  * @constructor Create command Filter by chapter
  */
 class FilterByChapter(private val collection: CollectionManager) : Command() {
-    override fun writeInfo() {
-        println("Prints elements with the provided chapter")
+    override fun getInfo(): String {
+        return "Prints elements with the provided chapter"
     }
 
     /**
@@ -22,7 +22,7 @@ class FilterByChapter(private val collection: CollectionManager) : Command() {
      * @param sc Is given to creator
      */
     override fun execute(argument: String, sc: Scanner) {
-        val chapter = ChapterCreator.create(sc)
+        val chapter = Creator.createChapter(sc)
         collection.printByChapter(chapter)
     }
 

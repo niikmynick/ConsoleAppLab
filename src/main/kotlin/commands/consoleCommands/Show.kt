@@ -12,8 +12,8 @@ import java.util.Scanner
  * @constructor Create command Show
  */
 class Show (private val collection: CollectionManager) : Command() {
-    override fun writeInfo() {
-        println("Prints all elements of the collection")
+    override fun getInfo(): String {
+        return "Prints all elements of the collection"
     }
 
     /**

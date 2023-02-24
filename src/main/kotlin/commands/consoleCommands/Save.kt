@@ -13,8 +13,8 @@ import java.util.Scanner
  * @constructor Create command Save
  */
 class Save (private val collection: CollectionManager, private val filename: String) : Command() {
-    override fun writeInfo() {
-        println("Сохраняет коллекцию в файл")
+    override fun getInfo(): String {
+        return "Сохраняет коллекцию в файл"
     }
 
     /**

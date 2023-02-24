@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
  *
  * @property name Cannot be empty or null
  * @property marinesCount Has to be between 0 and 1000
- * @constructor Creates Chapter with [name] and [marineCount]
+ * @constructor Creates Chapter with [name] and [marinesCount]
  */
 @Serializable
 data class Chapter(

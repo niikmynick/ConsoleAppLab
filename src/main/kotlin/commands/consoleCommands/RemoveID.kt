@@ -13,8 +13,8 @@ import java.util.Scanner
  * @constructor Create command remove_id
  */
 class RemoveID (private val collection: CollectionManager) : Command() {
-    override fun writeInfo() {
-        println("Deletes the element with the provided id")
+    override fun getInfo(): String {
+        return "Deletes the element with the provided id"
     }
 
     /**

@@ -14,7 +14,7 @@ import java.util.Scanner
  */
 class Console {
     private val properties = System.getProperties()
-    private val commandInvoker = CommandInvoker()
+    val commandInvoker = CommandInvoker()
     private val fileManager = FileManager(properties)
     val collection = CollectionManager()
     val scanner = Scanner(System.`in`)
@@ -22,7 +22,7 @@ class Console {
     /**
      * Registers commands and waits for user prompt
      */
-    fun startInteractiveMode() {
+    fun initialize() {
         commandInvoker.register("info", Info(collection))
         commandInvoker.register("show", Show(collection))
         commandInvoker.register("add", Add(collection))
@@ -42,6 +42,8 @@ class Console {
         commandInvoker.register("help", Help(commandInvoker.getCommandsList()))
 
         fileManager.load(collection)
+    }
+    fun startInteractiveMode() {
         println("Waiting for user prompt ...")
         var command:String
         do {

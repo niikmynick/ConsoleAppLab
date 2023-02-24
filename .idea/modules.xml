@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ConsoleAppLab.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ConsoleAppLab.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ConsoleAppLab.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ConsoleAppLab.test.iml" />
     </modules>
   </component>
 </project>

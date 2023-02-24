@@ -13,8 +13,8 @@ import java.util.*
  * @constructor Create command Script from file
  */
 class ScriptFromFile(private val commandInvoker: CommandInvoker): Command() {
-    override fun writeInfo() {
-        println("Reads and executes script from provided file (The script should have the same commands used in the interactive mode)")
+    override fun getInfo(): String {
+        return "Reads and executes script from provided file (The script should have the same commands used in the interactive mode)"
     }
 
     /**
@@ -22,11 +22,11 @@ class ScriptFromFile(private val commandInvoker: CommandInvoker): Command() {
      */
     override fun execute(argument:String, sc: Scanner) {
         try {
-            val filereader = FileReader(argument)
-            val commandlist = filereader.readText()
-            filereader.close()
+            val file = FileReader(argument)
+            val commandsList = file.readText()
+            file.close()
 
-            val scanner = Scanner(commandlist)
+            val scanner = Scanner(commandsList)
             while (scanner.hasNextLine()) {
                 val command: String = scanner.nextLine()
                 commandInvoker.executeCommand(command, scanner)

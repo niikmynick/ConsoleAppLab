@@ -46,12 +46,12 @@ class CollectionManager : TreeSet<SpaceMarine>() {
         val element = this.getByID(id)
         if (element != null) {
             NameReader.update(element, sc)
-            CoordinatesCreator.update(element, sc)
+            Updater.updateCoordinates(element, sc)
             HealthReader.update(element, sc)
             LoyaltyReader.update(element, sc)
             CategoryReader.update(element, sc)
             WeaponReader.update(element, sc)
-            ChapterCreator.update(element, sc)
+            Updater.updateChapter(element, sc)
         } else println("No element with Id=$id was found")
 
     }
