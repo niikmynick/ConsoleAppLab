@@ -2,9 +2,12 @@ package commands.consoleCommands
 
 import commands.CommandInvoker
 import java.io.FileReader
+import java.util.*
 
 /**
  * Script from file
+ *
+ * Reads and executes script from provided file (The script should have the same commands used in the interactive mode
  *
  * @property commandInvoker
  * @constructor Create command Script from file
@@ -14,21 +17,24 @@ class ScriptFromFile(private val commandInvoker: CommandInvoker): Command() {
         println("Reads and executes script from provided file (The script should have the same commands used in the interactive mode)")
     }
 
-    override fun execute(argument:String) {
-
+    /**
+     * Runs script and redirects contents in script to [commandInvoker]
+     */
+    override fun execute(argument:String, sc: Scanner) {
         try {
-            val file = FileReader(argument)
-            for (command in file.readLines()) {
-                if (command.isNotEmpty()) {
-                    val query = command.split(" ")
-                    commandInvoker.executeCommand(query[0])
-                }
-            }
-            file.close()
+            val filereader = FileReader(argument)
+            val commandlist = filereader.readText()
+            filereader.close()
 
-            println("Script executed successfully")
+            val scanner = Scanner(commandlist)
+            while (scanner.hasNextLine()) {
+                val command: String = scanner.nextLine()
+                commandInvoker.executeCommand(command, scanner)
+            }
+            scanner.close()
         } catch (e: Exception) {
             println(e.message)
         }
+
     }
 }

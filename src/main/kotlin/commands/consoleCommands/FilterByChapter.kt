@@ -1,10 +1,13 @@
 package commands.consoleCommands
 
+import java.util.Scanner
 import utils.CollectionManager
 import utils.readers.ChapterCreator
 
 /**
  * Filter by chapter
+ *
+ * Prints elements with the provided chapter
  *
  * @property collection
  * @constructor Create command Filter by chapter
@@ -14,8 +17,12 @@ class FilterByChapter(private val collection: CollectionManager) : Command() {
         println("Prints elements with the provided chapter")
     }
 
-    override fun execute(argument: String) {
-        val chapter = ChapterCreator.create()
+    /**
+     * Creates a [basicClasses.Chapter] and prints all elements with such Chapter
+     * @param sc Is given to creator
+     */
+    override fun execute(argument: String, sc: Scanner) {
+        val chapter = ChapterCreator.create(sc)
         collection.printByChapter(chapter)
     }
 

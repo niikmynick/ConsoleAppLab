@@ -2,10 +2,9 @@ import utils.Console
 
 /**
  * Main
- *
- * @param args
  */
-fun main(args: Array<String>) {
+fun main() {
+    System.setProperty("COLLECTION_FILENAME","collection.yaml")
     val console = Console()
     console.startInteractiveMode()
 }

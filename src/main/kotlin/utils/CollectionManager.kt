@@ -6,30 +6,27 @@ import basicClasses.SpaceMarine
 import utils.readers.*
 import java.io.FileOutputStream
 import java.io.OutputStreamWriter
-import java.util.Date
-import java.util.TreeSet
 import com.charleskorn.kaml.Yaml
+import java.util.*
 
 /**
- * Collection manager
- *
- * @constructor Create Collection manager
+ * A [TreeSet] collection of [SpaceMarine]
+ * Implements methods used in commands
+ * @property date Saves creation date
  */
 class CollectionManager : TreeSet<SpaceMarine>() {
     private val date: Date = Date()
 
     /**
-     * Info
-     *
-     * @return
+     * Creates a formatted string with info about collection
+     * @return Formatted string with [size] and [date] values
      */
     fun info() : String {
         return "Tree Set of SpaceMarine: size=${this.size}, date=${this.date}"
     }
 
     /**
-     * Show collection
-     *
+     * Prints all elements of the collection
      */
     fun show() {
         if (this.isEmpty()) {
@@ -41,28 +38,27 @@ class CollectionManager : TreeSet<SpaceMarine>() {
     }
 
     /**
-     * Update element
-     *
-     * @param id
+     * Updates values of an element equal to provided [id]
+     * @param id id of the element to update
+     * @param sc Given to updaters
      */
-    fun update(id : Long) {
+    fun update(id : Long, sc: Scanner) {
         val element = this.getByID(id)
         if (element != null) {
-            NameReader.update(element)
-            CoordinatesCreator.update(element)
-            HealthReader.update(element)
-            LoyaltyReader.update(element)
-            CategoryReader.update(element)
-            WeaponReader.update(element)
-            ChapterCreator.update(element)
+            NameReader.update(element, sc)
+            CoordinatesCreator.update(element, sc)
+            HealthReader.update(element, sc)
+            LoyaltyReader.update(element, sc)
+            CategoryReader.update(element, sc)
+            WeaponReader.update(element, sc)
+            ChapterCreator.update(element, sc)
         } else println("No element with Id=$id was found")
 
     }
 
     /**
-     * Remove id
-     *
-     * @param id
+     * Removes element with provided [id]
+     * @param id id of the element to update
      */
     fun removeID(id : Long) {
         val element = this.getByID(id)
@@ -72,12 +68,11 @@ class CollectionManager : TreeSet<SpaceMarine>() {
     }
 
     /**
-     * Save collection to file
-     *
-     * @param filename
-     * @return
+     * Saves elements of collection into file with provided [filename]
+     * @param filename Name of the file
+     * @return true if elements were saved, false an exception occurred
      */
-    fun save(filename:String) : Boolean {
+    fun save(filename: String) : Boolean {
         return try {
             val file = FileOutputStream(filename)
 
@@ -92,13 +87,13 @@ class CollectionManager : TreeSet<SpaceMarine>() {
             println(e.toString())
             false
         }
+
     }
 
     /**
-     * Add min
-     *
-     * @param spaceMarine
-     * @return
+     * Compares provided [spaceMarine] with the lowest element of the collection and adds it if provided is lower
+     * @param spaceMarine Object to compare
+     * @return true if [spaceMarine] was added, false if not
      */
     fun addMin(spaceMarine: SpaceMarine) : Boolean {
         return if (spaceMarine < this.first()) {
@@ -108,10 +103,9 @@ class CollectionManager : TreeSet<SpaceMarine>() {
     }
 
     /**
-     * Remove greater
-     *
-     * @param spaceMarine
-     * @return
+     * Removes all elements greater than provided [spaceMarine]
+     * @param spaceMarine Object to compare
+     * @return amount of elements removed
      */
     fun removeGreater(spaceMarine: SpaceMarine) : Int {
         var count = 0
@@ -125,10 +119,9 @@ class CollectionManager : TreeSet<SpaceMarine>() {
     }
 
     /**
-     * Remove lower
-     *
-     * @param spaceMarine
-     * @return
+     * Removes all elements lower than provided [spaceMarine]
+     * @param spaceMarine Object to compare
+     * @return amount of elements removed
      */
     fun removeLower(spaceMarine: SpaceMarine) : Int {
         var count = 0
@@ -143,9 +136,8 @@ class CollectionManager : TreeSet<SpaceMarine>() {
     }
 
     /**
-     * Unique weapons
-     *
-     * @return
+     * Creates a list of unique [MeleeWeapon] found as values in elements of collection
+     * @return List of unique [MeleeWeapon]
      */
     fun uniqueWeapons() : Set<MeleeWeapon> {
         val weapons : MutableSet<MeleeWeapon> = mutableSetOf()
@@ -156,10 +148,9 @@ class CollectionManager : TreeSet<SpaceMarine>() {
     }
 
     /**
-     * Get by i d
-     *
-     * @param id
-     * @return
+     * Searches for element with provided [id]
+     * @param id id of the element to search
+     * @return Found element or null
      */
     fun getByID(id: Long) : SpaceMarine? {
         for (element in this) {
@@ -171,10 +162,9 @@ class CollectionManager : TreeSet<SpaceMarine>() {
     }
 
     /**
-     * Remove any element with chapter
-     *
-     * @param chapter
-     * @return
+     * Removes first found element with [Chapter] equal to provided
+     * @param chapter Chapter searched in elements of collection
+     * @return true if an element was removed, false if not
      */
     fun removeAnyElementWithChapter(chapter: Chapter) : Boolean {
         for (element in this) {
@@ -187,10 +177,9 @@ class CollectionManager : TreeSet<SpaceMarine>() {
     }
 
     /**
-     * Count melee weapons
-     *
-     * @param weapon
-     * @return
+     * Counts the amount of elements with provided [MeleeWeapon]
+     * @param weapon MeleeWeapon searched in elements of collection
+     * @return The amount of elements with provided weapon
      */
     fun countMeleeWeapons(weapon: MeleeWeapon) : Int {
         var count = 0
@@ -203,9 +192,8 @@ class CollectionManager : TreeSet<SpaceMarine>() {
     }
 
     /**
-     * Print by chapter
-     *
-     * @param chapter
+     * Prints all elements with provided [Chapter]
+     * @param chapter Chapter searched in elements of collection
      */
     fun printByChapter(chapter: Chapter) {
         for (element in this) {

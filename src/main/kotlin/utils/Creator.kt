@@ -2,27 +2,30 @@ package utils
 
 import basicClasses.SpaceMarine
 import utils.readers.*
+import java.util.Scanner
 
 /**
  * Creator
+ *
+ * Creator of Space Marines
  *
  * @constructor Create Creator
  */
 class Creator {
     /**
-     * Create space marine
+     * Gets [sc] and provides to readers/creators. Then creates a Space Marine with user prompt
      *
-     * @param collection
-     * @return
+     * @param sc Given to readers/creators
+     * @return [SpaceMarine] object
      */
-    fun createSpaceMarine(collection: CollectionManager): SpaceMarine {
-        val name = NameReader.read()
-        val coordinates = CoordinatesCreator.create()
-        val health = HealthReader.read()
-        val loyal = LoyaltyReader.read()
-        val category = CategoryReader.read()
-        val weapon = WeaponReader.read()
-        val chapter = ChapterCreator.create()
+    fun createSpaceMarine(sc:Scanner): SpaceMarine {
+        val name = NameReader.read(sc)
+        val coordinates = CoordinatesCreator.create(sc)
+        val health = HealthReader.read(sc)
+        val loyal = LoyaltyReader.read(sc)
+        val category = CategoryReader.read(sc)
+        val weapon = WeaponReader.read(sc)
+        val chapter = ChapterCreator.create(sc)
 
         return SpaceMarine(name, coordinates, health, loyal, category, weapon, chapter)
     }

@@ -7,11 +7,12 @@ import kotlinx.serialization.Serializable
 /**
  * Chapter
  *
- * @property name
- * @property marinesCount
- * @constructor Create Chapter
+ * Data class used as property in [SpaceMarine]
+ *
+ * @property name Cannot be empty or null
+ * @property marinesCount Has to be between 0 and 1000
+ * @constructor Creates Chapter with [name] and [marineCount]
  */
-
 @Serializable
 data class Chapter(
 

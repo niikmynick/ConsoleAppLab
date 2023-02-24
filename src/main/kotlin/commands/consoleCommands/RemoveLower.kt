@@ -1,10 +1,12 @@
 package commands.consoleCommands
 
 import utils.CollectionManager
-import utils.Creator
+import java.util.Scanner
 
 /**
  * Remove lower
+ *
+ * Deletes from collection all elements lower than provided
  *
  * @property collection
  * @constructor Create command Remove lower
@@ -14,22 +16,21 @@ class RemoveLower (private val collection: CollectionManager) : Command() {
         println("Deletes from collection all elements lower than provided")
     }
 
-    override fun execute(argument:String) {
-        print("Write the id of the object to compare:   ")
-
-        var id = -1L
-        do {
-            try {
-                id = readln().trim().toLong()
-            } catch (e: Exception) {
-                print("Please enter a valid Long-type value of id:  ")
+    /**
+     * Removes all elements lower than element with id equal to argument
+     * Prints the amount of Space Marines deleted
+     * @param argument id of element to compare
+     */
+    override fun execute(argument:String, sc: Scanner) {
+        try {
+            val id = sc.nextLine().trim().toLong()
+            if (collection.getByID(id) == null) println("No element with Id=$id was found")
+            else {
+                val amount : Int = collection.removeLower(collection.getByID(id)!!)
+                println("$amount Space Marines have been deleted")
             }
-
-        } while (id < 0)
-        if (collection.getByID(id) == null) println("No element with Id=$id was found")
-        else {
-            val amount : Int = collection.removeLower(collection.getByID(id)!!)
-            println("Have been deleted $amount Space Marines")
+        } catch (e: Exception) {
+            print("Invalid Long-type value of Id")
         }
 
     }

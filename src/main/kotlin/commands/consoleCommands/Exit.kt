@@ -1,5 +1,6 @@
 package commands.consoleCommands
 
+import java.util.Scanner
 import kotlin.system.exitProcess
 
 /**
@@ -11,9 +12,10 @@ class Exit : Command() {
     override fun writeInfo() {
         println("Exits the app (without saving data)")
     }
-
-    override fun execute(argument:String) {
+    /**
+     * Closes program using [exitProcess] with status 0
+     */
+    override fun execute(argument:String, sc: Scanner) {
         println("Finishing process ...")
-        exitProcess(0)
     }
 }

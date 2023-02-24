@@ -1,7 +1,9 @@
 package basicClasses
 
 /**
- * Astartes category
+ * Astartes Category
+ *
+ * Enum used as property in [SpaceMarine]
  *
  * @constructor Create Astartes category
  */

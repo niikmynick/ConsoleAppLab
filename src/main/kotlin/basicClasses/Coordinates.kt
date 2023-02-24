@@ -5,6 +5,7 @@ import kotlinx.serialization.Serializable
 /**
  * Coordinates
  *
+ * Class used as property in [SpaceMarine]
  * @property x
  * @property y
  * @constructor Create Coordinates

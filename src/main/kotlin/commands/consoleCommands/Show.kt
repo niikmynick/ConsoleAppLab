@@ -1,9 +1,12 @@
 package commands.consoleCommands
 
 import utils.CollectionManager
+import java.util.Scanner
 
 /**
  * Show
+ *
+ * Prints all elements of the collection
  *
  * @property collection
  * @constructor Create command Show
@@ -13,7 +16,10 @@ class Show (private val collection: CollectionManager) : Command() {
         println("Prints all elements of the collection")
     }
 
-    override fun execute(argument:String) {
+    /**
+     * Calls [CollectionManager.show]
+     */
+    override fun execute(argument:String, sc: Scanner) {
         collection.show()
     }
 

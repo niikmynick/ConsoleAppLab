@@ -24,6 +24,9 @@ import java.util.*
 
 @Serializable
 data class SpaceMarine (
+    /**
+     * Defined automatically with [java.util.UUID.randomUUID], gets 64 most significant bits (Long) and makes it positive only
+     */
     private val id: Long = UUID.randomUUID().mostSignificantBits and Long.MAX_VALUE,//Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private var name: String, //Поле не может быть null, Строка не может быть пустой
     private var coordinates: Coordinates, //Поле не может быть null
@@ -35,6 +38,9 @@ data class SpaceMarine (
     private var chapter: Chapter //Поле может быть null
 
     ) : Comparable<SpaceMarine>{
+    /**
+     * @constructor Creates SpaceMarine with user given parameters. Used in [utils.Creator]
+     */
     constructor(name: String,
                 coordinates: Coordinates,
                 health: Float?,
@@ -43,6 +49,9 @@ data class SpaceMarine (
                 meleeWeapon: MeleeWeapon,
                 chapter: Chapter) : this((UUID.randomUUID().mostSignificantBits and Long.MAX_VALUE), name, coordinates, LocalDate.now().toString(),health, loyal, category, meleeWeapon, chapter)
 
+    /**
+     * @constructor Creates SpaceMarine with default parameters
+     */
     constructor() : this("Juan", Coordinates(0.0, 0), 1F, false, AstartesCategory.HELIX, MeleeWeapon.POWER_FIST, Chapter("a",1))
 
     init {
@@ -143,30 +152,26 @@ data class SpaceMarine (
     }
 
     /**
-     * Set name
-     *
-     * @param string
+     * Sets new name only if string is not empty
      */
     fun setName(string: String) {
         if (string.isNotEmpty()){
             this.name = string
         }
     }
-
-    /**
-     * Set coordinates
-     *
-     * @param coordinates
-     */
     fun setCoordinates(coordinates: Coordinates) {
         this.coordinates = coordinates
     }
-
     /**
      * Set health
      *
-     * @param float
+     * Can receive null value
+     *
+     * @param health
      */
+    fun setHealth(health: Float?) {
+        this.health = health
+    }
     fun setHealth(float: Float) {
         this.health = float
     }
