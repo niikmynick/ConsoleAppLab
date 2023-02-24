@@ -64,7 +64,7 @@ data class SpaceMarine (
 
 
     override fun compareTo(other: SpaceMarine): Int {
-            return this.name.compareTo(other.name)
+            return this.id.compareTo(other.id)
         }
     override fun toString(): String {
         return "SpaceMarine(id=$id ,name=$name, coordinates=$coordinates, creationDate=$creationDate, health=$health, loyal=$loyal, category=$category, meleeWeapon=$meleeWeapon, chapter=$chapter)"
