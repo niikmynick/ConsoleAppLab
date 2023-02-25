@@ -1,6 +1,5 @@
 package commands.consoleCommands
 
-import kotlinx.serialization.Serializable
 import java.util.Scanner
 
 /**
@@ -8,7 +7,6 @@ import java.util.Scanner
  *
  * @constructor Create empty Command
  */
-@Serializable
 abstract class Command {
 
     /**
