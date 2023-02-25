@@ -42,4 +42,8 @@ class FileManager(p:Properties) {
 
     }
 
+    fun save(collection: CollectionManager) : Boolean{
+        TODO()
+    }
+
 }

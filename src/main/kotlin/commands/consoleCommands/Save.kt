@@ -1,6 +1,7 @@
 package commands.consoleCommands
 
 import utils.CollectionManager
+import utils.FileManager
 import java.util.Scanner
 
 /**
@@ -12,7 +13,7 @@ import java.util.Scanner
  * @property filename
  * @constructor Create command Save
  */
-class Save (private val collection: CollectionManager, private val filename: String) : Command() {
+class Save (private val collection: CollectionManager, private val fileManager: FileManager) : Command() {
     override fun getInfo(): String {
         return "Сохраняет коллекцию в файл"
     }
@@ -21,7 +22,7 @@ class Save (private val collection: CollectionManager, private val filename: Str
      * Saves collection into file provided in [filename]
      */
     override fun execute(argument:String, sc: Scanner): String {
-        val flag = collection.save(filename)
+        val flag = fileManager.save(collection)
         return if (flag) {
             "Collection was saved successfully\n"
         } else {

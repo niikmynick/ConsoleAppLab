@@ -40,7 +40,7 @@ class Console {
         commandInvoker.register("update_id", Update(collection))
         commandInvoker.register("remove_by_id", RemoveID(collection))
         commandInvoker.register("clear", Clear(collection))
-        commandInvoker.register("save", Save(collection, fileManager.getFilename()))
+        commandInvoker.register("save", Save(collection, fileManager))
         commandInvoker.register("execute_script", ScriptFromFile(commandInvoker))
         commandInvoker.register("exit", Exit())
         commandInvoker.register("add_if_min", AddMin(collection))
