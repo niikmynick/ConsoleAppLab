@@ -1,6 +1,5 @@
 package commands.consoleCommands
 
-import kotlinx.serialization.Serializable
 import java.util.Scanner
 
 /**

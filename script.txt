@@ -39,5 +39,4 @@ inceptor
 power_sword
 File
 10
-clear
-exit
+execute_script script.txt
