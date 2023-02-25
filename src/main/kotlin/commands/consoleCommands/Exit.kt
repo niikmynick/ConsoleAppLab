@@ -15,7 +15,6 @@ class Exit : Command() {
     /**
      * Closes program using [exitProcess] with status 0
      */
-    override fun execute(argument:String, sc: Scanner): String {
-        return "Finishing process ...\n"
-    }
+    override fun execute(argument:String, sc: Scanner): String = "Finishing process ...\n"
+
 }

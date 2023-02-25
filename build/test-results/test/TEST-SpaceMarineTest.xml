@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="SpaceMarineTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-02-25T10:54:01" hostname="LAPTOP-KHFL9B9N" time="0.006">
+<testsuite name="SpaceMarineTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-02-25T11:00:19" hostname="LAPTOP-KHFL9B9N" time="0.006">
   <properties/>
   <testcase name="compareTo()" classname="SpaceMarineTest" time="0.001"/>
   <testcase name="getDate()" classname="SpaceMarineTest" time="0.005"/>
