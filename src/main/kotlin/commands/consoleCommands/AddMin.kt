@@ -1,8 +1,8 @@
 package commands.consoleCommands
 
-import utils.CollectionManager
+import basicClasses.SpaceMarine
 import utils.Creator
-import java.util.Scanner
+import java.util.*
 
 /**
  * Add min
@@ -12,7 +12,7 @@ import java.util.Scanner
  * @property collection
  * @constructor Create command Add min
  */
-class AddMin (private val collection: CollectionManager) : Command() {
+class AddMin(private val collection: TreeSet<SpaceMarine>) : Command() {
     override fun getInfo(): String {
         return "Adds a new element into the collection if its value is lower than the lowest element in the collection"
     }

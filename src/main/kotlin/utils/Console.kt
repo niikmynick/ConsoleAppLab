@@ -25,9 +25,9 @@ class Console {
     }
 
     private val properties = System.getProperties()
-    val commandInvoker = CommandInvoker()
+    private val commandInvoker = CommandInvoker()
     private val fileManager = FileManager(properties)
-    val collection = CollectionManager()
+    val collection = CollectionManager().getCollection()
     val scanner = Scanner(System.`in`)
 
     /**

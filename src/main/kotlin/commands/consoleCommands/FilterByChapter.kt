@@ -1,8 +1,8 @@
 package commands.consoleCommands
 
-import java.util.Scanner
-import utils.CollectionManager
+import basicClasses.SpaceMarine
 import utils.Creator
+import java.util.*
 
 /**
  * Filter by chapter
@@ -12,7 +12,7 @@ import utils.Creator
  * @property collection
  * @constructor Create command Filter by chapter
  */
-class FilterByChapter(private val collection: CollectionManager) : Command() {
+class FilterByChapter(private val collection: TreeSet<SpaceMarine>) : Command() {
     override fun getInfo(): String {
         return "Prints elements with the provided chapter"
     }

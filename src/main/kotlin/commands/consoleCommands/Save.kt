@@ -1,8 +1,8 @@
 package commands.consoleCommands
 
-import utils.CollectionManager
+import basicClasses.SpaceMarine
 import utils.FileManager
-import java.util.Scanner
+import java.util.*
 
 /**
  * Save
@@ -13,7 +13,7 @@ import java.util.Scanner
  * @property filename
  * @constructor Create command Save
  */
-class Save (private val collection: CollectionManager, private val fileManager: FileManager) : Command() {
+class Save(private val collection: TreeSet<SpaceMarine>, private val fileManager: FileManager) : Command() {
     override fun getInfo(): String {
         return "Сохраняет коллекцию в файл"
     }

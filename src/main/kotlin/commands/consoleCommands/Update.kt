@@ -1,7 +1,8 @@
 package commands.consoleCommands
 
+import basicClasses.SpaceMarine
 import utils.CollectionManager
-import java.util.Scanner
+import java.util.*
 
 /**
  * Update
@@ -11,7 +12,7 @@ import java.util.Scanner
  * @property collection
  * @constructor Create command Update
  */
-class Update (private val collection: CollectionManager) : Command() {
+class Update(private val collection: TreeSet<SpaceMarine>) : Command() {
     override fun getInfo(): String {
         return "Updates values of the element with the provided id"
     }

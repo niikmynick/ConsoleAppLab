@@ -3,17 +3,24 @@ plugins {
     application
     kotlin("plugin.serialization") version "1.8.0"
     id("org.jetbrains.dokka") version "1.7.20"
+    id("com.github.johnrengelman.shadow") version "7.0.0"
 }
 
 group = "org.example"
-version = "1"
+version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
 }
 
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions.jvmTarget = "11"
+}
+
+
 dependencies {
     implementation("junit:junit:4.13.1")
+    implementation(kotlin("stdlib-jdk8"))
     testImplementation(kotlin("test"))
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0-RC")
     implementation ("com.charleskorn.kaml:kaml:0.51.0")
@@ -28,14 +35,12 @@ tasks.test {
     useJUnitPlatform()
 }
 
-tasks.named<JavaExec>("run") {
-    standardInput = System.`in`
-}
-
-kotlin {
-    jvmToolchain(8)
-}
-
 application {
     mainClass.set("MainKt")
+}
+
+tasks.withType<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar> {
+    manifest.attributes.apply {
+        put("Main-Class", "MainKt")
+    }
 }

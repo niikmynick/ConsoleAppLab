@@ -1,8 +1,8 @@
 package commands.consoleCommands
 
+import basicClasses.SpaceMarine
 import exceptions.SpaceMarineNotFound
-import utils.CollectionManager
-import java.util.Scanner
+import java.util.*
 
 /**
  * Remove greater
@@ -12,7 +12,7 @@ import java.util.Scanner
  * @property collection
  * @constructor Create command Remove greater
  */
-class RemoveGreater (private val collection: CollectionManager) : Command() {
+class RemoveGreater(private val collection: TreeSet<SpaceMarine>) : Command() {
     override fun getInfo(): String {
         return "Deletes from collection all elements greater than provided"
     }

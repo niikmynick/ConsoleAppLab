@@ -1,7 +1,7 @@
 package commands.consoleCommands
 
 import basicClasses.MeleeWeapon
-import utils.CollectionManager
+import basicClasses.SpaceMarine
 import utils.readers.EnumReader
 import java.util.*
 
@@ -13,7 +13,7 @@ import java.util.*
  * @property collection
  * @constructor Create command count_by_melee_weapon
  */
-class CountByMeleeWeapon(private val collection: CollectionManager) : Command() {
+class CountByMeleeWeapon(private val collection: TreeSet<SpaceMarine>) : Command() {
     override fun getInfo(): String {
         return "Prints the amount of elements with the provided weapon"
     }

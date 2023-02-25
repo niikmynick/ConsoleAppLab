@@ -1,7 +1,8 @@
 package commands.consoleCommands
 
+import basicClasses.SpaceMarine
 import utils.CollectionManager
-import java.util.Scanner
+import java.util.*
 
 /**
  * Show
@@ -11,7 +12,7 @@ import java.util.Scanner
  * @property collection
  * @constructor Create command Show
  */
-class Show (private val collection: CollectionManager) : Command() {
+class Show(private val collection: TreeSet<SpaceMarine>) : Command() {
     override fun getInfo(): String {
         return "Prints all elements of the collection"
     }

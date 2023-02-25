@@ -1,7 +1,7 @@
 package commands.consoleCommands
 
-import utils.CollectionManager
-import java.util.Scanner
+import basicClasses.SpaceMarine
+import java.util.*
 
 /**
  * Remove i d
@@ -11,7 +11,7 @@ import java.util.Scanner
  * @property collection
  * @constructor Create command remove_id
  */
-class RemoveID (private val collection: CollectionManager) : Command() {
+class RemoveID(private val collection: TreeSet<SpaceMarine>) : Command() {
     override fun getInfo(): String {
         return "Deletes the element with the provided id"
     }

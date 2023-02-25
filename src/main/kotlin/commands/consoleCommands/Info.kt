@@ -1,7 +1,8 @@
 package commands.consoleCommands
 
+import basicClasses.SpaceMarine
 import utils.CollectionManager
-import java.util.Scanner
+import java.util.*
 
 /**
  * Info
@@ -11,7 +12,7 @@ import java.util.Scanner
  * @property collection
  * @constructor Create command Info
  */
-class Info (private val collection: CollectionManager) : Command() {
+class Info(private val collection: TreeSet<SpaceMarine>) : Command() {
     override fun getInfo(): String {
         return "Prints info about the collection (type, creation date, amount of elements)"
     }

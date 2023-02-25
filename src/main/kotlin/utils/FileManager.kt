@@ -3,7 +3,7 @@ package utils
 import basicClasses.SpaceMarine
 import com.charleskorn.kaml.Yaml
 import java.io.FileReader
-import java.util.Properties
+import java.util.*
 
 /**
  * Class that contains environment variables and handles files
@@ -20,7 +20,7 @@ class FileManager(p:Properties) {
      * Reads data from the file provided in [collectionFileName] and adds objects to [collection]
      * @param collection Current collection
      */
-    fun load(collection: CollectionManager) {
+    fun load(collection: TreeSet<SpaceMarine>) {
 
         try {
             val file = FileReader(collectionFileName)

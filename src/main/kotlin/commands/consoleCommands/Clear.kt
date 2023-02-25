@@ -1,7 +1,7 @@
 package commands.consoleCommands
 
-import utils.CollectionManager
-import java.util.Scanner
+import basicClasses.SpaceMarine
+import java.util.*
 
 /**
  * Clear
@@ -11,7 +11,7 @@ import java.util.Scanner
  * @property collection
  * @constructor Create command Clear
  */
-class Clear (private val collection: CollectionManager) : Command() {
+class Clear(private val collection: TreeSet<SpaceMarine>) : Command() {
     override fun getInfo(): String {
         return "Clears all elements in the collection"
     }

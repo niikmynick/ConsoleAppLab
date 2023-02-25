@@ -1,9 +1,9 @@
 package commands.consoleCommands
 
+import basicClasses.SpaceMarine
 import exceptions.SpaceMarineNotFound
-import utils.CollectionManager
 import utils.Creator
-import java.util.Scanner
+import java.util.*
 
 /**
  * Remove any chapter
@@ -13,7 +13,7 @@ import java.util.Scanner
  * @property collection
  * @constructor Create command Remove any chapter
  */
-class RemoveAnyChapter(private val collection: CollectionManager) : Command() {
+class RemoveAnyChapter(private val collection: TreeSet<SpaceMarine>) : Command() {
     override fun getInfo(): String {
         return "Deletes an element with a provided chapter value"
     }
