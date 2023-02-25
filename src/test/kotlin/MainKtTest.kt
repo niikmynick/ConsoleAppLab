@@ -1,6 +1,4 @@
-import commands.consoleCommands.Add
-import commands.consoleCommands.Help
-import commands.consoleCommands.ScriptFromFile
+import commands.consoleCommands.*
 import utils.Console
 import java.util.*
 import kotlin.test.Test
@@ -42,4 +40,38 @@ internal class MainKtTest {
         val expected = false
         assertEquals(expected, console1.commandInvoker == console2.commandInvoker)
     }
+
+    @Test
+    fun addElement() {
+        val console = Console()
+        console.initialize()
+        val scExpected = Scanner("F\n" +
+                "34\n" +
+                "43\n" +
+                "34\n" +
+                "false\n" +
+                "inceptor\n" +
+                "power_sword\n" +
+                "File\n" +
+                "10\n")
+
+        val testPrint = Add(console.collection).execute("",scExpected)
+        assertEquals("Space Marine F has been created and added to the list\n", testPrint)
+        val testShow = Show(console.collection).execute("", Scanner(System.`in`))
+        assertEquals(Show(console.collection).execute("", Scanner(System.`in`)), testShow)
+    }
+
+    @Test
+    fun clear() {
+        val console = Console()
+        console.initialize()
+        ScriptFromFile(console.commandInvoker).execute("script.txt", Scanner(System.`in`))
+
+        val testPrint = Clear(console.collection).execute("", Scanner(System.`in`))
+        assertEquals("Done. There is nothing in the collection now ...\n", testPrint)
+        val testShow = Show(console.collection).execute("", Scanner(System.`in`))
+        assertEquals("Collection is empty\n", testShow)
+    }
+
+
 }
