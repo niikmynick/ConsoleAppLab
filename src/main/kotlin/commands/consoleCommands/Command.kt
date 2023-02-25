@@ -8,7 +8,6 @@ import java.util.Scanner
  *
  * @constructor Create empty Command
  */
-@Serializable
 abstract class Command {
 
     /**
