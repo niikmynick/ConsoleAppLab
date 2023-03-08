@@ -1,7 +1,7 @@
 package commands.utils.readers
 
 import basicClasses.SpaceMarine
-import java.util.Scanner
+import utils.InputManager
 
 /**
  * Boolean reader
@@ -16,14 +16,14 @@ class BooleanReader {
          * Reads and gives a valid value
          * @return value
          */
-        fun read(message: String) : Boolean {
-            val scanner = Scanner(System.`in`)
+        fun read(message: String, inputManager: InputManager) : Boolean {
+            //val scanner = Scanner(System.`in`)
             println(message)
 
             var loyalty: Boolean? = null
             do {
                 try {
-                    loyalty = scanner.nextLine().trim().lowercase().toBooleanStrict()
+                    loyalty = inputManager.nextLine().trim().lowercase().toBooleanStrict()
                 } catch (e: Exception) {
                     print("You need to enter Boolean-type value of loyalty: ")
                 }

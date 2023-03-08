@@ -1,8 +1,6 @@
 package commands.consoleCommands
 
 import commands.CommandReceiver
-import commands.utils.Validator
-import java.util.Scanner
 
 /**
  * Help
@@ -26,6 +24,6 @@ class Help() : Command() {
      * @param args name of the command
      */
     override fun execute(args: List<String>) {
-        commandReceiver.help(args)
+        println(commandReceiver.help(args))
     }
 }

@@ -26,7 +26,7 @@ class Show() : Command() {
      */
     override fun execute(args: List<String>) {
         if (Validator.verify(args, 1)) {
-            commandReceiver.show()
+            println(commandReceiver.show())
         }
     }
 

@@ -26,7 +26,7 @@ class CountByMeleeWeapon() : Command() {
      */
     override fun execute(args: List<String>) {
         if (Validator.verify(args, 1)) {
-            commandReceiver.countByWeapon()
+            println(commandReceiver.countByWeapon())
         }
     }
 

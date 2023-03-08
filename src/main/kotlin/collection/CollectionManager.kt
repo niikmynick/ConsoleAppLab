@@ -6,8 +6,8 @@ import java.util.*
 
 
 /**
- * A [TreeSet] collection of [SpaceMarine]
- * Implements methods used in commands
+ * Manages a collection of [SpaceMarine]
+ * @property collection contains the collection
  * @property date Saves creation date
  */
 class CollectionManager {
@@ -24,23 +24,26 @@ class CollectionManager {
 
     /**
      * Creates a formatted string with info about collection
-     * @return Formatted string with size and [date] values
+     * @return Formatted string with collection's size and [date] values
      */
-    fun printInfo() {
-        println("Tree Set of SpaceMarine: size=${collection.size}, date=${date}")
+    fun info(): String {
+        return "Tree Set of SpaceMarine: size=${collection.size}, date=${date}"
     }
 
     /**
      * Prints all elements of the collection
      */
-    fun show() {
+    fun show() : String {
+        var output = ""
         if (collection.isEmpty()) {
-            println("Collection is empty")
+            return "Collection is empty"
         } else {
+
             for (spaceMarine in collection) {
-                println(spaceMarine)
+                output += (spaceMarine.toString() + "\n")
             }
         }
+        return output
     }
 
     /**
@@ -86,12 +89,14 @@ class CollectionManager {
      * Prints all elements with provided [Chapter]
      * @param chapter Chapter searched in elements of collection
      */
-    fun filterByChapter(chapter: Chapter) {
+    fun filterByChapter(chapter: Chapter) : String{
+        var output = ""
         for (spaceMarine in collection) {
             if (spaceMarine.getChapter() == chapter) {
-                println(spaceMarine)
+                output += spaceMarine.toString() + "\n"
             }
         }
+        return output
     }
 
 }

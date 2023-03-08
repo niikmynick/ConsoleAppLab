@@ -23,6 +23,11 @@ class InputManager {
             input.add(line)
         }
     }
+    fun addLines(list: Collection<String>) {
+        for (line in list) {
+            input.add(line)
+        }
+    }
     fun hasNextLine(): Boolean {
         return try {
             input[cur]

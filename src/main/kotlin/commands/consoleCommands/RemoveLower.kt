@@ -28,7 +28,7 @@ class RemoveLower() : Command() {
      */
     override fun execute(args: List<String>) {
         if (Validator.verify(args, 2)) {
-            commandReceiver.removeLower(args[1])
+            println(commandReceiver.removeLower(args[1]))
         }
     }
 }

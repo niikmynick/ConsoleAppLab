@@ -1,6 +1,6 @@
 package commands.utils.readers
 
-import java.util.*
+import utils.InputManager
 
 class IntReader {
     companion object {
@@ -8,15 +8,15 @@ class IntReader {
          * Reads and gives a valid value
          * @return value
          */
-        fun read(message: String): Int {
-            val scanner = Scanner(System.`in`)
+        fun read(message: String, inputManager: InputManager): Int {
+            //val scanner = Scanner(System.`in`)
             println(message)
 
-            var input = scanner.nextLine()
+            var input = inputManager.nextLine()
 
             while (input.toIntOrNull() == null) {
                 println("This field must be integer")
-                input = scanner.nextLine()
+                input = inputManager.nextLine()
             }
 
             return input.toInt()

@@ -26,7 +26,7 @@ class Update() : Command() {
      */
     override fun execute(args: List<String>) {
         if (Validator.verify(args, 2)) {
-            commandReceiver.updateByID(args[1])
+            println(commandReceiver.updateByID(args[1]))
         }
     }
 

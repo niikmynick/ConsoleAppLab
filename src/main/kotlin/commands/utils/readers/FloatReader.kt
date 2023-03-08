@@ -1,7 +1,7 @@
 package commands.utils.readers
 
 import basicClasses.SpaceMarine
-import java.util.Scanner
+import utils.InputManager
 
 /**
  * Float reader
@@ -16,14 +16,14 @@ class FloatReader {
          * Reads and gives a valid value
          * @return value
          */
-        fun read(message: String, canBeNull: Boolean): Float? {
-            val scanner = Scanner(System.`in`)
+        fun read(message: String, canBeNull: Boolean, inputManager: InputManager): Float? {
+            //val scanner = Scanner(System.`in`)
             println(message)
 
             var value = 0F
 
             do {
-                val input = scanner.nextLine()
+                val input = inputManager.nextLine()
 
                 if (input == "\\null") {
                     if (canBeNull) {

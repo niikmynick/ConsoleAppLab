@@ -1,6 +1,6 @@
 package commands.utils.readers
 
-import java.util.*
+import utils.InputManager
 
 class DoubleReader {
     companion object {
@@ -8,15 +8,15 @@ class DoubleReader {
          * Reads and gives a valid value
          * @return value
          */
-        fun read(message: String): Double {
-            val scanner = Scanner(System.`in`)
+        fun read(message: String, inputManager: InputManager): Double {
+            //val scanner = Scanner(System.`in`)
             println(message)
 
-            var input = scanner.nextLine()
+            var input = inputManager.nextLine()
 
             while (input.toDoubleOrNull() == null) {
                 println("This field must be double")
-                input = scanner.nextLine()
+                input = inputManager.nextLine()
             }
 
             return input.toDouble()

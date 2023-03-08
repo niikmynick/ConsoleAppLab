@@ -27,7 +27,7 @@ class FilterByChapter() : Command() {
      */
     override fun execute(args: List<String>) {
         if (Validator.verify(args, 1)) {
-            commandReceiver.filterByChapter()
+            println(commandReceiver.filterByChapter())
         }
     }
 }

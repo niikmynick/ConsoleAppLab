@@ -1,6 +1,5 @@
 package commands.consoleCommands
 
-import java.util.Scanner
 import kotlin.system.exitProcess
 
 /**
@@ -17,6 +16,6 @@ class Exit : Command() {
      * Closes program using [exitProcess] with status 0
      */
     override fun execute(args: List<String>) {
-        TODO("Not yet implemented")
+        println("Exiting...")
     }
 }

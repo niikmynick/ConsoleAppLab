@@ -28,7 +28,7 @@ class RemoveGreater() : Command() {
      */
     override fun execute(args: List<String>) {
         if (Validator.verify(args, 2)) {
-            commandReceiver.removeGreater(args[1])
+            println(commandReceiver.removeGreater(args[1]))
         }
     }
 }

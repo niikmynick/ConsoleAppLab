@@ -1,7 +1,6 @@
 package commands.utils.readers
 
-import basicClasses.SpaceMarine
-import java.util.Scanner
+import utils.InputManager
 
 /**
  * String reader
@@ -16,17 +15,17 @@ class StringReader {
          * Reads and gives a valid value
          * @return value
          */
-        fun read(message: String): String {
-            val scanner = Scanner(System.`in`)
+        fun read(message: String, inputManager: InputManager): String {
+            //val scanner = Scanner(System.`in`)
             println(message)
 
-            var value:String = scanner.nextLine().trim()
+            var value:String = inputManager.nextLine().trim()
 
             while (value.isEmpty()) {
                 println("This field can not be empty")
                 println(message)
 
-                value = scanner.nextLine().trim()
+                value = inputManager.nextLine().trim()
             }
 
             return value

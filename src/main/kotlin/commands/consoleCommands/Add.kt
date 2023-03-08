@@ -25,7 +25,7 @@ class Add() : Command() {
      */
     override fun execute(args: List<String>) {
         if (Validator.verify(args, 1)) {
-            commandReceiver.add(null)
+            println(commandReceiver.add())
         }
     }
 }

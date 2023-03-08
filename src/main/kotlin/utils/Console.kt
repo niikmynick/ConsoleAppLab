@@ -5,7 +5,6 @@ import commands.CommandInvoker
 import commands.CommandReceiver
 import commands.consoleCommands.*
 import java.io.IOException
-import java.util.Scanner
 
 /**
  * Class that handles commands and provides them all needed parameters
@@ -13,15 +12,15 @@ import java.util.Scanner
  * @property commandInvoker See [CommandInvoker]
  * @property fileManager Used for loading data to collection
  * @property collection Current collection
- * @property scanner Set to [System.in]
  */
 class Console {
     private val properties = System.getProperties()
     private val fileManager = FileManager(properties)
     private val commandInvoker = CommandInvoker()
     private val collectionManager = CollectionManager()
-    private val commandReceiver = CommandReceiver(commandInvoker, collectionManager)
-    val scanner = Scanner(System.`in`)
+    private val inputManager = InputManager()
+    private val commandReceiver = CommandReceiver(commandInvoker, collectionManager, inputManager)
+    //val scanner = Scanner(System.`in`)
 
     /**
      * Registers commands and waits for user prompt
@@ -50,11 +49,11 @@ class Console {
     fun startInteractiveMode(){
         println("Waiting for user prompt ...")
             try {
-                print("$ ")
-                while (scanner.hasNextLine()) {
-                    commandInvoker.executeCommand(scanner.nextLine().trim().split(" "))
+                do {
                     print("$ ")
-                }
+                    var input = inputManager.nextLine().trim().lowercase().split(" ")
+                    commandInvoker.executeCommand(input)
+                } while (input[0] != "exit")
             } catch (e:IOException) {
                 println(e.message.toString())
             }

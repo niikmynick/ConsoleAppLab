@@ -2,7 +2,6 @@ package commands.consoleCommands
 
 import commands.CommandReceiver
 import commands.utils.Validator
-import java.util.*
 
 /**
  * Add min
@@ -26,11 +25,10 @@ class AddMin() : Command() {
     /**
      * Creates a Space Marine and add it into the collection if it lower than the lowest element in the collection
      * Prints whether the Space Marine was added or not
-     * @param sc Is given to creator
      */
     override fun execute(args: List<String>) {
         if (Validator.verify(args, 1)) {
-            commandReceiver.addMin()
+            println(commandReceiver.addMin())
         }
     }
 }

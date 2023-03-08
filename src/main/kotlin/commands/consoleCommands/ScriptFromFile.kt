@@ -26,7 +26,7 @@ class ScriptFromFile(): Command() {
      */
     override fun execute(args: List<String>) {
         if (Validator.verify(args, 2)) {
-            commandReceiver.executeScript(args[1])
+            println(commandReceiver.executeScript(args[1]))
         }
     }
 

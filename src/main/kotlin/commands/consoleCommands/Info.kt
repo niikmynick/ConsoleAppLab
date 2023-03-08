@@ -3,7 +3,6 @@ package commands.consoleCommands
 import collection.CollectionManager
 import commands.CommandReceiver
 import commands.utils.Validator
-import java.util.*
 
 /**
  * Info
@@ -28,7 +27,7 @@ class Info() : Command() {
      */
     override fun execute(args: List<String>) {
         if (Validator.verify(args, 1)) {
-            commandReceiver.info()
+            println(commandReceiver.info())
         }
     }
 }

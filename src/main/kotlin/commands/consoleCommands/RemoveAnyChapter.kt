@@ -27,7 +27,7 @@ class RemoveAnyChapter() : Command() {
      */
     override fun execute(args: List<String>) {
         if (Validator.verify(args, 1)) {
-            commandReceiver.removeByChapter()
+            println(commandReceiver.removeByChapter())
         }
     }
 }
