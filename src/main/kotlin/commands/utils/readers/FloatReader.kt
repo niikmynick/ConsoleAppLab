@@ -33,7 +33,12 @@ class FloatReader {
                     }
 
                 } else {
-                    value = input.trim().toFloat()
+                    try {
+                        value = input.trim().toFloat()
+                    } catch (e:Exception) {
+                        print("You need to enter a Float-type value: ")
+                    }
+
                 }
 
                 if (value <= 0) {

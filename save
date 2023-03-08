@@ -1,0 +1,14 @@
+id: 1240919939732488365
+name: "asd"
+coordinates:
+  x: 43.0
+  y: 577
+creationDate: "2023-03-08"
+health: null
+loyal: true
+category: "HELIX"
+meleeWeapon: "POWER_FIST"
+chapter:
+  name: "d4t4t"
+  marinesCount: 4
+#ENDOFSPACEMARINE

@@ -1,10 +1,8 @@
 package commands.consoleCommands
 
-import commands.CommandInvoker
+
 import commands.CommandReceiver
 import commands.utils.Validator
-import java.io.FileReader
-import java.util.*
 
 /**
  * Script from file
@@ -27,8 +25,8 @@ class ScriptFromFile(): Command() {
      * Runs script
      */
     override fun execute(args: List<String>) {
-        if (Validator.verify(args)) {
-            commandReceiver.executeScript(args[0])
+        if (Validator.verify(args, 2)) {
+            commandReceiver.executeScript(args[1])
         }
     }
 

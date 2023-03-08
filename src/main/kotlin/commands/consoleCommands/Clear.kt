@@ -25,7 +25,7 @@ class Clear() : Command() {
      * Clears all elements in the collection
      */
     override fun execute(args: List<String>) {
-        if (Validator.verify(args)) {
+        if (Validator.verify(args, 1)) {
             commandReceiver.clear()
         }
     }

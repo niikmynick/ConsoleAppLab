@@ -1,17 +1,13 @@
 package commands
 
 import basicClasses.Chapter
-import basicClasses.MeleeWeapon
+import basicClasses.SpaceMarine
 import collection.CollectionManager
-import collection.utils.ExistenceChecker
 import commands.consoleCommands.Command
 import commands.utils.Creator
 import commands.utils.Saver
-import commands.utils.readers.EnumReader
 import commands.utils.readers.WeaponReader
-import exceptions.SpaceMarineNotFound
 import java.io.FileReader
-import java.util.*
 
 class CommandReceiver() {
 
@@ -52,21 +48,27 @@ class CommandReceiver() {
         collectionManager.show()
     }
 
-    fun add() {
-        val spaceMarine = Creator.createSpaceMarine()
-        collectionManager.add(spaceMarine)
-        println("Space Marine ${spaceMarine.getName()} has been created and added to the collection")
+    fun add(sm:SpaceMarine?) {
+        if (sm == null) {
+            val spaceMarine = Creator.createSpaceMarine()
+            collectionManager.add(spaceMarine)
+            println("Space Marine ${spaceMarine.getName()} has been created and added to the collection")
+        }
+        else {
+            collectionManager.add(sm)
+            println("Space Marine ${sm.getName()} has been created and added to the collection")
+        }
     }
 
     fun updateByID(id:String) {
         try {
-            val newSpaceMarine = Creator.createSpaceMarine()
             val oldSpaceMarine = collectionManager.getByID(id.toLong())
 
             if (oldSpaceMarine != null) {
+                val newSpaceMarine = Creator.createSpaceMarine()
                 collectionManager.update(oldSpaceMarine, newSpaceMarine)
             } else {
-                println("Space Marine with id == $id do not exist")
+                println("Space Marine with id == $id does not exist")
             }
 
         } catch (e: NumberFormatException) {
@@ -101,11 +103,10 @@ class CommandReceiver() {
 
     fun save(filepath:String) {
         try {
-            val collection = collectionManager.getCollection()
-            Saver().save(filepath, collection)
+            Saver().save(filepath, collectionManager)
             println("Collection was saved successfully")
         } catch (e:Exception) {
-            TODO()
+            println(e.message)
         }
     }
 
@@ -166,7 +167,7 @@ class CommandReceiver() {
         var count = 0
 
         if (spaceMarine == null)
-            println("Space Marine with id == $id do not exist")
+            println("Space Marine with id == $id does not exist")
         else {
             while (collection.isNotEmpty()) {
                 if (collection.last() > spaceMarine) {

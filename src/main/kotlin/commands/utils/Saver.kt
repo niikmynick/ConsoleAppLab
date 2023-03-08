@@ -1,10 +1,10 @@
 package commands.utils
 
 import basicClasses.SpaceMarine
+import collection.CollectionManager
 import com.charleskorn.kaml.Yaml
 import java.io.FileOutputStream
 import java.io.OutputStreamWriter
-import java.util.TreeSet
 
 class Saver {
     /**
@@ -12,12 +12,12 @@ class Saver {
      * @param filename Name of the file
      * @return true if elements were saved, false an exception occurred
      */
-    fun save(filename: String, collection: TreeSet<SpaceMarine>) {
+    fun save(filename: String, collectionManager: CollectionManager) {
         try {
             val file = FileOutputStream(filename)
 
             val output = OutputStreamWriter(file)
-            for (element in collection) {
+            for (element in collectionManager.getCollection()) {
                 output.write(Yaml.default.encodeToString(SpaceMarine.serializer(), element))
                 output.write("\n#ENDOFSPACEMARINE\n")
             }

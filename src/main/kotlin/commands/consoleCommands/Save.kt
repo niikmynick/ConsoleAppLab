@@ -1,10 +1,7 @@
 package commands.consoleCommands
 
-import collection.CollectionManager
 import commands.CommandReceiver
 import commands.utils.Validator
-import utils.FileManager
-import java.util.*
 
 /**
  * Save
@@ -21,15 +18,15 @@ class Save() : Command() {
     }
 
     override fun getInfo(): String {
-        return "Сохраняет коллекцию в файл"
+        return "Saves the collection into file with provided name"
     }
 
     /**
      * Saves collection into file provided in file
      */
     override fun execute(args: List<String>) {
-        if (Validator.verify(args)) {
-            commandReceiver.save(args[0])
+        if (Validator.verify(args, 2)) {
+            commandReceiver.save(args[1])
         }
     }
 }
