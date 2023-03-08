@@ -1,7 +1,7 @@
 package commands.consoleCommands
 
-import basicClasses.SpaceMarine
-import java.util.*
+import commands.CommandReceiver
+import commands.utils.Validator
 
 /**
  * Clear
@@ -11,36 +11,22 @@ import java.util.*
  * @property collection
  * @constructor Create command Clear
  */
-class Clear(private val collection: TreeSet<SpaceMarine>) : Command() {
+class Clear() : Command() {
+
+    private lateinit var commandReceiver: CommandReceiver
+    constructor(commandReceiver: CommandReceiver) : this() {
+        this.commandReceiver = commandReceiver
+    }
     override fun getInfo(): String {
         return "Clears all elements in the collection"
     }
 
     /**
      * Clears all elements in the collection
-     * @param sc Is where a new line is gotten
      */
-    override fun execute(argument:String, sc: Scanner): String  {
-        return if (collection.size > 0) {
-            collection.clear()
-            "Done. There is nothing in the collection now ...\n"
-        } else {
-            "The collection is already empty\n"
+    override fun execute(args: List<String>) {
+        if (Validator.verify(args)) {
+            commandReceiver.clear()
         }
-
-//        if (collection.size > 0) {
-//            print("Are you sure? This operation will delete all elements [Y / N] ")
-//            var answer = sc.nextLine().trim().lowercase()
-//            while ((answer != "y") and (answer != "n")) {
-//                print("Please, enter your answer in a correct form (Y - yes, N - no)")
-//                answer = sc.nextLine().trim().lowercase()
-//            }
-//            if (answer == "y") {
-//                collection.clear()
-//                println("Done. There is nothing in the list now ... ")
-//            }
-//        } else {
-//            println("The collection is already empty ")
-//        }
     }
 }

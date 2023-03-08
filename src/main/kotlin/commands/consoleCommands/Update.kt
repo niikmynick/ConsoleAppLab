@@ -1,7 +1,8 @@
 package commands.consoleCommands
 
-import basicClasses.SpaceMarine
-import utils.CollectionManager
+import collection.CollectionManager
+import commands.CommandReceiver
+import commands.utils.Validator
 import java.util.*
 
 /**
@@ -9,25 +10,25 @@ import java.util.*
  *
  * Update values of the element with the provided id
  *
- * @property collection
  * @constructor Create command Update
  */
-class Update(private val collection: TreeSet<SpaceMarine>) : Command() {
+class Update() : Command() {
+
+    private lateinit var commandReceiver: CommandReceiver
+    constructor(commandReceiver: CommandReceiver) : this() {
+        this.commandReceiver = commandReceiver
+    }
     override fun getInfo(): String {
         return "Updates values of the element with the provided id"
     }
 
     /**
-     * Calls [CollectionManager.update] with provided id equal to [argument]
-     * @param argument id of the element to update
-     * @param sc Given to [CollectionManager.update]
+     * Calls [CollectionManager.update] with provided id
      */
-    override fun execute(argument:String, sc: Scanner): String {
-        return try {
-            val id = argument.trim().toLong()
-            collection.update(id, sc)
-        } catch (e: Exception) {
-            e.message.toString()
+    override fun execute(args: List<String>) {
+        if (Validator.verify(args)) {
+            commandReceiver.updateByID(args[0])
         }
     }
+
 }

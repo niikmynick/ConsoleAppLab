@@ -1,8 +1,6 @@
 package commands
 
 import commands.consoleCommands.Command
-import exceptions.CommandNotFound
-import java.util.Scanner
 
 /**
  * Command invoker
@@ -12,18 +10,19 @@ import java.util.Scanner
  * @constructor Create Command invoker
  */
 class CommandInvoker {
-    private var list:Map<String, Command> = mapOf()
+    private var commandMap:Map<String, Command> = mapOf()
+    private var commandsHistory:Array<String> = arrayOf()
 
     /**
      * Register
      *
-     * Add commands to [list]
+     * Add commands to [commandMap]
      *
      * @param name Name of the command in its console representation
      * @param command A [Command] object
      */
     fun register(name: String, command: Command) {
-        list += name to command
+        commandMap += name to command
     }
 
     /**
@@ -33,24 +32,17 @@ class CommandInvoker {
      *
      * @param query A single line string split into command and argument
      */
-    fun executeCommand(query:String, sc:Scanner) {
-        when (query.split(" ").size) {
-            1 -> {
-                if (query in list) {
-                    print("${list[query]?.execute("", sc)}\n")
-                } else
-                    throw CommandNotFound("Command $query does not exist\n")
-
+    fun executeCommand(query: List<String>) {
+        try {
+            if (query.isNotEmpty()) {
+                commandsHistory += query[0]
+                val command: Command = commandMap[query[0]]!!
+                command.execute(query)
             }
-            2 -> {
-                if (query.split(" ")[0] in list) {
-                    val command = query.split(" ")[0]
-                    val argument = query.split(" ")[1]
-                    print("${list[command]?.execute(argument, sc)}\n")
-                } else
-                    throw CommandNotFound("Command ${query.split(" ")[0]} does not exist\n")
-            }
-            else -> println("Too much arguments. Try again: ")
+        } catch (e:IllegalStateException) {
+            println("Command ${query[0]} does not exist\n")
+        } catch (e:NullPointerException) {
+            println("Command ${query[0]} does not exist\n")
         }
     }
 
@@ -59,7 +51,7 @@ class CommandInvoker {
      *
      * @return
      */
-    fun getCommandsList() : Map<String, Command> {
-        return list
+    fun getCommandMap() : Map<String, Command> {
+        return commandMap
     }
 }

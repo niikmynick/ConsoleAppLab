@@ -1,9 +1,7 @@
 package commands.consoleCommands
 
-import basicClasses.SpaceMarine
-import exceptions.SpaceMarineNotFound
-import utils.Creator
-import java.util.*
+import commands.CommandReceiver
+import commands.utils.Validator
 
 /**
  * Remove any chapter
@@ -13,7 +11,12 @@ import java.util.*
  * @property collection
  * @constructor Create command Remove any chapter
  */
-class RemoveAnyChapter(private val collection: TreeSet<SpaceMarine>) : Command() {
+class RemoveAnyChapter() : Command() {
+
+    private lateinit var commandReceiver: CommandReceiver
+    constructor(commandReceiver: CommandReceiver) : this() {
+        this.commandReceiver = commandReceiver
+    }
     override fun getInfo(): String {
         return "Deletes an element with a provided chapter value"
     }
@@ -21,16 +24,10 @@ class RemoveAnyChapter(private val collection: TreeSet<SpaceMarine>) : Command()
     /**
      * Deletes first found Space Marine with a [basicClasses.Chapter] value equal to created
      * Prints whether a Space Marine was deleted or not
-     * @param sc Is given to creator
      */
-    override fun execute(argument:String, sc: Scanner): String {
-        val chapter = Creator.createChapter(sc)
-        val flag = collection.removeAnyElementWithChapter(chapter)
-
-        return if (flag)
-            "A Space Marine with Chapter == $chapter has been removed\n"
-        else
-            throw SpaceMarineNotFound("No element with chapter == $chapter was found\n")
+    override fun execute(args: List<String>) {
+        if (Validator.verify(args)) {
+            commandReceiver.removeByChapter()
+        }
     }
-
 }

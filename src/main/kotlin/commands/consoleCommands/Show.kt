@@ -1,18 +1,22 @@
 package commands.consoleCommands
 
-import basicClasses.SpaceMarine
-import utils.CollectionManager
-import java.util.*
+import collection.CollectionManager
+import commands.CommandReceiver
+import commands.utils.Validator
 
 /**
  * Show
  *
  * Prints all elements of the collection
  *
- * @property collection
  * @constructor Create command Show
  */
-class Show(private val collection: TreeSet<SpaceMarine>) : Command() {
+class Show() : Command() {
+
+    private lateinit var commandReceiver: CommandReceiver
+    constructor(commandReceiver: CommandReceiver) : this() {
+        this.commandReceiver = commandReceiver
+    }
     override fun getInfo(): String {
         return "Prints all elements of the collection"
     }
@@ -20,8 +24,10 @@ class Show(private val collection: TreeSet<SpaceMarine>) : Command() {
     /**
      * Calls [CollectionManager.show]
      */
-    override fun execute(argument:String, sc: Scanner): String {
-        return collection.show()
+    override fun execute(args: List<String>) {
+        if (Validator.verify(args)) {
+            commandReceiver.show()
+        }
     }
 
 }

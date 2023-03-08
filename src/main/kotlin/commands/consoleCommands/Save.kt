@@ -1,6 +1,8 @@
 package commands.consoleCommands
 
-import basicClasses.SpaceMarine
+import collection.CollectionManager
+import commands.CommandReceiver
+import commands.utils.Validator
 import utils.FileManager
 import java.util.*
 
@@ -8,25 +10,26 @@ import java.util.*
  * Save
  *
  * Saves collection data into a file
- * 
- * @property collection
- * @property filename
+ *
  * @constructor Create command Save
  */
-class Save(private val collection: TreeSet<SpaceMarine>, private val fileManager: FileManager) : Command() {
+class Save() : Command() {
+
+    private lateinit var commandReceiver: CommandReceiver
+    constructor(commandReceiver: CommandReceiver) : this() {
+        this.commandReceiver = commandReceiver
+    }
+
     override fun getInfo(): String {
         return "Сохраняет коллекцию в файл"
     }
 
     /**
-     * Saves collection into file provided in [filename]
+     * Saves collection into file provided in file
      */
-    override fun execute(argument:String, sc: Scanner): String {
-        val flag = fileManager.save(collection)
-        return if (flag) {
-            "Collection was saved successfully\n"
-        } else {
-            "Collection cannot be saved. An error occurred ...\n"
+    override fun execute(args: List<String>) {
+        if (Validator.verify(args)) {
+            commandReceiver.save(args[0])
         }
     }
 }

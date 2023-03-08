@@ -1,5 +1,7 @@
 package commands.consoleCommands
 
+import commands.CommandReceiver
+import java.util.Arrays
 import java.util.Scanner
 
 /**
@@ -8,7 +10,6 @@ import java.util.Scanner
  * @constructor Create empty Command
  */
 abstract class Command {
-
     /**
      * Get info
      *
@@ -19,8 +20,7 @@ abstract class Command {
     /**
      * Execute
      *
-     * @param argument
-     * @param sc
+     * @return
      */
-    abstract fun execute(argument:String, sc:Scanner): String
+    abstract fun execute(args: List<String>)
 }

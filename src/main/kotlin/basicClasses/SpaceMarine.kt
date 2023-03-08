@@ -120,7 +120,7 @@ data class SpaceMarine (
      *
      * @return loyalty
      */
-    fun getLoyal(): Boolean {
+    fun getLoyalty(): Boolean {
         return loyal
     }
 
@@ -138,7 +138,7 @@ data class SpaceMarine (
      *
      * @return weapon
      */
-    fun getMeleeWeapon(): MeleeWeapon {
+    fun getWeapon(): MeleeWeapon {
         return meleeWeapon
     }
 
@@ -180,7 +180,7 @@ data class SpaceMarine (
      *
      * @param boolean
      */
-    fun setLoyal(boolean: Boolean) {
+    fun setLoyalty(boolean: Boolean) {
         this.loyal = boolean
     }
 

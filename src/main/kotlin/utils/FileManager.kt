@@ -1,6 +1,7 @@
 package utils
 
 import basicClasses.SpaceMarine
+import collection.CollectionManager
 import com.charleskorn.kaml.Yaml
 import java.io.FileReader
 import java.util.*
@@ -32,8 +33,8 @@ class FileManager(p:Properties) {
                     collection.add(spaceMarine)
                 }
             }
-
             file.close()
+
             println("Loaded ${collection.size} elements successfully")
         } catch (e: Exception) {
             println(e.message)

@@ -1,31 +1,31 @@
 package commands.consoleCommands
 
-import utils.CollectionManager
-import utils.Creator
-import java.util.Scanner
+import commands.CommandReceiver
+import commands.utils.Validator
+
 
 /**
  * Add
  *
- * @property collection
  * @constructor Create empty Add
  */
-class Add (private val collection: CollectionManager) : Command() {
+class Add() : Command() {
+
+    private lateinit var commandReceiver: CommandReceiver
+    constructor(commandReceiver: CommandReceiver) : this() {
+        this.commandReceiver = commandReceiver
+    }
+
     override fun getInfo(): String {
         return "Adds a new element into the collection"
     }
+
     /**
      * Creates a Space Marine and adds it into the collection
-     * @param sc Is given to creator
      */
-    override fun execute(argument:String, sc:Scanner): String {
-        val spaceMarine = Creator.createSpaceMarine(sc)
-        val flag: Boolean = collection.add(spaceMarine)
-
-        return if (flag) {
-            "Space Marine ${spaceMarine.getName()} has been created and added to the list\n"
-        } else {
-            "Something went wrong ...\nSpace Marine ${spaceMarine.getName()} has not been added to the list\n"
+    override fun execute(args: List<String>) {
+        if (Validator.verify(args)) {
+            commandReceiver.add()
         }
     }
 }

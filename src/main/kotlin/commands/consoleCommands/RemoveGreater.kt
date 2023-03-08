@@ -1,7 +1,9 @@
 package commands.consoleCommands
 
-import basicClasses.SpaceMarine
 import exceptions.SpaceMarineNotFound
+import collection.CollectionManager
+import commands.CommandReceiver
+import commands.utils.Validator
 import java.util.*
 
 /**
@@ -12,30 +14,24 @@ import java.util.*
  * @property collection
  * @constructor Create command Remove greater
  */
-class RemoveGreater(private val collection: TreeSet<SpaceMarine>) : Command() {
+class RemoveGreater() : Command() {
+
+    private lateinit var commandReceiver: CommandReceiver
+    constructor(commandReceiver: CommandReceiver) : this() {
+        this.commandReceiver = commandReceiver
+    }
+
     override fun getInfo(): String {
         return "Deletes from collection all elements greater than provided"
     }
 
     /**
-     * Removes all elements greater than element with id equal to [argument]
+     * Removes all elements greater than element with id
      * Prints the amount of Space Marines deleted
-     * @param argument id of element to compare
      */
-    override fun execute(argument:String, sc: Scanner): String {
-        return try {
-            val id = argument.trim().toLong()
-
-            if (collection.getByID(id) == null)
-                throw SpaceMarineNotFound("No element with id == $id was found\n")
-
-            else {
-                val amount: Int = collection.removeGreater(collection.getByID(id)!!)
-
-                "$amount Space Marines have been deleted\n"
-            }
-        } catch (e: Exception) {
-            e.message.toString()
+    override fun execute(args: List<String>) {
+        if (Validator.verify(args)) {
+            commandReceiver.removeGreater(args[0])
         }
     }
 }

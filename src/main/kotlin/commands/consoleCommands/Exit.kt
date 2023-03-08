@@ -12,9 +12,11 @@ class Exit : Command() {
     override fun getInfo(): String {
         return "Exits the app (without saving data)"
     }
+
     /**
      * Closes program using [exitProcess] with status 0
      */
-    override fun execute(argument:String, sc: Scanner): String = "Finishing process ...\n"
-
+    override fun execute(args: List<String>) {
+        TODO("Not yet implemented")
+    }
 }

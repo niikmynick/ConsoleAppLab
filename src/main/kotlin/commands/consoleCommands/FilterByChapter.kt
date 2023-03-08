@@ -1,8 +1,7 @@
 package commands.consoleCommands
 
-import basicClasses.SpaceMarine
-import utils.Creator
-import java.util.*
+import commands.CommandReceiver
+import commands.utils.Validator
 
 /**
  * Filter by chapter
@@ -12,19 +11,23 @@ import java.util.*
  * @property collection
  * @constructor Create command Filter by chapter
  */
-class FilterByChapter(private val collection: TreeSet<SpaceMarine>) : Command() {
+class FilterByChapter() : Command() {
+
+    private lateinit var commandReceiver: CommandReceiver
+    constructor(commandReceiver: CommandReceiver) : this() {
+        this.commandReceiver = commandReceiver
+    }
+
     override fun getInfo(): String {
         return "Prints elements with the provided chapter"
     }
 
     /**
      * Creates a [basicClasses.Chapter] and prints all elements with such Chapter
-     * @param sc Is given to creator
      */
-    override fun execute(argument: String, sc: Scanner): String {
-        val chapter = Creator.createChapter(sc)
-
-        return collection.printByChapter(chapter)
+    override fun execute(args: List<String>) {
+        if (Validator.verify(args)) {
+            commandReceiver.filterByChapter()
+        }
     }
-
 }

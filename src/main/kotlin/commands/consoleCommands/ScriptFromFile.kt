@@ -1,6 +1,8 @@
 package commands.consoleCommands
 
 import commands.CommandInvoker
+import commands.CommandReceiver
+import commands.utils.Validator
 import java.io.FileReader
 import java.util.*
 
@@ -9,44 +11,25 @@ import java.util.*
  *
  * Reads and executes script from provided file (The script should have the same commands used in the interactive mode
  *
- * @property commandInvoker
  * @constructor Create command Script from file
  */
-class ScriptFromFile(private val commandInvoker: CommandInvoker): Command() {
+class ScriptFromFile(): Command() {
+
+    private lateinit var commandReceiver: CommandReceiver
+    constructor(commandReceiver: CommandReceiver) : this() {
+        this.commandReceiver = commandReceiver
+    }
     override fun getInfo(): String {
         return "Reads and executes script from provided file (The script should have the same commands used in the interactive mode)"
     }
 
     /**
-     * Runs script and redirects contents in script to [commandInvoker]
+     * Runs script
      */
-    override fun execute(argument:String, sc: Scanner): String {
-        try {
-            val file = FileReader(argument)
-            val commandsList = file.readText()
-            file.close()
-
-            val scanner = Scanner(commandsList)
-            var count = 0
-            while (scanner.hasNextLine()) {
-                val command: String = scanner.nextLine()
-                try {
-                    commandInvoker.executeCommand(command, scanner)
-                } catch (e:Exception){
-                    return e.message.toString()
-                }
-
-                count += 1
-            }
-            scanner.close()
-            return when (count) {
-                0 -> "The file does not contain commands\n"
-                1 -> "$count command has been executed\n"
-                else -> "$count commands have been executed\n"
-            }
-
-        } catch (e: Exception) {
-            return e.message.toString()
+    override fun execute(args: List<String>) {
+        if (Validator.verify(args)) {
+            commandReceiver.executeScript(args[0])
         }
     }
+
 }

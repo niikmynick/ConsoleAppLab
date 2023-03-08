@@ -1,7 +1,7 @@
 package commands.consoleCommands
 
-import basicClasses.SpaceMarine
-import utils.Creator
+import commands.CommandReceiver
+import commands.utils.Validator
 import java.util.*
 
 /**
@@ -12,7 +12,13 @@ import java.util.*
  * @property collection
  * @constructor Create command Add min
  */
-class AddMin(private val collection: TreeSet<SpaceMarine>) : Command() {
+class AddMin() : Command() {
+
+    private lateinit var commandReceiver: CommandReceiver
+    constructor(commandReceiver: CommandReceiver) : this() {
+        this.commandReceiver = commandReceiver
+    }
+
     override fun getInfo(): String {
         return "Adds a new element into the collection if its value is lower than the lowest element in the collection"
     }
@@ -22,14 +28,9 @@ class AddMin(private val collection: TreeSet<SpaceMarine>) : Command() {
      * Prints whether the Space Marine was added or not
      * @param sc Is given to creator
      */
-    override fun execute(argument:String, sc: Scanner): String {
-        val spaceMarine = Creator.createSpaceMarine(sc)
-        val flag:Boolean = collection.addMin(spaceMarine)
-
-        return if (flag) {
-            "Space Marine ${spaceMarine.getName()} has been added to the list\n"
-        } else {
-            ("Something went wrong ...\nSpace Marine ${spaceMarine.getName()} has not been added to the list\n")
+    override fun execute(args: List<String>) {
+        if (Validator.verify(args)) {
+            commandReceiver.addMin()
         }
     }
 }

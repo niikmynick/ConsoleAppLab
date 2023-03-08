@@ -1,7 +1,8 @@
 package commands.consoleCommands
 
-import basicClasses.SpaceMarine
-import utils.CollectionManager
+import collection.CollectionManager
+import commands.CommandReceiver
+import commands.utils.Validator
 import java.util.*
 
 /**
@@ -12,7 +13,12 @@ import java.util.*
  * @property collection
  * @constructor Create command Info
  */
-class Info(private val collection: TreeSet<SpaceMarine>) : Command() {
+class Info() : Command() {
+
+    private lateinit var commandReceiver: CommandReceiver
+    constructor(commandReceiver: CommandReceiver) : this() {
+        this.commandReceiver = commandReceiver
+    }
     override fun getInfo(): String {
         return "Prints info about the collection (type, creation date, amount of elements)"
     }
@@ -20,8 +26,9 @@ class Info(private val collection: TreeSet<SpaceMarine>) : Command() {
     /**
      * Calls and prints [CollectionManager.info]
      */
-    override fun execute(argument:String, sc: Scanner): String {
-        return collection.info()
+    override fun execute(args: List<String>) {
+        if (Validator.verify(args)) {
+            commandReceiver.info()
+        }
     }
-
 }

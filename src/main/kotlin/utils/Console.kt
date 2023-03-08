@@ -1,8 +1,10 @@
 package utils
 
+import collection.CollectionManager
 import commands.CommandInvoker
+import commands.CommandReceiver
 import commands.consoleCommands.*
-import java.io.File
+import java.io.IOException
 import java.util.Scanner
 
 /**
@@ -14,58 +16,47 @@ import java.util.Scanner
  * @property scanner Set to [System.in]
  */
 class Console {
-    companion object {
-        private var countOfInstances = 0
-    }
-
-    init {
-        countOfInstances++
-        File("collection$countOfInstances.yaml").createNewFile()
-        System.setProperty("COLLECTION_FILENAME","collection$countOfInstances.yaml")
-    }
-
     private val properties = System.getProperties()
-    private val commandInvoker = CommandInvoker()
     private val fileManager = FileManager(properties)
-    val collection = CollectionManager().getCollection()
+    private val commandInvoker = CommandInvoker()
+    private val collectionManager = CollectionManager()
+    private val commandReceiver = CommandReceiver(commandInvoker, collectionManager)
     val scanner = Scanner(System.`in`)
 
     /**
      * Registers commands and waits for user prompt
      */
     fun initialize() {
-        commandInvoker.register("info", Info(collection))
-        commandInvoker.register("show", Show(collection))
-        commandInvoker.register("add", Add(collection))
-        commandInvoker.register("update_id", Update(collection))
-        commandInvoker.register("remove_by_id", RemoveID(collection))
-        commandInvoker.register("clear", Clear(collection))
-        commandInvoker.register("save", Save(collection, fileManager))
-        commandInvoker.register("execute_script", ScriptFromFile(commandInvoker))
+        commandInvoker.register("info", Info(commandReceiver))
+        commandInvoker.register("show", Show(commandReceiver))
+        commandInvoker.register("add", Add(commandReceiver))
+        commandInvoker.register("update_id", Update(commandReceiver))
+        commandInvoker.register("remove_by_id", RemoveID(commandReceiver))
+        commandInvoker.register("clear", Clear(commandReceiver))
+        commandInvoker.register("save", Save(commandReceiver))
+        commandInvoker.register("execute_script", ScriptFromFile(commandReceiver))
         commandInvoker.register("exit", Exit())
-        commandInvoker.register("add_if_min", AddMin(collection))
-        commandInvoker.register("remove_greater", RemoveGreater(collection))
-        commandInvoker.register("remove_lower", RemoveLower(collection))
-        commandInvoker.register("remove_any_by_chapter", RemoveAnyChapter(collection))
-        commandInvoker.register("count_by_melee_weapon", CountByMeleeWeapon(collection))
-        commandInvoker.register("filter_by_chapter", FilterByChapter(collection))
+        commandInvoker.register("add_if_min", AddMin(commandReceiver))
+        commandInvoker.register("remove_greater", RemoveGreater(commandReceiver))
+        commandInvoker.register("remove_lower", RemoveLower(commandReceiver))
+        commandInvoker.register("remove_any_by_chapter", RemoveAnyChapter(commandReceiver))
+        commandInvoker.register("count_by_melee_weapon", CountByMeleeWeapon(commandReceiver))
+        commandInvoker.register("filter_by_chapter", FilterByChapter(commandReceiver))
 
-        commandInvoker.register("help", Help(commandInvoker.getCommandsList()))
+        commandInvoker.register("help", Help(commandReceiver))
 
-        fileManager.load(collection)
+        fileManager.load(collectionManager.getCollection())
     }
-    fun startInteractiveMode() {
+    fun startInteractiveMode(){
         println("Waiting for user prompt ...")
-        var command:String
-        do {
-            print("$ ")
-            command = readln().trim().lowercase()
             try {
-                commandInvoker.executeCommand(command, scanner)
-            } catch (e:Exception) {
+                print("$ ")
+                while (scanner.hasNextLine()) {
+                    commandInvoker.executeCommand(scanner.nextLine().trim().split(" "))
+                    print("$ ")
+                }
+            } catch (e:IOException) {
                 println(e.message.toString())
             }
-
-        } while (command != "exit")
     }
 }

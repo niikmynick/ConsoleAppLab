@@ -1,6 +1,8 @@
 package commands.consoleCommands
 
-import basicClasses.SpaceMarine
+import collection.CollectionManager
+import commands.CommandReceiver
+import commands.utils.Validator
 import java.util.*
 
 /**
@@ -11,21 +13,24 @@ import java.util.*
  * @property collection
  * @constructor Create command remove_id
  */
-class RemoveID(private val collection: TreeSet<SpaceMarine>) : Command() {
+class RemoveID() : Command() {
+
+    private lateinit var commandReceiver: CommandReceiver
+    constructor(commandReceiver: CommandReceiver) : this() {
+        this.commandReceiver = commandReceiver
+    }
     override fun getInfo(): String {
         return "Deletes the element with the provided id"
     }
 
     /**
      * Deletes element with id equal to provided in argument
-     * @param argument id of the element to delete
      */
-    override fun execute(argument:String, sc: Scanner): String {
-        return try {
-            val id = argument.trim().toLong()
-            collection.removeID(id)
-        } catch (e: Exception) {
-            e.message.toString()
+    override fun execute(args: List<String>) {
+        if (Validator.verify(args)) {
+            commandReceiver.removeByID(args[0])
         }
     }
+
+
 }
