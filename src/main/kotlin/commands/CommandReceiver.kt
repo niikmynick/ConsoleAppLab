@@ -25,7 +25,7 @@ class CommandReceiver() {
     fun help(args:List<String>) {
         val list = commandInvoker.getCommandMap()
         when (args.size) {
-            0 -> {
+            1 -> {
                 println("Help is available for the following commands:")
                 for (key in list.keys) {
                     println("- ${key.uppercase()}")
@@ -33,11 +33,11 @@ class CommandReceiver() {
                 println("For information on a command, type HELP {command name}")
                 println("To get information about each available command, type HELP ALL")
             }
-            1 -> {
-                if (args[0].lowercase() == "all") {
-                    commandInvoker.getCommandMap().forEach { (name: String?, command: Command) -> println(command.getInfo()) }
+            2 -> {
+                if (args[1].lowercase() == "all") {
+                    commandInvoker.getCommandMap().forEach { (name: String?, command: Command) -> println(name + " - "+ command.getInfo()) }
                 } else {
-                    println(list[args[0].lowercase()]?.getInfo().toString())
+                    println(list[args[1].lowercase()]?.getInfo().toString())
                 }
             }
             else -> println("Too much arguments")
