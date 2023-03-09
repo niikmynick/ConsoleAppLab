@@ -3,6 +3,7 @@ package collection
 import basicClasses.Chapter
 import basicClasses.SpaceMarine
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 /**
@@ -26,20 +27,22 @@ class CollectionManager {
      * Creates a formatted string with info about collection
      * @return Formatted string with size and [date] values
      */
-    fun printInfo() {
-        println("Tree Set of SpaceMarine: size=${collection.size}, date=${date}")
+    fun getInfo() : String {
+        return "Tree Set of SpaceMarine: size=${collection.size}, date=${date}"
     }
 
     /**
      * Prints all elements of the collection
      */
-    fun show() {
+    fun show(): MutableList<String> {
         if (collection.isEmpty()) {
-            println("Collection is empty")
+            return mutableListOf("Collection is empty")
         } else {
+            val output = mutableListOf<String>()
             for (spaceMarine in collection) {
-                println(spaceMarine)
+                output.add(spaceMarine.toString())
             }
+            return output
         }
     }
 
@@ -86,12 +89,15 @@ class CollectionManager {
      * Prints all elements with provided [Chapter]
      * @param chapter Chapter searched in elements of collection
      */
-    fun filterByChapter(chapter: Chapter) {
+    fun filterByChapter(chapter: Chapter): MutableList<String> {
+        val result = mutableListOf<String>()
+
         for (spaceMarine in collection) {
             if (spaceMarine.getChapter() == chapter) {
-                println(spaceMarine)
+                result.add(spaceMarine.toString())
             }
         }
+        return result
     }
 
 }

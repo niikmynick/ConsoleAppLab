@@ -20,7 +20,8 @@ class Console {
     private val fileManager = FileManager(properties)
     private val commandInvoker = CommandInvoker()
     private val collectionManager = CollectionManager()
-    private val commandReceiver = CommandReceiver(commandInvoker, collectionManager)
+    private val outputManager = OutputManager(System.out)
+    private val commandReceiver = CommandReceiver(commandInvoker, collectionManager, outputManager)
     val scanner = Scanner(System.`in`)
 
     /**
@@ -35,7 +36,7 @@ class Console {
         commandInvoker.register("clear", Clear(commandReceiver))
         commandInvoker.register("save", Save(commandReceiver))
         commandInvoker.register("execute_script", ScriptFromFile(commandReceiver))
-        commandInvoker.register("exit", Exit())
+        commandInvoker.register("exit", Exit(commandReceiver))
         commandInvoker.register("add_if_min", AddMin(commandReceiver))
         commandInvoker.register("remove_greater", RemoveGreater(commandReceiver))
         commandInvoker.register("remove_lower", RemoveLower(commandReceiver))
@@ -47,16 +48,19 @@ class Console {
 
         fileManager.load(collectionManager.getCollection())
     }
-    fun startInteractiveMode(){
+    fun startInteractiveMode() {
+        var executeFlag:Boolean? = true
         println("Waiting for user prompt ...")
+
+        do {
+            print("$ ")
             try {
-                print("$ ")
-                while (scanner.hasNextLine()) {
-                    commandInvoker.executeCommand(scanner.nextLine().trim().split(" "))
-                    print("$ ")
-                }
+                val query = scanner.nextLine().trim().split(" ")
+                commandInvoker.executeCommand(query)
+                executeFlag = commandInvoker.getCommandMap()[query[0]]?.getExecutionFlag()
             } catch (e:IOException) {
-                println(e.message.toString())
+                println(e.message)
             }
+        } while (executeFlag != false)
     }
 }

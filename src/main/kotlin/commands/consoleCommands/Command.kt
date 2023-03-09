@@ -10,6 +10,15 @@ import java.util.Scanner
  * @constructor Create empty Command
  */
 abstract class Command {
+    private var executionFlag = true
+    fun setFlag(flag:Boolean) {
+        this.executionFlag = flag
+    }
+
+    fun getExecutionFlag(): Boolean {
+        return executionFlag
+    }
+
     /**
      * Get info
      *

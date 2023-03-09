@@ -8,6 +8,7 @@ import commands.utils.Creator
 import commands.utils.Saver
 import commands.utils.Validator
 import commands.utils.readers.EnumReader
+import utils.OutputManager
 import java.io.BufferedReader
 import java.io.FileNotFoundException
 import java.io.FileReader
@@ -17,9 +18,11 @@ class CommandReceiver() {
 
     private lateinit var commandInvoker: CommandInvoker
     private lateinit var collectionManager: CollectionManager
-    constructor(commandInvoker: CommandInvoker, collectionManager: CollectionManager) : this() {
+    private lateinit var outputManager: OutputManager
+    constructor(commandInvoker: CommandInvoker, collectionManager: CollectionManager, outputManager: OutputManager) : this() {
         this.commandInvoker = commandInvoker
         this.collectionManager = collectionManager
+        this.outputManager = outputManager
     }
 
     private var filesList:MutableList<String> = mutableListOf()
@@ -28,35 +31,37 @@ class CommandReceiver() {
         val list = commandInvoker.getCommandMap()
         when (args.size) {
             1 -> {
-                println("Help is available for the following commands:")
+                outputManager.println("Help is available for the following commands:")
                 for (key in list.keys) {
-                    println("- ${key.uppercase()}")
+                    outputManager.println("- ${key.uppercase()}")
                 }
-                println("For information on a command, type HELP {command name}")
-                println("To get information about each available command, type HELP ALL")
+                outputManager.println("For information on a command, type HELP {command name}")
+                outputManager.println("To get information about each available command, type HELP ALL")
             }
             2 -> {
                 if (args[1].lowercase() == "all") {
-                    commandInvoker.getCommandMap().forEach { (name: String?, command: Command) -> println(name + " - "+ command.getInfo()) }
+                    commandInvoker.getCommandMap().forEach { (name: String?, command: Command) -> outputManager.println(name + " - "+ command.getInfo()) }
                 } else {
-                    println(list[args[1].lowercase()]?.getInfo().toString())
+                    outputManager.println(list[args[1].lowercase()]?.getInfo().toString())
                 }
             }
         }
     }
 
     fun info() {
-        collectionManager.printInfo()
+        outputManager.println(collectionManager.getInfo())
     }
 
     fun show() {
-        collectionManager.show()
+        for (i in collectionManager.show()) {
+            outputManager.println(i)
+        }
     }
 
     fun add() {
         val spaceMarine = Creator.createSpaceMarine()
         collectionManager.add(spaceMarine)
-        println("Space Marine ${spaceMarine.getName()} has been created and added to the collection")
+        outputManager.println("Space Marine ${spaceMarine.getName()} has been created and added to the collection")
     }
 
     fun updateByID(id:String) {
@@ -67,11 +72,11 @@ class CommandReceiver() {
             if (oldSpaceMarine != null) {
                 collectionManager.update(oldSpaceMarine, newSpaceMarine)
             } else {
-                println("Space Marine with id == $id do not exist")
+                outputManager.println("Space Marine with id == $id do not exist")
             }
 
         } catch (e: NumberFormatException) {
-            println("Invalid argument entered")
+            outputManager.println("Invalid argument entered")
         }
     }
 
@@ -81,22 +86,22 @@ class CommandReceiver() {
 
             if (spaceMarine != null) {
                 collectionManager.remove(spaceMarine)
-                println("Space Marine ${spaceMarine.getName()} has been deleted")
+                outputManager.println("Space Marine ${spaceMarine.getName()} has been deleted")
             } else {
-                println("Space Marine with id == $id do not exist")
+                outputManager.println("Space Marine with id == $id do not exist")
             }
 
         } catch (e: NumberFormatException) {
-            println("Invalid argument entered")
+            outputManager.println("Invalid argument entered")
         }
     }
 
     fun clear() {
         if (collectionManager.getCollection().size > 0) {
             collectionManager.clear()
-            println("Collection has been cleared")
+            outputManager.println("Collection has been cleared")
         } else {
-            println("The collection is already empty")
+            outputManager.println("The collection is already empty")
         }
     }
 
@@ -104,15 +109,17 @@ class CommandReceiver() {
         try {
             val collection = collectionManager.getCollection()
             Saver().save(filepath, collection)
-            println("Collection was saved successfully")
+            outputManager.println("Collection was saved successfully")
         } catch (e:Exception) {
-            TODO()
+            outputManager.println(e.toString())
         }
     }
 
     fun executeScript(filepath: String) {
+        outputManager.silentMode()
         try {
             filesList.add(filepath)
+
             val file = BufferedReader(FileReader(filepath))
 
             var line = file.readLine()
@@ -170,24 +177,23 @@ class CommandReceiver() {
             }
 
             file.close()
+            outputManager.enableOutput()
 
             when (count) {
-                0 -> println("The file does not contain commands")
-                1 -> println("1 command has been executed")
-                else -> println("$count commands have been executed")
+                0 -> outputManager.println("The file does not contain commands")
+                1 -> outputManager.println("1 command has been executed")
+                else -> outputManager.println("$count commands have been executed")
             }
 
-        } catch (e:FileNotFoundException) {
-            e.printStackTrace()
-        } catch (e:IOException) {
-            e.printStackTrace()
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
+            filesList.clear()
 
-    fun exit() {
-        TODO()
+        } catch (e:FileNotFoundException) {
+            outputManager.println(e.toString())
+        } catch (e:IOException) {
+            outputManager.println(e.toString())
+        } catch (e: Exception) {
+            outputManager.println(e.toString())
+        }
     }
 
     fun addMin() {
@@ -195,9 +201,9 @@ class CommandReceiver() {
 
         if (spaceMarine < collectionManager.getCollection().first()) {
             collectionManager.add(spaceMarine)
-            println("Space Marine ${spaceMarine.getName()} has been created and added to the collection")
+            outputManager.println("Space Marine ${spaceMarine.getName()} has been created and added to the collection")
         } else {
-            println("Space Marine ${spaceMarine.getName()} has not been added to the collection")
+            outputManager.println("Space Marine ${spaceMarine.getName()} has not been added to the collection")
         }
     }
 
@@ -211,7 +217,7 @@ class CommandReceiver() {
         var count = 0
 
         if (spaceMarine == null)
-            println("Space Marine with id == $id do not exist")
+            outputManager.println("Space Marine with id == $id do not exist")
         else {
             while (collection.isNotEmpty()) {
                 if (collection.last() > spaceMarine) {
@@ -219,7 +225,7 @@ class CommandReceiver() {
                     count++
                 }
             }
-            println("$count Space Marines have been deleted")
+            outputManager.println("$count Space Marines have been deleted")
         }
     }
 
@@ -233,7 +239,7 @@ class CommandReceiver() {
         var count = 0
 
         if (spaceMarine == null)
-            println("Space Marine with id == $id do not exist")
+            outputManager.println("Space Marine with id == $id do not exist")
         else {
             while (collection.isNotEmpty()) {
                 if (collection.last() < spaceMarine) {
@@ -241,7 +247,7 @@ class CommandReceiver() {
                     count++
                 }
             }
-            println("$count Space Marines have been deleted")
+            outputManager.println("$count Space Marines have been deleted")
         }
     }
 
@@ -256,13 +262,13 @@ class CommandReceiver() {
         for (spaceMarine in collection) {
             if (spaceMarine.getChapter() == chapter) {
                 collectionManager.remove(spaceMarine)
-                println("A Space Marine with Chapter == $chapter has been removed")
+                outputManager.println("A Space Marine with Chapter == $chapter has been removed")
                 break
             }
         }
 
         if (!flag) {
-            println("No Space Marine with chapter == $chapter was found")
+            outputManager.println("No Space Marine with chapter == $chapter was found")
         }
     }
 
@@ -278,17 +284,19 @@ class CommandReceiver() {
                 }
             }
             when (count) {
-                0 -> println("No MeleeWeapon named $weapon was found")
-                1 -> println("Only 1 Space Marine with weapon $weapon found")
-                else -> println("$count Space Marines with weapon $weapon found")
+                0 -> outputManager.println("No MeleeWeapon named $weapon was found")
+                1 -> outputManager.println("Only 1 Space Marine with weapon $weapon found")
+                else -> outputManager.println("$count Space Marines with weapon $weapon found")
             }
         } else {
-            println("The collection is empty")
+            outputManager.println("The collection is empty")
         }
     }
 
     fun filterByChapter() {
         val chapter = Creator.createChapter()
-        collectionManager.filterByChapter(chapter)
+        for (i in collectionManager.filterByChapter(chapter)) {
+            outputManager.println(i)
+        }
     }
 }
