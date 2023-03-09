@@ -34,20 +34,22 @@ data class SpaceMarine (
     private var health: Float?, //Поле может быть null, Значение поля должно быть больше 0
     private var loyal: Boolean,
     private var category: AstartesCategory, //Поле не может быть null
-    private var meleeWeapon: MeleeWeapon, //Поле может быть null
-    private var chapter: Chapter //Поле может быть null
+    private var meleeWeapon: MeleeWeapon?, //Поле может быть null
+    private var chapter: Chapter? //Поле может быть null
 
     ) : Comparable<SpaceMarine>{
     /**
-     * @constructor Creates SpaceMarine with user given parameters. Used in [utils.Creator]
+     * @constructor Creates SpaceMarine with user given parameters.
      */
-    constructor(name: String,
-                coordinates: Coordinates,
-                health: Float?,
-                loyal: Boolean,
-                category: AstartesCategory,
-                meleeWeapon: MeleeWeapon,
-                chapter: Chapter) : this((UUID.randomUUID().mostSignificantBits and Long.MAX_VALUE), name, coordinates, LocalDate.now().toString(),health, loyal, category, meleeWeapon, chapter)
+    constructor (
+        name: String,
+        coordinates: Coordinates,
+        health: Float?,
+        loyal: Boolean,
+        category: AstartesCategory,
+        meleeWeapon: MeleeWeapon?,
+        chapter: Chapter?
+    ) : this((UUID.randomUUID().mostSignificantBits and Long.MAX_VALUE), name, coordinates, LocalDate.now().toString(),health, loyal, category, meleeWeapon, chapter)
 
     /**
      * @constructor Creates SpaceMarine with default parameters
@@ -138,7 +140,7 @@ data class SpaceMarine (
      *
      * @return weapon
      */
-    fun getWeapon(): MeleeWeapon {
+    fun getWeapon(): MeleeWeapon? {
         return meleeWeapon
     }
 
@@ -147,7 +149,7 @@ data class SpaceMarine (
      *
      * @return chapter
      */
-    fun getChapter(): Chapter {
+    fun getChapter(): Chapter? {
         return chapter
     }
     /**
@@ -170,9 +172,6 @@ data class SpaceMarine (
      */
     fun setHealth(health: Float?) {
         this.health = health
-    }
-    fun setHealth(float: Float) {
-        this.health = float
     }
 
     /**
@@ -198,7 +197,7 @@ data class SpaceMarine (
      *
      * @param meleeWeapon
      */
-    fun setMeleeWeapon(meleeWeapon: MeleeWeapon) {
+    fun setMeleeWeapon(meleeWeapon: MeleeWeapon?) {
         this.meleeWeapon = meleeWeapon
     }
 
@@ -207,7 +206,7 @@ data class SpaceMarine (
      *
      * @param chapter
      */
-    fun setChapter(chapter: Chapter) {
+    fun setChapter(chapter: Chapter?) {
         this.chapter = chapter
     }
 }

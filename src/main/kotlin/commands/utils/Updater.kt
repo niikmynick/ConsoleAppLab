@@ -22,7 +22,7 @@ class Updater {
             print("Enter name of the Chapter (press enter to save existing parameter): ")
             val name:String = sc.nextLine()
             if (name.isNotEmpty()) {
-                element.getChapter().setName(name.trim())
+                element.getChapter()?.setName(name.trim())
             }
 
             print("Enter amount of Space Marines (press enter to save existing parameter): ")
@@ -43,7 +43,7 @@ class Updater {
             } while (marinecount == null)
 
             if (marinecount.isNotEmpty()) {
-                element.getChapter().setMarinesCount(marinecount.trim().toLong())
+                element.getChapter()?.setMarinesCount(marinecount.trim().toLong())
             }
 
         }

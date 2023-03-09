@@ -24,7 +24,7 @@ class Add() : Command() {
      * Creates a Space Marine and adds it into the collection
      */
     override fun execute(args: List<String>) {
-        if (Validator.verify(args)) {
+        if (Validator.verifyArgs(args)) {
             commandReceiver.add()
         }
     }

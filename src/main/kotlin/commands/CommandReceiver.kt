@@ -3,15 +3,15 @@ package commands
 import basicClasses.Chapter
 import basicClasses.MeleeWeapon
 import collection.CollectionManager
-import collection.utils.ExistenceChecker
 import commands.consoleCommands.Command
 import commands.utils.Creator
 import commands.utils.Saver
+import commands.utils.Validator
 import commands.utils.readers.EnumReader
-import commands.utils.readers.WeaponReader
-import exceptions.SpaceMarineNotFound
+import java.io.BufferedReader
+import java.io.FileNotFoundException
 import java.io.FileReader
-import java.util.*
+import java.io.IOException
 
 class CommandReceiver() {
 
@@ -21,6 +21,8 @@ class CommandReceiver() {
         this.commandInvoker = commandInvoker
         this.collectionManager = collectionManager
     }
+
+    private var filesList:MutableList<String> = mutableListOf()
 
     fun help(args:List<String>) {
         val list = commandInvoker.getCommandMap()
@@ -40,7 +42,6 @@ class CommandReceiver() {
                     println(list[args[1].lowercase()]?.getInfo().toString())
                 }
             }
-            else -> println("Too much arguments")
         }
     }
 
@@ -111,24 +112,64 @@ class CommandReceiver() {
 
     fun executeScript(filepath: String) {
         try {
-            var scriptsList = listOf<String>(filepath)
+            filesList.add(filepath)
+            val file = BufferedReader(FileReader(filepath))
 
-            val file = FileReader(filepath)
-            val commandsList:List<String> = file.readLines()
-            file.close()
-
+            var line = file.readLine()
             var count = 0
 
-            for (line in commandsList) {
+            while (line != null) {
                 val query: List<String> = line.trim().lowercase().split(" ")
-                if ((query[0] == "execute_script") && (query[1] in scriptsList)) {
-                    println("Command $line can cause a recursive call so process was stopped")
-                    break
+
+                if ((query[0] == "add") || (query[0] == "update")) {
+                    val parameters = ArrayList<String>()
+
+                    for (i in 0..8) {
+                        line = file.readLine()
+                        if (line != null) {
+                            parameters.add(line.trim())
+                        } else {
+                            println("You need to enter value")
+                            break
+                        }
+                    }
+
+                    if (Validator.verifyArray(parameters)) {
+                        val newSpaceMarine = Creator.createScriptMarine(parameters)
+
+                        if (query[0] == "add") {
+                            collectionManager.add(newSpaceMarine)
+                            count += 1
+                        } else {
+                            val oldSpaceMarine = collectionManager.getByID(query[1].toLong())
+
+                            if (oldSpaceMarine != null) {
+                                collectionManager.update(oldSpaceMarine, newSpaceMarine)
+                                count += 1
+                            }
+                        }
+                    } else {
+                        println("Entered parameters are incorrect")
+                    }
+
+                } else if (query[0] == "execute_script") {
+                    if (query[1] in filesList) {
+                        println("Command '$line' can cause a recursive call so process was stopped")
+                        break
+                    } else {
+                        commandInvoker.executeCommand(query)
+                        filesList += query[1]
+                        count += 1
+                    }
                 } else {
                     commandInvoker.executeCommand(query)
                     count += 1
                 }
+
+                line = file.readLine()
             }
+
+            file.close()
 
             when (count) {
                 0 -> println("The file does not contain commands")
@@ -136,8 +177,12 @@ class CommandReceiver() {
                 else -> println("$count commands have been executed")
             }
 
+        } catch (e:FileNotFoundException) {
+            e.printStackTrace()
+        } catch (e:IOException) {
+            e.printStackTrace()
         } catch (e: Exception) {
-            println(e.message.toString())
+            e.printStackTrace()
         }
     }
 
@@ -222,7 +267,7 @@ class CommandReceiver() {
     }
 
     fun countByWeapon() {
-        val weapon = WeaponReader.read()
+        val weapon = EnumReader.read<MeleeWeapon>("Enter Weapon category from the list: ", true)
         val collection = collectionManager.getCollection()
         var count = 0
 
@@ -233,7 +278,7 @@ class CommandReceiver() {
                 }
             }
             when (count) {
-                0 -> println("No MeleeWeapon named ${weapon.name} was found\n")
+                0 -> println("No MeleeWeapon named $weapon was found")
                 1 -> println("Only 1 Space Marine with weapon $weapon found")
                 else -> println("$count Space Marines with weapon $weapon found")
             }

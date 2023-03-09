@@ -26,7 +26,7 @@ class RemoveAnyChapter() : Command() {
      * Prints whether a Space Marine was deleted or not
      */
     override fun execute(args: List<String>) {
-        if (Validator.verify(args)) {
+        if (Validator.verifyArgs(args)) {
             commandReceiver.removeByChapter()
         }
     }

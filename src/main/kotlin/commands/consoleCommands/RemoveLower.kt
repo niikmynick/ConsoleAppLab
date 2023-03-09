@@ -1,10 +1,7 @@
 package commands.consoleCommands
 
-import exceptions.SpaceMarineNotFound
-import collection.CollectionManager
 import commands.CommandReceiver
 import commands.utils.Validator
-import java.util.*
 
 /**
  * Remove lower
@@ -30,8 +27,8 @@ class RemoveLower() : Command() {
      * Prints the amount of Space Marines deleted
      */
     override fun execute(args: List<String>) {
-        if (Validator.verify(args)) {
-            commandReceiver.removeLower(args[0])
+        if (Validator.verifyArgs(args)) {
+            commandReceiver.removeLower(args[1])
         }
     }
 }

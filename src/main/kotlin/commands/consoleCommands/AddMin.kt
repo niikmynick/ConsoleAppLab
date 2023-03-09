@@ -29,7 +29,7 @@ class AddMin() : Command() {
      * @param sc Is given to creator
      */
     override fun execute(args: List<String>) {
-        if (Validator.verify(args)) {
+        if (Validator.verifyArgs(args)) {
             commandReceiver.addMin()
         }
     }

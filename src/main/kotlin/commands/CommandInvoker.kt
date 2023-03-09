@@ -40,9 +40,9 @@ class CommandInvoker {
                 command.execute(query)
             }
         } catch (e:IllegalStateException) {
-            println("Command ${query[0]} does not exist\n")
+            println("Command ${query[0]} does not exist")
         } catch (e:NullPointerException) {
-            println("Command ${query[0]} does not exist\n")
+            println("Command ${query[0]} does not exist")
         }
     }
 

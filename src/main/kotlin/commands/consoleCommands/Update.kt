@@ -3,7 +3,6 @@ package commands.consoleCommands
 import collection.CollectionManager
 import commands.CommandReceiver
 import commands.utils.Validator
-import java.util.*
 
 /**
  * Update
@@ -26,8 +25,8 @@ class Update() : Command() {
      * Calls [CollectionManager.update] with provided id
      */
     override fun execute(args: List<String>) {
-        if (Validator.verify(args)) {
-            commandReceiver.updateByID(args[0])
+        if (Validator.verifyArgs(args)) {
+            commandReceiver.updateByID(args[1])
         }
     }
 
