@@ -11,20 +11,25 @@ class LongReader {
         fun read(message: String, a:Long, b:Long): Long {
             val scanner = Scanner(System.`in`)
             println(message)
-
-            var value:Long = scanner.nextLine().trim().toLong()
+            var value: Long = 0
 
             while (value !in a..b) {
-                if (value <= 0) {
-                    println("This field cannot be lower than zero")
-                }
-                if (value > 1000) {
-                    println("This field cannot be larger than 1000")
-                }
+                try {
+                    value = scanner.nextLine().trim().toLong()
 
-                value = scanner.nextLine().trim().toLong()
+                    if (value <= a) {
+                        println("This field cannot be lower than $a")
+                    }
+                    if (value > b) {
+                        println("This field cannot be larger than $b")
+                    }
+
+                    value = scanner.nextLine().trim().toLong()
+                } catch (e: Exception) {
+                    println("This value should be Long-type")
+                    continue
+                }
             }
-
             return value
         }
     }

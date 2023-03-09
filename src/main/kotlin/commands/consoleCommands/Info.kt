@@ -27,7 +27,7 @@ class Info() : Command() {
      * Calls and prints [CollectionManager.info]
      */
     override fun execute(args: List<String>) {
-        if (Validator.verifyArgs(args)) {
+        if (Validator.verifyNoArgs(args)) {
             commandReceiver.info()
         }
     }

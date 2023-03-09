@@ -25,7 +25,7 @@ class Show() : Command() {
      * Calls [CollectionManager.show]
      */
     override fun execute(args: List<String>) {
-        if (Validator.verifyArgs(args)) {
+        if (Validator.verifyNoArgs(args)) {
             commandReceiver.show()
         }
     }

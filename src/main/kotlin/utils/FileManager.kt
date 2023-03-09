@@ -13,9 +13,6 @@ import java.util.*
 class FileManager(p:Properties) {
 
     private val collectionFileName = p.getProperty("COLLECTION_FILENAME")
-    fun getFilename() : String {
-        return collectionFileName
-    }
 
     /**
      * Reads data from the file provided in [collectionFileName] and adds objects to [collection]
@@ -41,10 +38,6 @@ class FileManager(p:Properties) {
         }
 
 
-    }
-
-    fun save(collection: CollectionManager) : Boolean{
-        TODO()
     }
 
 }

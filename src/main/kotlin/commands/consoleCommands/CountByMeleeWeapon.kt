@@ -25,7 +25,7 @@ class CountByMeleeWeapon() : Command() {
      * Prints the amount of Space Marines with the provided weapon
      */
     override fun execute(args: List<String>) {
-        if (Validator.verifyArgs(args)) {
+        if (Validator.verifyNoArgs(args)) {
             commandReceiver.countByWeapon()
         }
     }

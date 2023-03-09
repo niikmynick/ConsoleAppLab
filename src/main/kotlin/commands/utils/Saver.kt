@@ -14,7 +14,11 @@ class Saver {
      */
     fun save(filename: String, collection: TreeSet<SpaceMarine>) {
         try {
-            val file = FileOutputStream(filename)
+            val file = if (filename == "") {
+                FileOutputStream(System.getProperty("COLLECTION_FILENAME"))
+            } else {
+                FileOutputStream(filename)
+            }
 
             val output = OutputStreamWriter(file)
             for (element in collection) {

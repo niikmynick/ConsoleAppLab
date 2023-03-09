@@ -25,7 +25,7 @@ class RemoveID() : Command() {
      * Deletes element with id equal to provided in argument
      */
     override fun execute(args: List<String>) {
-        if (Validator.verifyArgs(args)) {
+        if (Validator.verifyNoArgs(args)) {
             commandReceiver.removeByID(args[1])
         }
     }

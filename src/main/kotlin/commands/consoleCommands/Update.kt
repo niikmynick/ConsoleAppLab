@@ -25,7 +25,7 @@ class Update() : Command() {
      * Calls [CollectionManager.update] with provided id
      */
     override fun execute(args: List<String>) {
-        if (Validator.verifyArgs(args)) {
+        if (Validator.verifyNoArgs(args)) {
             commandReceiver.updateByID(args[1])
         }
     }

@@ -26,7 +26,7 @@ class FilterByChapter() : Command() {
      * Creates a [basicClasses.Chapter] and prints all elements with such Chapter
      */
     override fun execute(args: List<String>) {
-        if (Validator.verifyArgs(args)) {
+        if (Validator.verifyNoArgs(args)) {
             commandReceiver.filterByChapter()
         }
     }

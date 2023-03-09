@@ -25,7 +25,9 @@ class Save() : Command() {
      * Saves collection into file provided in file
      */
     override fun execute(args: List<String>) {
-        if (Validator.verifyArgs(args)) {
+        if (args.size == 1) {
+            commandReceiver.save("")
+        } else if (args.size == 2) {
             commandReceiver.save(args[1])
         }
     }

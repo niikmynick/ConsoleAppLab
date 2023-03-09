@@ -27,7 +27,7 @@ class RemoveLower() : Command() {
      * Prints the amount of Space Marines deleted
      */
     override fun execute(args: List<String>) {
-        if (Validator.verifyArgs(args)) {
+        if (Validator.verifyNoArgs(args)) {
             commandReceiver.removeLower(args[1])
         }
     }

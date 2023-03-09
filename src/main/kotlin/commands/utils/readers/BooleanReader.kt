@@ -25,7 +25,7 @@ class BooleanReader {
                 try {
                     loyalty = scanner.nextLine().trim().lowercase().toBooleanStrict()
                 } catch (e: Exception) {
-                    print("You need to enter Boolean-type value of loyalty: ")
+                    println("You need to enter Boolean-type value of loyalty: ")
                 }
             } while (loyalty == null)
 
