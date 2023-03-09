@@ -5,7 +5,7 @@ import commands.consoleCommands.Command
 /**
  * Command invoker
  * 
- * Class that handles commands and call its execution
+ * Class that handles commands and calls its execution
  *
  * @constructor Create Command invoker
  */
@@ -26,8 +26,6 @@ class CommandInvoker {
     }
 
     /**
-     * Execute command
-     *
      * Executes command with provided arguments
      *
      * @param query A single line string split into command and argument
@@ -49,7 +47,7 @@ class CommandInvoker {
     /**
      * Get commands list
      *
-     * @return
+     * @return Map with all registered commands
      */
     fun getCommandMap() : Map<String, Command> {
         return commandMap

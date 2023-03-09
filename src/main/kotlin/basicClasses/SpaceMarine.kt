@@ -4,6 +4,7 @@ import exceptions.SpaceMarineHealthLowerThanZero
 import exceptions.SpaceMarineIdLowerThanZero
 import exceptions.SpaceMarineNameIsNullOrBlank
 import kotlinx.serialization.Serializable
+import java.sql.Timestamp
 import java.time.LocalDate
 import java.util.*
 
@@ -27,7 +28,8 @@ data class SpaceMarine (
     /**
      * Defined automatically with [java.util.UUID.randomUUID], gets 64 most significant bits (Long) and makes it positive only
      */
-    private val id: Long = UUID.randomUUID().mostSignificantBits and Long.MAX_VALUE,//Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+//    private val id: Long = UUID.randomUUID().mostSignificantBits and Long.MAX_VALUE,//Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+    private val id: Long = Timestamp(System.currentTimeMillis()).time,
     private var name: String, //Поле не может быть null, Строка не может быть пустой
     private var coordinates: Coordinates, //Поле не может быть null
     private val creationDate: String = LocalDate.now().toString(), //Поле не может быть null, Значение этого поля должно генерироваться автоматически

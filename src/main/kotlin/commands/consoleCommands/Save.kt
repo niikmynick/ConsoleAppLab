@@ -26,7 +26,11 @@ class Save() : Command() {
      */
     override fun execute(args: List<String>) {
         if (Validator.verify(args, 2)) {
-            println(commandReceiver.save(args[1]))
+            if (args.size == 1) {
+                println(commandReceiver.save(System.getProperty("COLLECTION_FILENAME")))
+            } else {
+                println(commandReceiver.save(args[1]))
+            }
         }
     }
 }

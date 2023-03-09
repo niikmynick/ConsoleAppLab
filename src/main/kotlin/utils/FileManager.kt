@@ -3,9 +3,7 @@ package utils
 import basicClasses.SpaceMarine
 import collection.CollectionManager
 import com.charleskorn.kaml.Yaml
-import java.io.FileOutputStream
 import java.io.FileReader
-import java.io.OutputStreamWriter
 import java.util.Properties
 
 /**
@@ -24,7 +22,7 @@ class FileManager(p:Properties) {
      * Reads data from the file provided in [collectionFileName] and adds objects to [collectionManager]
      * @param collectionManager Current collection
      */
-    fun load(collectionManager: CollectionManager) {
+    fun load(collectionManager: CollectionManager) : String{
 
         try {
             val file = FileReader(collectionFileName)
@@ -38,31 +36,11 @@ class FileManager(p:Properties) {
             }
             file.close()
 
-            println("Loaded ${collectionManager.getCollection().size} elements successfully")
+            return "Loaded ${collectionManager.getCollection().size} elements successfully"
         } catch (e: Exception) {
-            println(e.message)
+            return e.message.toString()
         }
 
-
-    }
-
-    fun save(collectionManager: CollectionManager) : Boolean{ //TODO: Duplicate
-        return try {
-            val file = FileOutputStream(collectionFileName)
-
-            val output = OutputStreamWriter(file)
-            for (element in collectionManager.getCollection()) {
-                output.write(Yaml.default.encodeToString(SpaceMarine.serializer(), element))
-                output.write("\n#ENDOFSPACEMARINE\n")
-            }
-            output.close()
-
-            true
-        } catch (e: Exception) {
-            println(e.message.toString())
-
-            false
-        }
     }
 
 }

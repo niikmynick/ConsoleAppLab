@@ -9,6 +9,13 @@ import commands.utils.readers.WeaponReader
 import utils.InputManager
 import java.io.FileReader
 
+/**
+ * Contains logic of commands
+ * @property commandInvoker Command handler
+ * @property collectionManager Used for working with collection
+ * @property inputManager All input comes from this
+ * @property scriptsList Saves file names of all called scripts
+ */
 class CommandReceiver() {
 
     private lateinit var commandInvoker: CommandInvoker
@@ -21,6 +28,12 @@ class CommandReceiver() {
     }
 
     val scriptsList = mutableSetOf<String>()
+
+    /**
+     * Gives string of all commands info or of a specific command
+     * @param args contains the name of the command which info should be shown
+     * @return
+     */
     fun help(args:List<String>) : String{
         val list = commandInvoker.getCommandMap()
         var output = ""
@@ -60,53 +73,53 @@ class CommandReceiver() {
     }
 
     fun updateByID(id:String) : String{
-        try {
+        return try {
             val oldSpaceMarine = collectionManager.getByID(id.toLong())
 
             if (oldSpaceMarine != null) {
                 val newSpaceMarine = Creator.createSpaceMarine(inputManager)
                 collectionManager.update(oldSpaceMarine, newSpaceMarine)
-                return "Space Marine with id == $id was updated"
+                "Space Marine with id == $id was updated"
             } else {
-                return "Space Marine with id == $id does not exist"
+                "Space Marine with id == $id does not exist"
             }
 
         } catch (e: NumberFormatException) {
-            return "Invalid argument entered"
+            "Invalid argument entered"
         }
     }
 
     fun removeByID(id:String) : String{
-        try {
+        return try {
             val spaceMarine = collectionManager.getByID(id.toLong())
 
             if (spaceMarine != null) {
                 collectionManager.remove(spaceMarine)
-                return "Space Marine ${spaceMarine.getName()} has been deleted"
+                "Space Marine ${spaceMarine.getName()} has been deleted"
             } else {
-                return "Space Marine with id == $id does not exist"
+                "Space Marine with id == $id does not exist"
             }
 
         } catch (e: NumberFormatException) {
-            return "Invalid argument entered"
+            "Invalid argument entered"
         }
     }
 
     fun clear() : String{
-        if (collectionManager.getCollection().size > 0) {
+        return if (collectionManager.getCollection().size > 0) {
             collectionManager.clear()
-            return "Collection has been cleared"
+            "Collection has been cleared"
         } else {
-            return "The collection is already empty"
+            "The collection is already empty"
         }
     }
 
     fun save(filepath:String) : String{
-        try {
+        return try {
             Saver().save(filepath, collectionManager)
-            return "Collection was saved successfully"
+            "Collection was saved successfully"
         } catch (e:Exception) {
-            return e.message.toString()
+            e.message.toString()
         }
     }
 
@@ -114,7 +127,6 @@ class CommandReceiver() {
         var output = ""
         scriptsList.add(filepath)
         try {
-
 
             val file = FileReader(filepath)
             val commandsList:List<String> = file.readLines()
@@ -139,10 +151,10 @@ class CommandReceiver() {
                 }
             } while (inputManager.hasNextLine())
 
-            when (count) {
-                0 ->  output += "The file does not contain commands"
-                1 -> output += "1 command has been executed"
-                else -> output += "$count commands have been executed"
+            output += when (count) {
+                0 -> "The file does not contain commands"
+                1 -> "1 command has been executed"
+                else -> "$count commands have been executed"
             }
 
         } catch (e: Exception) {
@@ -152,17 +164,20 @@ class CommandReceiver() {
     }
 
     fun exit() {
-        TODO()
+        //TODO()
     }
 
+    /**
+     * Adds an element if it is lower than the lowest element in collection
+     */
     fun addMin() : String{
         val spaceMarine = Creator.createSpaceMarine(inputManager)
 
-        if (spaceMarine < collectionManager.getCollection().first()) {
+        return if (spaceMarine < collectionManager.getCollection().first()) {
             collectionManager.add(spaceMarine)
-            return "Space Marine ${spaceMarine.getName()} has been created and added to the collection"
+            "Space Marine ${spaceMarine.getName()} has been created and added to the collection"
         } else {
-            return "Space Marine ${spaceMarine.getName()} has not been added to the collection"
+            "Space Marine ${spaceMarine.getName()} has not been added to the collection"
         }
     }
 
@@ -175,8 +190,8 @@ class CommandReceiver() {
 
         var count = 0
 
-        if (spaceMarine == null)
-            return "Space Marine with id == $id does not exist"
+        return if (spaceMarine == null)
+            "Space Marine with id == $id does not exist"
         else {
             while (collection.isNotEmpty()) {
                 if (collection.last() > spaceMarine) {
@@ -184,7 +199,7 @@ class CommandReceiver() {
                     count++
                 }
             }
-            return "$count Space Marines have been deleted"
+            "$count Space Marines have been deleted"
         }
     }
 
@@ -197,8 +212,8 @@ class CommandReceiver() {
 
         var count = 0
 
-        if (spaceMarine == null)
-            return "Space Marine with id == $id does not exist"
+        return if (spaceMarine == null)
+            "Space Marine with id == $id does not exist"
         else {
             while (collection.isNotEmpty()) {
                 if (collection.last() < spaceMarine) {
@@ -206,7 +221,7 @@ class CommandReceiver() {
                     count++
                 }
             }
-            return "$count Space Marines have been deleted"
+            "$count Space Marines have been deleted"
         }
     }
 
@@ -232,19 +247,19 @@ class CommandReceiver() {
         val collection = collectionManager.getCollection()
         var count = 0
 
-        if (collection.isNotEmpty()) {
+        return if (collection.isNotEmpty()) {
             for (spaceMarine in collection) {
                 if (spaceMarine.getWeapon() == weapon) {
                     count++
                 }
             }
             when (count) {
-                0 -> return "No MeleeWeapon named ${weapon.name} was found\n"
-                1 -> return "Only 1 Space Marine with weapon $weapon found"
-                else -> return "$count Space Marines with weapon $weapon found"
+                0 -> "No MeleeWeapon named ${weapon.name} was found\n"
+                1 -> "Only 1 Space Marine with weapon $weapon found"
+                else -> "$count Space Marines with weapon $weapon found"
             }
         } else {
-            return "The collection is empty"
+            "The collection is empty"
         }
     }
 

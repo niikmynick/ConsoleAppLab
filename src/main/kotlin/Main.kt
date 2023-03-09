@@ -1,5 +1,4 @@
 import utils.Console
-import java.io.File
 
 /**
  * Main

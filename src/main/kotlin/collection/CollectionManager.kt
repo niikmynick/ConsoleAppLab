@@ -31,7 +31,8 @@ class CollectionManager {
     }
 
     /**
-     * Prints all elements of the collection
+     * Returns a string containing all elements of the collection
+     * @return String with elements separated with newline
      */
     fun show() : String {
         var output = ""
@@ -67,6 +68,9 @@ class CollectionManager {
         return collection.remove(spaceMarine)
     }
 
+    /**
+     * Clears collection
+     */
     fun clear() {
         collection.clear()
     }
@@ -86,8 +90,9 @@ class CollectionManager {
     }
 
     /**
-     * Prints all elements with provided [Chapter]
+     * Returns all elements with provided [Chapter]
      * @param chapter Chapter searched in elements of collection
+     * @return All elements that contain provided [Chapter] separated with newline
      */
     fun filterByChapter(chapter: Chapter) : String{
         var output = ""

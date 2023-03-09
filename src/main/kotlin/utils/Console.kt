@@ -9,9 +9,10 @@ import java.io.IOException
 /**
  * Class that handles commands and provides them all needed parameters
  * @property properties Contains system properties
- * @property commandInvoker See [CommandInvoker]
  * @property fileManager Used for loading data to collection
- * @property collection Current collection
+ * @property commandInvoker See [CommandInvoker]
+ * @property collectionManager Current collection
+ * @property inputManager Gives input
  */
 class Console {
     private val properties = System.getProperties()
@@ -20,7 +21,6 @@ class Console {
     private val collectionManager = CollectionManager()
     private val inputManager = InputManager()
     private val commandReceiver = CommandReceiver(commandInvoker, collectionManager, inputManager)
-    //val scanner = Scanner(System.`in`)
 
     /**
      * Registers commands and waits for user prompt
@@ -44,7 +44,7 @@ class Console {
 
         commandInvoker.register("help", Help(commandReceiver))
 
-        fileManager.load(collectionManager)
+        println(fileManager.load(collectionManager))
     }
     fun startInteractiveMode(){
         println("Waiting for user prompt ...")
