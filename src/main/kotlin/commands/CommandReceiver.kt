@@ -139,6 +139,7 @@ class CommandReceiver() {
             do {
                 val query = inputManager.nextLine().trim().lowercase().split(" ")
                 if ((query[0] == "execute_script") && (query[1] in scriptsList)) {
+                    scriptsList.clear()
                     return "Command ${query[0]} ${query[1]} can cause a recursive call so process was stopped"
                 } else if ((query[0] == "execute_script") && (query[1] !in scriptsList)){
                     scriptsList.add(query[1])
@@ -160,6 +161,7 @@ class CommandReceiver() {
         } catch (e: Exception) {
             output += e.message.toString()
         }
+        scriptsList.clear()
         return output
     }
 
