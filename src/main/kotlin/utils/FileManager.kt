@@ -10,7 +10,7 @@ import java.util.*
  * Class that contains environment variables and handles files
  * @property collectionFileName String containing file name
  */
-class FileManager(p:Properties) {
+class FileManager(p:Properties, private val outputManager: OutputManager) {
 
     private val collectionFileName = p.getProperty("COLLECTION_FILENAME")
 
@@ -32,9 +32,9 @@ class FileManager(p:Properties) {
             }
             file.close()
 
-            println("Loaded ${collection.size} elements successfully")
+            outputManager.println("Loaded ${collection.size} elements successfully")
         } catch (e: Exception) {
-            println(e.message)
+            outputManager.println(e.toString())
         }
 
 

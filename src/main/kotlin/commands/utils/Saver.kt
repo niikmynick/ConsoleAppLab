@@ -2,11 +2,12 @@ package commands.utils
 
 import basicClasses.SpaceMarine
 import com.charleskorn.kaml.Yaml
+import utils.OutputManager
 import java.io.FileOutputStream
 import java.io.OutputStreamWriter
 import java.util.TreeSet
 
-class Saver {
+class Saver(private val outputManager: OutputManager) {
     /**
      * Saves elements of collection into file with provided [filename]
      * @param filename Name of the file
@@ -27,7 +28,7 @@ class Saver {
             }
             output.close()
         } catch (e: Exception) {
-            println(e.message.toString())
+            outputManager.println(e.toString())
 
         }
     }

@@ -25,7 +25,7 @@ class Help() : Command() {
      * @param args name of the command
      */
     override fun execute(args: List<String>) {
-        if (Validator.verifyNoArgs(args)) {
+        if (Validator.verifyOnlyArg(args)) {
             commandReceiver.help(args)
         }
     }

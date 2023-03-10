@@ -5,7 +5,6 @@ import commands.CommandInvoker
 import commands.CommandReceiver
 import commands.consoleCommands.*
 import java.io.IOException
-import java.util.Scanner
 
 /**
  * Class that handles commands and provides them all needed parameters
@@ -13,16 +12,18 @@ import java.util.Scanner
  * @property commandInvoker See [CommandInvoker]
  * @property fileManager Used for loading data to collection
  * @property collection Current collection
- * @property scanner Set to [System.in]
  */
 class Console {
     private val properties = System.getProperties()
-    private val fileManager = FileManager(properties)
-    private val commandInvoker = CommandInvoker()
+    private val outputManager = OutputManager()
+    private val inputManager = InputManager(outputManager)
+    private val fileManager = FileManager(properties, outputManager)
+
+
     private val collectionManager = CollectionManager()
-    private val outputManager = OutputManager(System.out)
-    private val commandReceiver = CommandReceiver(commandInvoker, collectionManager, outputManager)
-    val scanner = Scanner(System.`in`)
+
+    private val commandInvoker = CommandInvoker(outputManager)
+    private val commandReceiver = CommandReceiver(commandInvoker, collectionManager, outputManager, inputManager)
 
     /**
      * Registers commands and waits for user prompt
@@ -50,16 +51,18 @@ class Console {
     }
     fun startInteractiveMode() {
         var executeFlag:Boolean? = true
-        println("Waiting for user prompt ...")
+        outputManager.surePrint("Waiting for user prompt ...")
 
         do {
-            print("$ ")
+            outputManager.print("$ ")
             try {
-                val query = scanner.nextLine().trim().split(" ")
-                commandInvoker.executeCommand(query)
-                executeFlag = commandInvoker.getCommandMap()[query[0]]?.getExecutionFlag()
-            } catch (e:IOException) {
-                println(e.message)
+                val query = inputManager.read().trim().split(" ")
+                if (query[0] != "") {
+                    commandInvoker.executeCommand(query)
+                    executeFlag = commandInvoker.getCommandMap()[query[0]]?.getExecutionFlag()
+                }
+            } catch (e:Exception) {
+                outputManager.surePrint(e.message.toString())
             }
         } while (executeFlag != false)
     }

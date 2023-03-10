@@ -1,25 +1,24 @@
 package commands.utils.readers
 
+import utils.InputManager
+import utils.OutputManager
 import java.util.*
 
-class IntReader {
-    companion object {
-        /**
-         * Reads and gives a valid value
-         * @return value
-         */
-        fun read(message: String): Int {
-            val scanner = Scanner(System.`in`)
-            println(message)
+class IntReader(private val outputManager: OutputManager, private val inputManager: InputManager) {
+    /**
+     * Reads and gives a valid value
+     * @return value
+     */
+    fun read(message: String): Int {
+        outputManager.println(message)
 
-            var input = scanner.nextLine()
+        var input = inputManager.read()
 
-            while (input.toIntOrNull() == null) {
-                println("This field must be integer")
-                input = scanner.nextLine()
-            }
-
-            return input.toInt()
+        while (input.toIntOrNull() == null) {
+            outputManager.println("This field must be integer")
+            input = inputManager.read()
         }
+
+        return input.toInt()
     }
 }

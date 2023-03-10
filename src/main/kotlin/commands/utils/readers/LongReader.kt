@@ -1,36 +1,35 @@
 package commands.utils.readers
 
+import utils.InputManager
+import utils.OutputManager
 import java.util.*
 
-class LongReader {
-    companion object {
-        /**
-         * Reads and gives a valid value
-         * @return value
-         */
-        fun read(message: String, a:Long, b:Long): Long {
-            val scanner = Scanner(System.`in`)
-            println(message)
-            var value: Long = 0
+class LongReader(private val outputManager: OutputManager, private val inputManager: InputManager) {
+    /**
+     * Reads and gives a valid value
+     * @return value
+     */
+    fun read(message: String, a:Long, b:Long): Long {
+        outputManager.println(message)
+        var value: Long = 0
 
-            while (value !in a..b) {
-                try {
-                    value = scanner.nextLine().trim().toLong()
+        while (value !in a..b) {
+            try {
+                value = inputManager.read().trim().toLong()
 
-                    if (value <= a) {
-                        println("This field cannot be lower than $a")
-                    }
-                    if (value > b) {
-                        println("This field cannot be larger than $b")
-                    }
-
-                    value = scanner.nextLine().trim().toLong()
-                } catch (e: Exception) {
-                    println("This value should be Long-type")
-                    continue
+                if (value <= a) {
+                    outputManager.println("This field cannot be lower than $a")
                 }
+                if (value > b) {
+                    outputManager.println("This field cannot be larger than $b")
+                }
+
+                value = inputManager.read().trim().toLong()
+            } catch (e: Exception) {
+                outputManager.println("This value should be Long-type")
+                continue
             }
-            return value
         }
+        return value
     }
 }

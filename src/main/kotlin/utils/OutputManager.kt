@@ -5,14 +5,14 @@ import java.io.OutputStream
 
 
 class OutputManager() {
-    private var outputStream: OutputStream? = null
-    private var messageNotifications = MessageNotifications.ON
+    private var outputStream: OutputStream = System.out
+    private var outputMode = OutputMode.ACTIVE
 
-    private enum class MessageNotifications {
-        ON, OFF
+    private enum class OutputMode {
+        SILENT, ACTIVE
     }
 
-    constructor(outputStream: OutputStream?) : this() {
+    constructor(outputStream: OutputStream) : this() {
         this.outputStream = outputStream
     }
 
@@ -22,9 +22,9 @@ class OutputManager() {
      */
     fun println(string: String) {
         try {
-            if (messageNotifications == MessageNotifications.ON) {
-                outputStream?.write(string.toByteArray())
-                outputStream?.write("\n".toByteArray())
+            if (outputMode == OutputMode.ACTIVE) {
+                outputStream.write(string.toByteArray())
+                outputStream.write("\n".toByteArray())
             }
         } catch (e: IOException) {
             e.printStackTrace()
@@ -35,10 +35,10 @@ class OutputManager() {
      * writes a string to the output stream without checking silent mode
      * @param string
      */
-    fun printlnImportantMessage(string: String) {
+    fun surePrint(string: String) {
         try {
-            outputStream?.write(string.toByteArray())
-            outputStream?.write("\n".toByteArray())
+            outputStream.write(string.toByteArray())
+            outputStream.write("\n".toByteArray())
         } catch (e: IOException) {
             e.printStackTrace()
         }
@@ -50,8 +50,8 @@ class OutputManager() {
      */
     fun print(string: String) {
         try {
-            if (messageNotifications == MessageNotifications.ON) {
-                outputStream?.write(string.toByteArray())
+            if (outputMode == OutputMode.ACTIVE) {
+                outputStream.write(string.toByteArray())
             }
         } catch (e: IOException) {
             e.printStackTrace()
@@ -62,13 +62,13 @@ class OutputManager() {
      * turns output off
      */
     fun silentMode() {
-        messageNotifications = MessageNotifications.OFF
+        outputMode = OutputMode.SILENT
     }
 
     /**
      * turns output on
      */
     fun enableOutput() {
-        messageNotifications = MessageNotifications.ON
+        outputMode = OutputMode.ACTIVE
     }
 }

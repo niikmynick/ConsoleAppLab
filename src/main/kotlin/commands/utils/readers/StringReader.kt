@@ -1,6 +1,8 @@
 package commands.utils.readers
 
 import basicClasses.SpaceMarine
+import utils.InputManager
+import utils.OutputManager
 import java.util.Scanner
 
 /**
@@ -10,26 +12,23 @@ import java.util.Scanner
  *
  * @constructor Create reader
  */
-class StringReader {
-    companion object {
-        /**
-         * Reads and gives a valid value
-         * @return value
-         */
-        fun read(message: String): String {
-            val scanner = Scanner(System.`in`)
-            println(message)
+class StringReader(private val outputManager: OutputManager, private val inputManager: InputManager) {
+    /**
+     * Reads and gives a valid value
+     * @return value
+     */
+    fun read(message: String): String {
+        outputManager.println(message)
 
-            var value:String = scanner.nextLine().trim()
+        var value:String = inputManager.read().trim()
 
-            while (value.isEmpty()) {
-                println("This field can not be empty")
-                println(message)
+        while (value.isEmpty()) {
+            outputManager.println("This field can not be empty")
+            outputManager.println(message)
 
-                value = scanner.nextLine().trim()
-            }
-
-            return value
+            value = inputManager.read().trim()
         }
+
+        return value
     }
 }

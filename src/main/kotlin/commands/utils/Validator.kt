@@ -3,24 +3,11 @@ package commands.utils
 class Validator {
     companion object {
         fun verifyNoArgs (args: List<String>):Boolean {
-            return if (args.size > 1) {
-                println("Entered excess argument")
-                false
-            } else {
-                true
-            }
+            return args.size == 1
         }
 
         fun verifyOnlyArg (args: List<String>):Boolean {
-            return if (args.size > 2) {
-                println("Entered excess argument")
-                false
-            } else if (args.size == 1) {
-                println("Argument is expected")
-                false
-            } else {
-                true
-            }
+            return args.size <= 2
         }
 
         fun verifyArray (array: ArrayList<String>): Boolean {

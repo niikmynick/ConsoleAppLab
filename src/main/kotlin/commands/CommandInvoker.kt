@@ -1,6 +1,7 @@
 package commands
 
 import commands.consoleCommands.Command
+import utils.OutputManager
 
 /**
  * Command invoker
@@ -9,7 +10,7 @@ import commands.consoleCommands.Command
  *
  * @constructor Create Command invoker
  */
-class CommandInvoker {
+class CommandInvoker(private val outputManager: OutputManager) {
     private var commandMap:Map<String, Command> = mapOf()
     private var commandsHistory:Array<String> = arrayOf()
 
@@ -40,9 +41,9 @@ class CommandInvoker {
                 command.execute(query)
             }
         } catch (e:IllegalStateException) {
-            println("Command ${query[0]} does not exist")
+            outputManager.println("Command ${query[0]} does not exist")
         } catch (e:NullPointerException) {
-            println("Command ${query[0]} does not exist")
+            outputManager.println("Command ${query[0]} does not exist")
         }
     }
 

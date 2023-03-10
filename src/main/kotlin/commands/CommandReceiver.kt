@@ -8,24 +8,19 @@ import commands.utils.Creator
 import commands.utils.Saver
 import commands.utils.Validator
 import commands.utils.readers.EnumReader
+import utils.InputManager
 import utils.OutputManager
 import java.io.BufferedReader
 import java.io.FileNotFoundException
 import java.io.FileReader
 import java.io.IOException
 
-class CommandReceiver() {
+class CommandReceiver(private val commandInvoker: CommandInvoker,
+                      private val collectionManager: CollectionManager,
+                      private val outputManager: OutputManager,
+                      private val inputManager: InputManager) {
 
-    private lateinit var commandInvoker: CommandInvoker
-    private lateinit var collectionManager: CollectionManager
-    private lateinit var outputManager: OutputManager
-    constructor(commandInvoker: CommandInvoker, collectionManager: CollectionManager, outputManager: OutputManager) : this() {
-        this.commandInvoker = commandInvoker
-        this.collectionManager = collectionManager
-        this.outputManager = outputManager
-    }
-
-    private var filesList:MutableList<String> = mutableListOf()
+    private val creator = Creator(outputManager, inputManager)
 
     fun help(args:List<String>) {
         val list = commandInvoker.getCommandMap()
@@ -40,7 +35,7 @@ class CommandReceiver() {
             }
             2 -> {
                 if (args[1].lowercase() == "all") {
-                    commandInvoker.getCommandMap().forEach { (name: String?, command: Command) -> outputManager.println(name + " - "+ command.getInfo()) }
+                    commandInvoker.getCommandMap().forEach { (name: String?, command: Command) -> outputManager.println(name.uppercase() + " - " + command.getInfo()) }
                 } else {
                     outputManager.println(list[args[1].lowercase()]?.getInfo().toString())
                 }
@@ -59,14 +54,14 @@ class CommandReceiver() {
     }
 
     fun add() {
-        val spaceMarine = Creator.createSpaceMarine()
+        val spaceMarine = creator.createSpaceMarine()
         collectionManager.add(spaceMarine)
         outputManager.println("Space Marine ${spaceMarine.getName()} has been created and added to the collection")
     }
 
     fun updateByID(id:String) {
         try {
-            val newSpaceMarine = Creator.createSpaceMarine()
+            val newSpaceMarine = creator.createSpaceMarine()
             val oldSpaceMarine = collectionManager.getByID(id.toLong())
 
             if (oldSpaceMarine != null) {
@@ -108,7 +103,7 @@ class CommandReceiver() {
     fun save(filepath:String) {
         try {
             val collection = collectionManager.getCollection()
-            Saver().save(filepath, collection)
+            Saver(outputManager).save(filepath, collection)
             outputManager.println("Collection was saved successfully")
         } catch (e:Exception) {
             outputManager.println(e.toString())
@@ -116,88 +111,11 @@ class CommandReceiver() {
     }
 
     fun executeScript(filepath: String) {
-        outputManager.silentMode()
-        try {
-            filesList.add(filepath)
-
-            val file = BufferedReader(FileReader(filepath))
-
-            var line = file.readLine()
-            var count = 0
-
-            while (line != null) {
-                val query: List<String> = line.trim().lowercase().split(" ")
-
-                if ((query[0] == "add") || (query[0] == "update")) {
-                    val parameters = ArrayList<String>()
-
-                    for (i in 0..8) {
-                        line = file.readLine()
-                        if (line != null) {
-                            parameters.add(line.trim())
-                        } else {
-                            println("You need to enter value")
-                            break
-                        }
-                    }
-
-                    if (Validator.verifyArray(parameters)) {
-                        val newSpaceMarine = Creator.createScriptMarine(parameters)
-
-                        if (query[0] == "add") {
-                            collectionManager.add(newSpaceMarine)
-                            count += 1
-                        } else {
-                            val oldSpaceMarine = collectionManager.getByID(query[1].toLong())
-
-                            if (oldSpaceMarine != null) {
-                                collectionManager.update(oldSpaceMarine, newSpaceMarine)
-                                count += 1
-                            }
-                        }
-                    } else {
-                        println("Entered parameters are incorrect")
-                    }
-
-                } else if (query[0] == "execute_script") {
-                    if (query[1] in filesList) {
-                        println("Command '$line' can cause a recursive call so process was stopped")
-                        break
-                    } else {
-                        commandInvoker.executeCommand(query)
-                        filesList += query[1]
-                        count += 1
-                    }
-                } else {
-                    commandInvoker.executeCommand(query)
-                    count += 1
-                }
-
-                line = file.readLine()
-            }
-
-            file.close()
-            outputManager.enableOutput()
-
-            when (count) {
-                0 -> outputManager.println("The file does not contain commands")
-                1 -> outputManager.println("1 command has been executed")
-                else -> outputManager.println("$count commands have been executed")
-            }
-
-            filesList.clear()
-
-        } catch (e:FileNotFoundException) {
-            outputManager.println(e.toString())
-        } catch (e:IOException) {
-            outputManager.println(e.toString())
-        } catch (e: Exception) {
-            outputManager.println(e.toString())
-        }
+        inputManager.startScriptReader(filepath)
     }
 
     fun addMin() {
-        val spaceMarine = Creator.createSpaceMarine()
+        val spaceMarine = creator.createSpaceMarine()
 
         if (spaceMarine < collectionManager.getCollection().first()) {
             collectionManager.add(spaceMarine)
@@ -255,7 +173,7 @@ class CommandReceiver() {
      * Removes first found element with [Chapter] equal to provided
      */
     fun removeByChapter() {
-        val chapter = Creator.createChapter()
+        val chapter = creator.createChapter()
         val collection = collectionManager.getCollection()
         val flag = false
 
@@ -273,7 +191,7 @@ class CommandReceiver() {
     }
 
     fun countByWeapon() {
-        val weapon = EnumReader.read<MeleeWeapon>("Enter Weapon category from the list: ", true)
+        val weapon = EnumReader(outputManager, inputManager).read<MeleeWeapon>("Enter Weapon category from the list: ", true)
         val collection = collectionManager.getCollection()
         var count = 0
 
@@ -294,7 +212,7 @@ class CommandReceiver() {
     }
 
     fun filterByChapter() {
-        val chapter = Creator.createChapter()
+        val chapter = creator.createChapter()
         for (i in collectionManager.filterByChapter(chapter)) {
             outputManager.println(i)
         }

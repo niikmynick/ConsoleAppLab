@@ -1,25 +1,25 @@
 package commands.utils.readers
 
+import utils.InputManager
+import utils.OutputManager
 import java.util.*
 
-class DoubleReader {
-    companion object {
-        /**
-         * Reads and gives a valid value
-         * @return value
-         */
-        fun read(message: String): Double {
-            val scanner = Scanner(System.`in`)
-            println(message)
+class DoubleReader(private val outputManager: OutputManager, private val inputManager: InputManager) {
 
-            var input = scanner.nextLine()
+    /**
+     * Reads and gives a valid value
+     * @return value
+     */
+    fun read(message: String): Double {
+        outputManager.println(message)
 
-            while (input.toDoubleOrNull() == null) {
-                println("This field must be double")
-                input = scanner.nextLine()
-            }
+        var input = inputManager.read()
 
-            return input.toDouble()
+        while (input.toDoubleOrNull() == null) {
+            outputManager.println("This field must be double")
+            input = inputManager.read()
         }
+
+        return input.toDouble()
     }
 }

@@ -1,5 +1,7 @@
 package commands.utils.readers
 
+import utils.InputManager
+import utils.OutputManager
 import java.util.*
 
 /**
@@ -7,39 +9,35 @@ import java.util.*
  *
  * @constructor Create  Enum reader
  */
-class EnumReader {
-    companion object {
-        inline fun <reified T : Enum<T>> enumContains(name: String): Boolean {
-            return enumValues<T>().any { it.name == name }
+class EnumReader(val outputManager: OutputManager, val inputManager: InputManager) {
+    inline fun <reified T : Enum<T>> enumContains(name: String): Boolean {
+        return enumValues<T>().any { it.name == name }
+    }
+
+    inline fun <reified T : Enum<T>> read(message: String, canBeNull:Boolean): T? {
+        outputManager.println(message)
+        for (item in enumValues<T>()) {
+            outputManager.println(item.toString())
         }
 
-        inline fun <reified T : Enum<T>> read(message: String, canBeNull:Boolean): T? {
-            println(message)
-            val scanner = Scanner(System.`in`)
+        var value = inputManager.read().trim().uppercase()
 
-            for (item in enumValues<T>()) {
-                println(item)
-            }
-
-            var value = scanner.nextLine().trim().uppercase()
-
-            while (!enumContains<T>(value)) {
-                if (value.isEmpty()) {
-                    println("his field can not be empty. Try again: ")
-                    value = scanner.nextLine().trim().uppercase()
-                } else if (value == "\\null") {
-                    if (canBeNull) {
-                        return null
-                    } else {
-                        println("This field can not be null. Try again: ")
-                        value = scanner.nextLine().trim().uppercase()
-                    }
+        while (!enumContains<T>(value)) {
+            if (value.isEmpty()) {
+                outputManager.println("his field can not be empty. Try again: ")
+                value = inputManager.read().trim().uppercase()
+            } else if (value == "\\null") {
+                if (canBeNull) {
+                    return null
                 } else {
-                    println("The entered weapon type doesn't exist. Try again: ")
-                    value = scanner.nextLine().trim().uppercase()
+                    outputManager.println("This field can not be null. Try again: ")
+                    value = inputManager.read().trim().uppercase()
                 }
+            } else {
+                outputManager.println("The entered weapon type doesn't exist. Try again: ")
+                value = inputManager.read().trim().uppercase()
             }
-            return enumValueOf<T>(value)
         }
+        return enumValueOf<T>(value)
     }
 }

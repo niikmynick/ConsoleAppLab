@@ -1,6 +1,8 @@
 package commands.utils.readers
 
 import basicClasses.SpaceMarine
+import utils.InputManager
+import utils.OutputManager
 import java.util.Scanner
 
 /**
@@ -10,44 +12,41 @@ import java.util.Scanner
  *
  * @constructor Create Health reader
  */
-class FloatReader {
-    companion object {
-        /**
-         * Reads and gives a valid value
-         * @return value
-         */
-        fun read(message: String, canBeNull: Boolean): Float? {
-            val scanner = Scanner(System.`in`)
-            println(message)
+class FloatReader(private val outputManager: OutputManager, private val inputManager: InputManager) {
+    /**
+     * Reads and gives a valid value
+     * @return value
+     */
+    fun read(message: String, canBeNull: Boolean): Float? {
+        outputManager.println(message)
 
-            var value = 0F
+        var value = 0F
 
-            do {
-                val input = scanner.nextLine()
+        do {
+            val input = inputManager.read()
 
-                if (input == "\\null") {
-                    if (canBeNull) {
-                        return null
-                    } else {
-                        println("This field can not be null")
-                    }
-
+            if (input == "\\null") {
+                if (canBeNull) {
+                    return null
                 } else {
-                    try {
-                        value = input.trim().toFloat()
-                    } catch (e:Exception) {
-                        println("This field should be Float-type")
-                        continue
-                    }
+                    outputManager.println("This field can not be null")
                 }
 
-                if (value <= 0) {
-                    println("This field cannot be lower than zero")
+            } else {
+                try {
+                    value = input.trim().toFloat()
+                } catch (e:Exception) {
+                    outputManager.println("This field should be Float-type")
+                    continue
                 }
+            }
 
-            } while (value <= 0)
+            if (value <= 0) {
+                outputManager.println("This field cannot be lower than zero")
+            }
 
-            return value
-        }
+        } while (value <= 0)
+
+        return value
     }
 }

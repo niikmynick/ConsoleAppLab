@@ -3,8 +3,6 @@ package collection
 import basicClasses.Chapter
 import basicClasses.SpaceMarine
 import java.util.*
-import kotlin.collections.ArrayList
-
 
 /**
  * A [TreeSet] collection of [SpaceMarine]
