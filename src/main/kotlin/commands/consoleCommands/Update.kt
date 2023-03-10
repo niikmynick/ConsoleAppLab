@@ -1,11 +1,11 @@
 package commands.consoleCommands
 
-import collection.CollectionManager
 import commands.CommandReceiver
 import commands.utils.Validator
+import exceptions.InvalidArgumentException
 
 /**
- * Update
+ * Update command
  *
  * Update values of the element with the provided id
  *
@@ -22,12 +22,16 @@ class Update() : Command() {
     }
 
     /**
-     * Calls [CollectionManager.update] with provided id
+     * Calls [CommandReceiver.updateByID] with provided id
      */
     override fun execute(args: List<String>) {
-        if (Validator.verifyNoArgs(args)) {
-            commandReceiver.updateByID(args[1])
-        }
+        if (Validator.verifyOnlyArg(args)) {
+            try {
+                commandReceiver.updateByID(args[1])
+            } catch (e:Exception) {
+                throw InvalidArgumentException("Expected an argument but it was not found")
+            }
+        } else throw InvalidArgumentException("Too many arguments were entered")
     }
 
 }

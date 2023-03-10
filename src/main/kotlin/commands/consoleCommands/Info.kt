@@ -1,12 +1,11 @@
 package commands.consoleCommands
 
-import collection.CollectionManager
 import commands.CommandReceiver
 import commands.utils.Validator
-import java.util.*
+import exceptions.InvalidArgumentException
 
 /**
- * Info
+ * Info command
  *
  * Prints info about the collection (type, creation date, amount of elements)
  *
@@ -24,11 +23,11 @@ class Info() : Command() {
     }
 
     /**
-     * Calls and prints [CollectionManager.info]
+     * Calls [CommandReceiver.info]
      */
     override fun execute(args: List<String>) {
         if (Validator.verifyNoArgs(args)) {
             commandReceiver.info()
-        }
+        } else throw InvalidArgumentException("Too many arguments were entered")
     }
 }

@@ -2,9 +2,10 @@ package commands.consoleCommands
 
 import commands.CommandReceiver
 import commands.utils.Validator
+import exceptions.InvalidArgumentException
 
 /**
- * Clear
+ * Clear command
  *
  * Clears all elements in the collection
  * 
@@ -22,11 +23,11 @@ class Clear() : Command() {
     }
 
     /**
-     * Clears all elements in the collection
+     * Calls [CommandReceiver.clear]
      */
     override fun execute(args: List<String>) {
         if (Validator.verifyNoArgs(args)) {
             commandReceiver.clear()
-        }
+        } else throw InvalidArgumentException("Too many arguments were entered")
     }
 }

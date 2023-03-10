@@ -1,11 +1,13 @@
 package basicClasses
 
+import commands.utils.LocalDateSerializer
 import exceptions.SpaceMarineHealthLowerThanZero
 import exceptions.SpaceMarineIdLowerThanZero
 import exceptions.SpaceMarineNameIsNullOrBlank
 import kotlinx.serialization.Serializable
+import java.sql.Timestamp
 import java.time.LocalDate
-import java.util.*
+import java.util.UUID
 
 /**
  * Space marine
@@ -25,12 +27,16 @@ import java.util.*
 @Serializable
 data class SpaceMarine (
     /**
-     * Defined automatically with [java.util.UUID.randomUUID], gets 64 most significant bits (Long) and makes it positive only
+     * Defined automatically with [Timestamp]
      */
-    private val id: Long = UUID.randomUUID().mostSignificantBits and Long.MAX_VALUE,//Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+    private val id: Long = Timestamp(System.currentTimeMillis()).time,//Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private var name: String, //Поле не может быть null, Строка не может быть пустой
     private var coordinates: Coordinates, //Поле не может быть null
-    private val creationDate: String = LocalDate.now().toString(), //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+    /**
+     * Defined automatically with [LocalDate.now]
+     */
+    @Serializable(with = LocalDateSerializer::class)
+    private val creationDate: LocalDate = LocalDate.now(), //Поле не может быть null, Значение этого поля должно генерироваться автоматически
     private var health: Float?, //Поле может быть null, Значение поля должно быть больше 0
     private var loyal: Boolean,
     private var category: AstartesCategory, //Поле не может быть null
@@ -49,7 +55,7 @@ data class SpaceMarine (
         category: AstartesCategory,
         meleeWeapon: MeleeWeapon?,
         chapter: Chapter?
-    ) : this((UUID.randomUUID().mostSignificantBits and Long.MAX_VALUE), name, coordinates, LocalDate.now().toString(),health, loyal, category, meleeWeapon, chapter)
+    ) : this((UUID.randomUUID().mostSignificantBits and Long.MAX_VALUE), name, coordinates, LocalDate.now(),health, loyal, category, meleeWeapon, chapter)
 
     /**
      * @constructor Creates SpaceMarine with default parameters
@@ -104,7 +110,7 @@ data class SpaceMarine (
      *
      * @return creation date of this space marine
      */
-    fun getCreationDate(): String {
+    fun getCreationDate(): LocalDate {
         return creationDate
     }
 

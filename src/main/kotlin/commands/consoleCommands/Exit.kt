@@ -2,11 +2,10 @@ package commands.consoleCommands
 
 import commands.CommandReceiver
 import commands.utils.Validator
-import java.util.Scanner
-import kotlin.system.exitProcess
+import exceptions.InvalidArgumentException
 
 /**
- * Exit
+ * Exit command
  *
  * @constructor Create command Exit
  */
@@ -22,11 +21,11 @@ class Exit() : Command() {
     }
 
     /**
-     * Closes program using [exitProcess] with status 0
+     * Sets execution flag to false
      */
     override fun execute(args: List<String>) {
         if (Validator.verifyNoArgs(args)) {
             setFlag(false)
-        }
+        } else throw InvalidArgumentException("Too many arguments were entered")
     }
 }

@@ -44,3 +44,6 @@ tasks.withType<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar> {
         put("Main-Class", "MainKt")
     }
 }
+tasks.named<JavaExec>("run") {
+    standardInput = System.`in`
+}

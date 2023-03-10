@@ -4,7 +4,7 @@ import collection.CollectionManager
 import commands.CommandInvoker
 import commands.CommandReceiver
 import commands.consoleCommands.*
-import java.io.IOException
+import exceptions.InvalidInputException
 
 /**
  * Class that handles commands and provides them all needed parameters
@@ -61,7 +61,11 @@ class Console {
                     commandInvoker.executeCommand(query)
                     executeFlag = commandInvoker.getCommandMap()[query[0]]?.getExecutionFlag()
                 }
-            } catch (e:Exception) {
+            } catch (e: InvalidInputException) {
+                outputManager.surePrint(e.message)
+                break
+            }
+            catch (e:Exception) {
                 outputManager.surePrint(e.message.toString())
             }
         } while (executeFlag != false)

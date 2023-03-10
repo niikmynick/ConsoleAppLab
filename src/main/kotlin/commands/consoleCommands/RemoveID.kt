@@ -2,9 +2,10 @@ package commands.consoleCommands
 
 import commands.CommandReceiver
 import commands.utils.Validator
+import exceptions.InvalidArgumentException
 
 /**
- * Remove i d
+ * Remove id command
  *
  * Deletes the element with the provided id
  *
@@ -22,12 +23,16 @@ class RemoveID() : Command() {
     }
 
     /**
-     * Deletes element with id equal to provided in argument
+     * Calls [CommandReceiver.removeByID]
      */
     override fun execute(args: List<String>) {
-        if (Validator.verifyNoArgs(args)) {
-            commandReceiver.removeByID(args[1])
-        }
+        if (Validator.verifyOnlyArg(args)) {
+            try {
+                commandReceiver.removeByID(args[1])
+            } catch (e:Exception) {
+                throw InvalidArgumentException("Expected an argument but it was not found")
+            }
+        } else throw InvalidArgumentException("Too many arguments were entered")
     }
 
 

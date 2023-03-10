@@ -2,7 +2,9 @@ package collection
 
 import basicClasses.Chapter
 import basicClasses.SpaceMarine
-import java.util.*
+import exceptions.SpaceMarineIdAlreadyExists
+import java.util.Date
+import java.util.TreeSet
 
 /**
  * A [TreeSet] collection of [SpaceMarine]
@@ -18,6 +20,8 @@ class CollectionManager {
     }
 
     fun add(spaceMarine: SpaceMarine) {
+        if (spaceMarine == this.getByID(spaceMarine.getId())) throw SpaceMarineIdAlreadyExists("Space Marine" +
+                "$spaceMarine cannot be added to collection as a Space Marine with this id already exists")
         collection.add(spaceMarine)
     }
 

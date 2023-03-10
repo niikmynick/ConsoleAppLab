@@ -1,0 +1,56 @@
+id: 334566996861799915
+name: "F"
+coordinates:
+  x: 34.0
+  y: 43
+creationDate: "2023-03-10"
+health: 34.0
+loyal: false
+category: "INCEPTOR"
+meleeWeapon: "POWER_SWORD"
+chapter:
+  name: "File"
+  marinesCount: 0
+#ENDOFSPACEMARINE
+id: 599248019012930163
+name: "fewdcbuik"
+coordinates:
+  x: 34.0
+  y: 43
+creationDate: "2023-03-10"
+health: 34.0
+loyal: false
+category: "INCEPTOR"
+meleeWeapon: "POWER_SWORD"
+chapter:
+  name: "File"
+  marinesCount: 0
+#ENDOFSPACEMARINE
+id: 3685597043152732340
+name: "htrtnygnf"
+coordinates:
+  x: 34.0
+  y: 43
+creationDate: "2023-03-10"
+health: 34.0
+loyal: false
+category: "INCEPTOR"
+meleeWeapon: "POWER_SWORD"
+chapter:
+  name: "File"
+  marinesCount: 0
+#ENDOFSPACEMARINE
+id: 8821634154523281150
+name: "ef"
+coordinates:
+  x: 34.0
+  y: 43
+creationDate: "2023-03-10"
+health: 34.0
+loyal: false
+category: "INCEPTOR"
+meleeWeapon: "POWER_SWORD"
+chapter:
+  name: "File"
+  marinesCount: 0
+#ENDOFSPACEMARINE

@@ -2,10 +2,10 @@ package commands.consoleCommands
 
 import commands.CommandReceiver
 import commands.utils.Validator
-import java.util.*
+import exceptions.InvalidArgumentException
 
 /**
- * Add min
+ * Add min command
  *
  * Adds a new element into the collection if its value is lower than the lowest element in the collection
  *
@@ -24,13 +24,11 @@ class AddMin() : Command() {
     }
 
     /**
-     * Creates a Space Marine and add it into the collection if it lower than the lowest element in the collection
-     * Prints whether the Space Marine was added or not
-     * @param sc Is given to creator
+     * Calls [CommandReceiver.addMin]
      */
     override fun execute(args: List<String>) {
         if (Validator.verifyNoArgs(args)) {
             commandReceiver.addMin()
-        }
+        } else throw InvalidArgumentException("Too many arguments were entered")
     }
 }

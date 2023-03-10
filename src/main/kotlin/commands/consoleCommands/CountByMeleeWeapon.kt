@@ -2,9 +2,10 @@ package commands.consoleCommands
 
 import commands.CommandReceiver
 import commands.utils.Validator
+import exceptions.InvalidArgumentException
 
 /**
- * Count by melee weapon
+ * Count by melee weapon command
  *
  * Prints the amount of elements with the provided weapon
  *
@@ -22,12 +23,12 @@ class CountByMeleeWeapon() : Command() {
     }
 
     /**
-     * Prints the amount of Space Marines with the provided weapon
+     * Calls [CommandReceiver.countByWeapon]
      */
     override fun execute(args: List<String>) {
         if (Validator.verifyNoArgs(args)) {
             commandReceiver.countByWeapon()
-        }
+        }  else throw InvalidArgumentException("Too many arguments were entered")
     }
 
 

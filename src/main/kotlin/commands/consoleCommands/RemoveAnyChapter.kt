@@ -2,9 +2,10 @@ package commands.consoleCommands
 
 import commands.CommandReceiver
 import commands.utils.Validator
+import exceptions.InvalidArgumentException
 
 /**
- * Remove any chapter
+ * Remove any chapter command
  *
  * Deletes an element with a provided chapter value
  *
@@ -22,12 +23,11 @@ class RemoveAnyChapter() : Command() {
     }
 
     /**
-     * Deletes first found Space Marine with a [basicClasses.Chapter] value equal to created
-     * Prints whether a Space Marine was deleted or not
+     * Calls [CommandReceiver.removeByChapter]
      */
     override fun execute(args: List<String>) {
         if (Validator.verifyNoArgs(args)) {
             commandReceiver.removeByChapter()
-        }
+        } else throw InvalidArgumentException("Too many arguments were entered")
     }
 }

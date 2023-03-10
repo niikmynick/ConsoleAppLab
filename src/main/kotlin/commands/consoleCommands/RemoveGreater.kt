@@ -2,9 +2,10 @@ package commands.consoleCommands
 
 import commands.CommandReceiver
 import commands.utils.Validator
+import exceptions.InvalidArgumentException
 
 /**
- * Remove greater
+ * Remove greater command
  *
  * Deletes from collection all elements greater than provided
  *
@@ -23,12 +24,16 @@ class RemoveGreater() : Command() {
     }
 
     /**
-     * Removes all elements greater than element with id
-     * Prints the amount of Space Marines deleted
+     * Calls [CommandReceiver.removeGreater]
      */
     override fun execute(args: List<String>) {
-        if (Validator.verifyNoArgs(args)) {
-            commandReceiver.removeGreater(args[1])
-        }
+        if (Validator.verifyOnlyArg(args)) {
+            try {
+                commandReceiver.removeGreater(args[1])
+            } catch (e:Exception) {
+                throw InvalidArgumentException("Expected an argument but it was not found")
+            }
+
+        } else throw InvalidArgumentException("Too many arguments were entered")
     }
 }

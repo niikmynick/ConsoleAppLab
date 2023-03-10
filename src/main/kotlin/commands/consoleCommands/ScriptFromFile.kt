@@ -2,9 +2,10 @@ package commands.consoleCommands
 
 import commands.CommandReceiver
 import commands.utils.Validator
+import exceptions.InvalidArgumentException
 
 /**
- * Script from file
+ * Script from file command
  *
  * Reads and executes script from provided file (The script should have the same commands used in the interactive mode
  *
@@ -21,12 +22,16 @@ class ScriptFromFile(): Command() {
     }
 
     /**
-     * Runs script
+     * Calls [CommandReceiver.executeScript]
      */
     override fun execute(args: List<String>) {
         if (Validator.verifyOnlyArg(args)) {
-            commandReceiver.executeScript(args[1])
-        }
+            try {
+                commandReceiver.executeScript(args[1])
+            } catch (e:Exception) {
+                throw InvalidArgumentException("Expected an argument but it was not found")
+            }
+        } else throw InvalidArgumentException("Too many arguments were entered")
     }
 
 }

@@ -3,7 +3,6 @@ package commands.utils.readers
 import basicClasses.SpaceMarine
 import utils.InputManager
 import utils.OutputManager
-import java.util.Scanner
 
 /**
  * Boolean reader

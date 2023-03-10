@@ -6,14 +6,9 @@ import collection.CollectionManager
 import commands.consoleCommands.Command
 import commands.utils.Creator
 import commands.utils.Saver
-import commands.utils.Validator
 import commands.utils.readers.EnumReader
 import utils.InputManager
 import utils.OutputManager
-import java.io.BufferedReader
-import java.io.FileNotFoundException
-import java.io.FileReader
-import java.io.IOException
 
 class CommandReceiver(private val commandInvoker: CommandInvoker,
                       private val collectionManager: CollectionManager,
@@ -22,6 +17,9 @@ class CommandReceiver(private val commandInvoker: CommandInvoker,
 
     private val creator = Creator(outputManager, inputManager)
 
+    /**
+     * Gets a command map from [commandInvoker], and prints each command's info or info of provided command in [args]
+     */
     fun help(args:List<String>) {
         val list = commandInvoker.getCommandMap()
         when (args.size) {
@@ -43,31 +41,44 @@ class CommandReceiver(private val commandInvoker: CommandInvoker,
         }
     }
 
+    /**
+     * Prints retrieved info from [collectionManager]
+     */
     fun info() {
         outputManager.println(collectionManager.getInfo())
     }
 
+    /**
+     * Prints each element in [collectionManager]
+     */
     fun show() {
         for (i in collectionManager.show()) {
             outputManager.println(i)
         }
     }
 
+    /**
+     * Creates new Space Marine and add it into collection
+     */
     fun add() {
         val spaceMarine = creator.createSpaceMarine()
         collectionManager.add(spaceMarine)
         outputManager.println("Space Marine ${spaceMarine.getName()} has been created and added to the collection")
     }
 
+    /**
+     * Searches for a Space Marine with provided id and updates its values
+     */
     fun updateByID(id:String) {
         try {
-            val newSpaceMarine = creator.createSpaceMarine()
             val oldSpaceMarine = collectionManager.getByID(id.toLong())
 
             if (oldSpaceMarine != null) {
+                val newSpaceMarine = creator.createSpaceMarine()
                 collectionManager.update(oldSpaceMarine, newSpaceMarine)
+                outputManager.println("Space Marine with id == $id was updated")
             } else {
-                outputManager.println("Space Marine with id == $id do not exist")
+                outputManager.println("Space Marine with id == $id does not exist")
             }
 
         } catch (e: NumberFormatException) {
@@ -83,7 +94,7 @@ class CommandReceiver(private val commandInvoker: CommandInvoker,
                 collectionManager.remove(spaceMarine)
                 outputManager.println("Space Marine ${spaceMarine.getName()} has been deleted")
             } else {
-                outputManager.println("Space Marine with id == $id do not exist")
+                outputManager.println("Space Marine with id == $id does not exist")
             }
 
         } catch (e: NumberFormatException) {
@@ -135,7 +146,7 @@ class CommandReceiver(private val commandInvoker: CommandInvoker,
         var count = 0
 
         if (spaceMarine == null)
-            outputManager.println("Space Marine with id == $id do not exist")
+            outputManager.println("Space Marine with id == $id does not exist")
         else {
             while (collection.isNotEmpty()) {
                 if (collection.last() > spaceMarine) {
@@ -157,7 +168,7 @@ class CommandReceiver(private val commandInvoker: CommandInvoker,
         var count = 0
 
         if (spaceMarine == null)
-            outputManager.println("Space Marine with id == $id do not exist")
+            outputManager.println("Space Marine with id == $id does not exist")
         else {
             while (collection.isNotEmpty()) {
                 if (collection.last() < spaceMarine) {

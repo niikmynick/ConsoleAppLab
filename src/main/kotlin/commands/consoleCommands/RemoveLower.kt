@@ -2,9 +2,10 @@ package commands.consoleCommands
 
 import commands.CommandReceiver
 import commands.utils.Validator
+import exceptions.InvalidArgumentException
 
 /**
- * Remove lower
+ * Remove lower command
  *
  * Deletes from collection all elements lower than provided
  *
@@ -23,12 +24,15 @@ class RemoveLower() : Command() {
     }
 
     /**
-     * Removes all elements lower than element with id equal to argument
-     * Prints the amount of Space Marines deleted
+     * Calls [CommandReceiver.removeLower]
      */
     override fun execute(args: List<String>) {
-        if (Validator.verifyNoArgs(args)) {
-            commandReceiver.removeLower(args[1])
-        }
+        if (Validator.verifyOnlyArg(args)) {
+            try {
+                commandReceiver.removeLower(args[1])
+            } catch (e:Exception) {
+                throw InvalidArgumentException("Expected an argument but it was not found")
+            }
+        } else throw InvalidArgumentException("Too many arguments were entered")
     }
 }

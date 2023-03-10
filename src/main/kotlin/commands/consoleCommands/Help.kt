@@ -2,9 +2,10 @@ package commands.consoleCommands
 
 import commands.CommandReceiver
 import commands.utils.Validator
+import exceptions.InvalidArgumentException
 
 /**
- * Help
+ * Help command
  *
  * Prints info about all commands or a provided command
  *
@@ -21,12 +22,11 @@ class Help() : Command() {
     }
 
     /**
-     * Shows all commands when no argument was provided or shows info about provided command
-     * @param args name of the command
+     * Calls [CommandReceiver.help]
      */
     override fun execute(args: List<String>) {
         if (Validator.verifyOnlyArg(args)) {
             commandReceiver.help(args)
-        }
+        } else throw InvalidArgumentException("Too many arguments were entered")
     }
 }

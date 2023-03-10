@@ -1,11 +1,11 @@
 package commands.consoleCommands
 
-import collection.CollectionManager
 import commands.CommandReceiver
 import commands.utils.Validator
+import exceptions.InvalidArgumentException
 
 /**
- * Show
+ * Show command
  *
  * Prints all elements of the collection
  *
@@ -22,12 +22,12 @@ class Show() : Command() {
     }
 
     /**
-     * Calls [CollectionManager.show]
+     * Calls [CommandReceiver.show]
      */
     override fun execute(args: List<String>) {
         if (Validator.verifyNoArgs(args)) {
             commandReceiver.show()
-        }
+        } else throw InvalidArgumentException("Too many arguments were entered")
     }
 
 }

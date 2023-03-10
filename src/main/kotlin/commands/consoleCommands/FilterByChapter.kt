@@ -2,9 +2,10 @@ package commands.consoleCommands
 
 import commands.CommandReceiver
 import commands.utils.Validator
+import exceptions.InvalidArgumentException
 
 /**
- * Filter by chapter
+ * Filter by chapter command
  *
  * Prints elements with the provided chapter
  *
@@ -23,11 +24,11 @@ class FilterByChapter() : Command() {
     }
 
     /**
-     * Creates a [basicClasses.Chapter] and prints all elements with such Chapter
+     * Calls [CommandReceiver.filterByChapter]
      */
     override fun execute(args: List<String>) {
         if (Validator.verifyNoArgs(args)) {
             commandReceiver.filterByChapter()
-        }
+        } else throw InvalidArgumentException("Too many arguments were entered")
     }
 }

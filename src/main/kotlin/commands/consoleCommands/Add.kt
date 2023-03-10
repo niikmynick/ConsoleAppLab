@@ -2,12 +2,11 @@ package commands.consoleCommands
 
 import commands.CommandReceiver
 import commands.utils.Validator
+import exceptions.InvalidArgumentException
 
 
 /**
- * Add
- *
- * @constructor Create empty Add
+ * Add command
  */
 class Add() : Command() {
 
@@ -21,11 +20,11 @@ class Add() : Command() {
     }
 
     /**
-     * Creates a Space Marine and adds it into the collection
+     * Calls [CommandReceiver.add]
      */
     override fun execute(args: List<String>) {
         if (Validator.verifyNoArgs(args)) {
             commandReceiver.add()
-        }
+        } else throw InvalidArgumentException("Too many arguments were entered")
     }
 }

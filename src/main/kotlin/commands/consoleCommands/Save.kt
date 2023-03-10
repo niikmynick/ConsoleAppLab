@@ -1,10 +1,10 @@
 package commands.consoleCommands
 
 import commands.CommandReceiver
-import commands.utils.Validator
+import exceptions.InvalidArgumentException
 
 /**
- * Save
+ * Save command
  *
  * Saves collection data into a file
  *
@@ -22,13 +22,17 @@ class Save() : Command() {
     }
 
     /**
-     * Saves collection into file provided in file
+     * Calls [CommandReceiver.save]
      */
     override fun execute(args: List<String>) {
-        if (args.size == 1) {
-            commandReceiver.save("")
-        } else if (args.size == 2) {
-            commandReceiver.save(args[1])
+        when (args.size) {
+            1 -> {
+                commandReceiver.save("")
+            }
+            2 -> {
+                commandReceiver.save(args[1])
+            }
+            else -> throw InvalidArgumentException("Too many arguments were entered")
         }
     }
 }
