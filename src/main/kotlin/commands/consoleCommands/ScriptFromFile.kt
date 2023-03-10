@@ -28,7 +28,7 @@ class ScriptFromFile(): Command() {
         if (Validator.verifyOnlyArg(args)) {
             try {
                 commandReceiver.executeScript(args[1])
-            } catch (e:Exception) {
+            } catch (e:IndexOutOfBoundsException) {
                 throw InvalidArgumentException("Expected an argument but it was not found")
             }
         } else throw InvalidArgumentException("Too many arguments were entered")
