@@ -4,7 +4,6 @@ import exceptions.InvalidInputException
 import exceptions.RecursiveCallException
 import java.io.File
 import java.io.FileReader
-import java.io.IOException
 import java.io.InputStream
 import java.util.*
 
@@ -18,7 +17,7 @@ class InputManager(private val outputManager: OutputManager) {
         this.inputStream = inputStream
     }
     init {
-        scanners.push(Scanner(inputStream))
+        scanners.push(Scanner(inputStream, "UTF-8"))
     }
 
     /**
@@ -53,8 +52,10 @@ class InputManager(private val outputManager: OutputManager) {
 
     private fun finishScriptReader() {
         scriptMode = false
-        scanners.pop()
         outputManager.enableOutput()
+        if (scanners.size > 1) {
+            scanners.pop().close()
+        }
         outputManager.println("Script from file was executed")
     }
 }

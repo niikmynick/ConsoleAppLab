@@ -4,7 +4,6 @@ import collection.CollectionManager
 import commands.CommandInvoker
 import commands.CommandReceiver
 import commands.consoleCommands.*
-import java.io.IOException
 
 /**
  * Class that handles commands and provides them all needed parameters
@@ -16,7 +15,7 @@ import java.io.IOException
 class Console {
     private val properties = System.getProperties()
     private val outputManager = OutputManager()
-    private val inputManager = InputManager(outputManager)
+    private val inputManager = InputManager(System.`in`, outputManager)
     private val fileManager = FileManager(properties, outputManager)
 
 
