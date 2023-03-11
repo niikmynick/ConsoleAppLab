@@ -11,7 +11,7 @@ class LongReader(private val outputManager: OutputManager, private val inputMana
      */
     fun read(message: String, a:Long, b:Long): Long {
         outputManager.println(message)
-        var value: Long = 0
+        var value: Long = -1
 
         while (value !in a..b) {
             try {
@@ -24,7 +24,6 @@ class LongReader(private val outputManager: OutputManager, private val inputMana
                     outputManager.println("This field cannot be larger than $b")
                 }
 
-                value = inputManager.read().trim().toLong()
             } catch (e: Exception) {
                 outputManager.println("This value should be Long-type")
                 continue
