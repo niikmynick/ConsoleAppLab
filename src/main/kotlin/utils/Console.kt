@@ -8,17 +8,17 @@ import exceptions.InvalidInputException
 
 /**
  * Class that handles commands and provides them all needed parameters
- * @property properties Contains system properties
- * @property commandInvoker See [CommandInvoker]
+ * @property outputManager
+ * @property inputManager
  * @property fileManager Used for loading data to collection
- * @property collection Current collection
+ * @property collectionManager
+ * @property commandInvoker
+ * @property commandReceiver
  */
 class Console {
-    private val properties = System.getProperties()
     private val outputManager = OutputManager()
     private val inputManager = InputManager(outputManager)
-    private val fileManager = FileManager(properties, outputManager)
-
+    private val fileManager = FileManager(outputManager)
 
     private val collectionManager = CollectionManager()
 

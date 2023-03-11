@@ -1,7 +1,6 @@
 package utils
 
 import basicClasses.SpaceMarine
-import collection.CollectionManager
 import com.charleskorn.kaml.Yaml
 import java.io.FileReader
 import java.util.*
@@ -10,9 +9,9 @@ import java.util.*
  * Class that contains environment variables and handles files
  * @property collectionFileName String containing file name
  */
-class FileManager(p:Properties, private val outputManager: OutputManager) {
+class FileManager(private val outputManager: OutputManager) {
 
-    private val collectionFileName = p.getProperty("COLLECTION_FILENAME")
+    private val collectionFileName = System.getenv("COLLECTION_FILENAME")
 
     /**
      * Reads data from the file provided in [collectionFileName] and adds objects to [collection]

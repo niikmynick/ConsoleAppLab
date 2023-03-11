@@ -5,7 +5,6 @@ import utils.Console
  */
 fun main() {
 
-    System.setProperty("COLLECTION_FILENAME","collection.yaml")
     val console = Console()
     console.initialize()
     console.startInteractiveMode()

@@ -4,7 +4,6 @@ import exceptions.InvalidInputException
 import exceptions.RecursiveCallException
 import java.io.File
 import java.io.FileReader
-import java.io.IOException
 import java.io.InputStream
 import java.util.*
 
@@ -31,7 +30,7 @@ class InputManager(private val outputManager: OutputManager) {
         } else {
             if (scriptMode) {
                 finishScriptReader()
-                return read()
+                return ""
             } else {
                 throw InvalidInputException()
             }
