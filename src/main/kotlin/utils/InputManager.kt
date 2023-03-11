@@ -46,6 +46,14 @@ class InputManager(private val outputManager: OutputManager) {
             scanners.push(Scanner(FileReader(filepath)))
             files.push(file)
             scriptMode = true
+            for (i in 0..2) {
+                for (j in 0..2) {
+                    outputManager.print(".")
+                    Thread.sleep(500)
+                }
+                outputManager.println("")
+            }
+
             outputManager.silentMode()
         }
     }
