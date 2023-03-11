@@ -13,11 +13,9 @@ import commands.consoleCommands.*
  * @property collection Current collection
  */
 class Console {
-    private val properties = System.getProperties()
     private val outputManager = OutputManager()
-    private val inputManager = InputManager(System.`in`, outputManager)
-    private val fileManager = FileManager(properties, outputManager)
-
+    private val inputManager = InputManager(outputManager)
+    private val fileManager = FileManager(outputManager)
 
     private val collectionManager = CollectionManager()
 

@@ -30,7 +30,7 @@ class InputManager(private val outputManager: OutputManager) {
         } else {
             if (scriptMode) {
                 finishScriptReader()
-                return read()
+                return ""
             } else {
                 throw InvalidInputException()
             }
