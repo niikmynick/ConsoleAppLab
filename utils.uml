@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>commands.utils</OriginalElement>
+  <nodes>
+    <node x="-123.0" y="3193.964189545616">commands.utils.LocalDateSerializer</node>
+    <node x="2899.5111496404243" y="1238.7990859113083">commands.utils.Creator</node>
+    <node x="128.98279970758085" y="2330.795678548234">commands.consoleCommands.CountByMeleeWeapon</node>
+    <node x="5.1657424609418285" y="911.8160686018648">commands.utils.Saver</node>
+    <node x="2900.261914930098" y="978.088668131768">basicClasses.Coordinates</node>
+    <node x="1340.7852210887686" y="-15.0">utils.InputManager</node>
+    <node x="2820.003308096174" y="791.6369178923565">basicClasses.Chapter</node>
+    <node x="270.90040998454856" y="2524.645409188406">commands.consoleCommands.Save</node>
+    <node x="165.61429603824536" y="661.1619320260183">utils.FileManager</node>
+    <node x="1829.4022103563595" y="42.80104145967243">basicClasses.MeleeWeapon</node>
+    <node x="535.7274591104659" y="320.0564984697555">commands.utils.readers.StringReader</node>
+    <node x="367.4139101303995" y="419.1770993473251">utils.OutputManager</node>
+    <node x="435.9680634708336" y="2692.901736719322">commands.consoleCommands.AddMin</node>
+    <node x="3020.8226866739215" y="1544.4258406181934">commands.utils.readers.IntReader</node>
+    <node x="1140.6772084152883" y="38.634675688960215">commands.utils.readers.DoubleReader</node>
+    <node x="2410.3063007733917" y="2737.8621230984204">commands.consoleCommands.RemoveID</node>
+    <node x="-13.123598362514485" y="1879.1639923680475">commands.CommandReceiver</node>
+    <node x="2582.8620640701392" y="2577.294285301633">commands.consoleCommands.Clear</node>
+    <node x="624.76874652003" y="2834.0109995684197">commands.consoleCommands.RemoveAnyChapter</node>
+    <node x="2728.9068212604625" y="2392.2849588370514">commands.consoleCommands.FilterByChapter</node>
+    <node x="2845.0226681592712" y="2187.163940702315">commands.consoleCommands.RemoveLower</node>
+    <node x="2928.49213070789" y="1966.7317043948653">commands.consoleCommands.Update</node>
+    <node x="-96.09486036390103" y="1366.2276347074435">commands.utils.readers.EnumReader</node>
+    <node x="153.0" y="3193.964189545616">commands.utils.Validator</node>
+    <node x="-24.3661034926879" y="1150.0502382541088">commands.utils.readers.BooleanReader</node>
+    <node x="2631.0295110853885" y="454.5848582992171">basicClasses.SpaceMarine</node>
+    <node x="901.8820039964094" y="100.90346310676705">commands.utils.readers.LongReader</node>
+    <node x="1595.6785202237509" y="-0.2929032214608469">utils.Console</node>
+    <node x="687.7191727128644" y="202.93184703019256">commands.utils.readers.FloatReader</node>
+    <node x="832.8839325300459" y="2944.6707995577344">commands.consoleCommands.Add</node>
+    <node x="-123.0" y="1642.0985824098273">commands.CommandInvoker</node>
+    <node x="1055.4430751086054" y="3022.291351194236">commands.consoleCommands.Show</node>
+    <node x="1287.2375940951924" y="3065.0560907519057">commands.consoleCommands.RemoveGreater</node>
+    <node x="2068.942752437401" y="130.00338367374752">basicClasses.AstartesCategory</node>
+    <node x="1522.8427726306288" y="3071.964189545616">commands.consoleCommands.Exit</node>
+    <node x="2206.5104833007013" y="2853.2094265093306">commands.consoleCommands.Command</node>
+    <node x="2328.105672461264" y="216.68408854396148">collection.CollectionManager</node>
+    <node x="1756.7447125015374" y="3042.8539764532256">commands.consoleCommands.Help</node>
+    <node x="1983.4693766074743" y="2978.4067215255827">commands.consoleCommands.ScriptFromFile</node>
+    <node x="2977.3617623680057" y="1736.147053814947">commands.consoleCommands.Info</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="commands.consoleCommands.Update" target="commands.consoleCommands.Command" relationship="GENERALIZATION">
+      <point x="6.386652656545493" y="-5.6843418860808015E-14" />
+      <point x="6.386652656545607" y="2.2737367544323206E-13" />
+    </edge>
+    <edge source="commands.consoleCommands.RemoveLower" target="commands.consoleCommands.Command" relationship="CREATE">
+      <point x="-3.6649956962226042" y="-3.4011478278177947" />
+      <point x="-3.6649956962226042" y="-3.4011478278177947" />
+    </edge>
+    <edge source="commands.utils.Creator" target="commands.utils.readers.DoubleReader" relationship="CREATE">
+      <point x="2.7806910877707196" y="-4.155449082156167" />
+      <point x="2.7806910877707196" y="-4.15544908215611" />
+    </edge>
+    <edge source="commands.utils.Creator" target="commands.utils.readers.EnumReader" relationship="TO_ONE">
+      <point x="-0.17283772371661144" y="-4.997011819203578" />
+      <point x="-0.17283772371661144" y="-4.997011819203607" />
+    </edge>
+    <edge source="commands.consoleCommands.Clear" target="commands.consoleCommands.Command" relationship="GENERALIZATION">
+      <point x="8.05587942552529" y="-0.0" />
+      <point x="8.055879425525404" y="-0.0" />
+    </edge>
+    <edge source="basicClasses.SpaceMarine" target="basicClasses.AstartesCategory" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.RemoveAnyChapter" target="commands.consoleCommands.Command" relationship="CREATE">
+      <point x="-0.1301870540728487" y="4.998304845740449" />
+      <point x="-0.1301870540728487" y="4.998304845740449" />
+    </edge>
+    <edge source="commands.consoleCommands.Save" target="commands.consoleCommands.Command" relationship="CREATE">
+      <point x="-0.8910682201449163" y="4.919959087944562" />
+      <point x="-0.8910682201449163" y="4.919959087944562" />
+    </edge>
+    <edge source="commands.consoleCommands.CountByMeleeWeapon" target="commands.consoleCommands.Command" relationship="CREATE">
+      <point x="-1.2691639979952924" y="4.836240559173234" />
+      <point x="-1.2691639979952924" y="4.836240559173348" />
+    </edge>
+    <edge source="commands.consoleCommands.RemoveID" target="commands.consoleCommands.Command" relationship="CREATE">
+      <point x="-2.7943602635590423" y="-4.14626949406852" />
+      <point x="-2.7943602635590423" y="-4.14626949406852" />
+    </edge>
+    <edge source="commands.utils.Creator" target="utils.OutputManager" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.Help" target="commands.consoleCommands.Command" relationship="GENERALIZATION">
+      <point x="0.0" y="-5.336040695901147" />
+      <point x="0.0" y="-5.336040695901147" />
+    </edge>
+    <edge source="utils.Console" target="commands.consoleCommands.Add" relationship="CREATE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.FilterByChapter" target="commands.consoleCommands.Command" relationship="CREATE">
+      <point x="-3.3941032472500865" y="-3.671520549718707" />
+      <point x="-3.394103247249973" y="-3.671520549718707" />
+    </edge>
+    <edge source="basicClasses.SpaceMarine" target="basicClasses.Chapter" relationship="TO_ONE">
+      <point x="0.0" y="-8.913116732779258" />
+      <point x="6.0398476280659" y="-0.0" />
+    </edge>
+    <edge source="utils.Console" target="utils.FileManager" relationship="CREATE">
+      <point x="-2.09499013262149" y="-4.539935720273888" />
+      <point x="-2.094990132621433" y="-4.539935720273888" />
+    </edge>
+    <edge source="commands.utils.readers.LongReader" target="utils.OutputManager" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.Add" target="commands.CommandReceiver" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.Save" target="commands.consoleCommands.Command" relationship="GENERALIZATION">
+      <point x="0.0" y="-5.081343066705244" />
+      <point x="0.0" y="-5.081343066705358" />
+    </edge>
+    <edge source="commands.consoleCommands.CountByMeleeWeapon" target="commands.consoleCommands.Command" relationship="GENERALIZATION">
+      <point x="0.0" y="-5.16930448229698" />
+      <point x="0.0" y="-5.169304482296866" />
+    </edge>
+    <edge source="basicClasses.SpaceMarine" target="basicClasses.Coordinates" relationship="CREATE">
+      <point x="-4.3171348317086995" y="2.5223692919252017" />
+      <point x="-4.3171348317086995" y="2.5223692919252017" />
+    </edge>
+    <edge source="commands.consoleCommands.Add" target="commands.consoleCommands.Command" relationship="CREATE">
+      <point x="0.25251671493981576" y="4.993619459738284" />
+      <point x="0.25251671493981576" y="4.993619459738284" />
+    </edge>
+    <edge source="utils.Console" target="commands.consoleCommands.ScriptFromFile" relationship="CREATE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.utils.Creator" target="commands.utils.readers.LongReader" relationship="CREATE">
+      <point x="2.475172750702768" y="-4.344366450263919" />
+      <point x="2.4751727507026544" y="-4.344366450264033" />
+    </edge>
+    <edge source="commands.utils.readers.IntReader" target="utils.OutputManager" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.RemoveLower" target="commands.consoleCommands.Command" relationship="GENERALIZATION">
+      <point x="6.821290411272912" y="-0.0" />
+      <point x="6.821290411273026" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.Info" target="commands.CommandReceiver" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.AddMin" target="commands.consoleCommands.Command" relationship="GENERALIZATION">
+      <point x="0.0" y="-5.026435695366672" />
+      <point x="0.0" y="-5.026435695367127" />
+    </edge>
+    <edge source="utils.Console" target="utils.OutputManager" relationship="TO_ONE">
+      <point x="0.0" y="5.320082520328697" />
+      <point x="0.0" y="5.320082520328469" />
+    </edge>
+    <edge source="commands.consoleCommands.Exit" target="commands.consoleCommands.Command" relationship="GENERALIZATION">
+      <point x="0.0" y="-5.202943386537527" />
+      <point x="0.0" y="-5.202943386537299" />
+    </edge>
+    <edge source="utils.Console" target="commands.consoleCommands.Show" relationship="CREATE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.utils.Creator" target="basicClasses.Coordinates" relationship="CREATE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.utils.readers.DoubleReader" target="utils.OutputManager" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.CommandReceiver" target="commands.CommandInvoker" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="utils.Console" target="commands.consoleCommands.CountByMeleeWeapon" relationship="CREATE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.utils.Creator" target="commands.utils.readers.StringReader" relationship="CREATE">
+      <point x="0.0" y="5.363503108620591" />
+      <point x="-13.816918166047458" y="-0.0" />
+    </edge>
+    <edge source="utils.Console" target="commands.CommandInvoker" relationship="CREATE">
+      <point x="-3.504370142269181" y="-3.5664253680643014" />
+      <point x="-3.504370142269181" y="-3.566425368064273" />
+    </edge>
+    <edge source="commands.consoleCommands.Add" target="commands.consoleCommands.Command" relationship="GENERALIZATION">
+      <point x="0.0" y="-5.0063886929244745" />
+      <point x="0.0" y="-5.0063886929244745" />
+    </edge>
+    <edge source="commands.CommandReceiver" target="utils.InputManager" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.FilterByChapter" target="commands.CommandReceiver" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.CommandReceiver" target="commands.utils.Saver" relationship="CREATE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.utils.Creator" target="utils.InputManager" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.RemoveAnyChapter" target="commands.CommandReceiver" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="utils.Console" target="utils.OutputManager" relationship="CREATE">
+      <point x="-1.708142897907095" y="-4.699175229796083" />
+      <point x="-1.7081428979070097" y="-4.699175229796083" />
+    </edge>
+    <edge source="commands.consoleCommands.RemoveID" target="commands.consoleCommands.Command" relationship="GENERALIZATION">
+      <point x="8.946591578052107" y="-0.0" />
+      <point x="8.946591578051994" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.Save" target="commands.CommandReceiver" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.RemoveGreater" target="commands.CommandReceiver" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="utils.Console" target="collection.CollectionManager" relationship="TO_ONE">
+      <point x="0.0" y="-5.354572592676732" />
+      <point x="0.0" y="-5.354572592676732" />
+    </edge>
+    <edge source="commands.utils.readers.FloatReader" target="utils.InputManager" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="utils.Console" target="commands.consoleCommands.Clear" relationship="CREATE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.Update" target="commands.consoleCommands.Command" relationship="CREATE">
+      <point x="-3.91441359729788" y="-3.110846539013039" />
+      <point x="-3.91441359729788" y="-3.1108465390129822" />
+    </edge>
+    <edge source="utils.Console" target="commands.consoleCommands.Exit" relationship="CREATE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.utils.readers.BooleanReader" target="utils.InputManager" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.utils.Saver" target="utils.OutputManager" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="utils.Console" target="utils.InputManager" relationship="CREATE">
+      <point x="0.0" y="5.000556806022587" />
+      <point x="0.0" y="5.0005568060223595" />
+    </edge>
+    <edge source="utils.Console" target="commands.consoleCommands.RemoveAnyChapter" relationship="CREATE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="basicClasses.SpaceMarine" target="basicClasses.MeleeWeapon" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.CommandReceiver" target="commands.utils.Creator" relationship="CREATE">
+      <point x="0.0" y="-5.160861582119992" />
+      <point x="0.0" y="-5.160861582119935" />
+    </edge>
+    <edge source="commands.consoleCommands.Info" target="commands.consoleCommands.Command" relationship="CREATE">
+      <point x="-4.140895519929472" y="-2.802317664546422" />
+      <point x="-4.140895519929359" y="-2.802317664546308" />
+    </edge>
+    <edge source="collection.CollectionManager" target="basicClasses.SpaceMarine" relationship="TO_MANY">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.utils.readers.DoubleReader" target="utils.InputManager" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.Help" target="commands.CommandReceiver" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="utils.Console" target="utils.InputManager" relationship="TO_ONE">
+      <point x="0.07461320435479024" y="-4.999443255977212" />
+      <point x="0.07461320435480445" y="-4.999443255977212" />
+    </edge>
+    <edge source="commands.CommandReceiver" target="commands.utils.Creator" relationship="TO_ONE">
+      <point x="1.2386232524136176" y="4.844152396300103" />
+      <point x="1.2386232524136176" y="4.844152396300103" />
+    </edge>
+    <edge source="commands.utils.readers.IntReader" target="utils.InputManager" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.AddMin" target="commands.CommandReceiver" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.Show" target="commands.consoleCommands.Command" relationship="CREATE">
+      <point x="0.6337408963241273" y="4.95967463411921" />
+      <point x="0.6337408963241842" y="4.95967463411921" />
+    </edge>
+    <edge source="utils.Console" target="commands.consoleCommands.Help" relationship="CREATE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.CommandReceiver" target="commands.utils.readers.EnumReader" relationship="CREATE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="utils.Console" target="commands.consoleCommands.AddMin" relationship="CREATE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.RemoveGreater" target="commands.consoleCommands.Command" relationship="CREATE">
+      <point x="1.0112517584141472" y="4.89666926401037" />
+      <point x="1.0112517584141187" y="4.89666926401037" />
+    </edge>
+    <edge source="commands.consoleCommands.ScriptFromFile" target="commands.consoleCommands.Command" relationship="GENERALIZATION">
+      <point x="-11.907194154368312" y="2.2737367544323206E-13" />
+      <point x="0.0" y="-5.509254532413479" />
+    </edge>
+    <edge source="commands.utils.Creator" target="commands.utils.readers.FloatReader" relationship="CREATE">
+      <point x="0.0" y="5.524670439787371" />
+      <point x="-11.755167713373567" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.Update" target="commands.CommandReceiver" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.utils.Creator" target="commands.utils.readers.StringReader" relationship="TO_ONE">
+      <point x="1.8093759910536846" y="-4.6611327510594265" />
+      <point x="1.8093759910536846" y="-4.661132751059313" />
+    </edge>
+    <edge source="commands.utils.Creator" target="commands.utils.readers.BooleanReader" relationship="CREATE">
+      <point x="0.2023520807742898" y="-4.995903685561416" />
+      <point x="0.2023520807742898" y="-4.995903685561416" />
+    </edge>
+    <edge source="commands.utils.Creator" target="commands.utils.readers.LongReader" relationship="TO_ONE">
+      <point x="0.0" y="5.7545790131219405" />
+      <point x="-10.100305117249832" y="-0.0" />
+    </edge>
+    <edge source="utils.FileManager" target="utils.OutputManager" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.utils.Creator" target="commands.utils.readers.IntReader" relationship="CREATE">
+      <point x="5.019841159930138" y="-0.0" />
+      <point x="5.019841159930365" y="0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.Exit" target="commands.CommandReceiver" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.utils.Creator" target="commands.utils.readers.DoubleReader" relationship="TO_ONE">
+      <point x="0.0" y="6.016196927391547" />
+      <point x="-8.99057076492528" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.Show" target="commands.consoleCommands.Command" relationship="GENERALIZATION">
+      <point x="0.0" y="-5.040653237213746" />
+      <point x="0.0" y="-5.040653237213746" />
+    </edge>
+    <edge source="utils.Console" target="utils.FileManager" relationship="TO_ONE">
+      <point x="11.933230429451726" y="-0.0" />
+      <point x="11.933230429452351" y="1.1368683772161603E-13" />
+    </edge>
+    <edge source="utils.Console" target="commands.CommandReceiver" relationship="TO_ONE">
+      <point x="-3.913448691706634" y="-3.11206030426456" />
+      <point x="-3.9134486917066624" y="-3.1120603042646167" />
+    </edge>
+    <edge source="commands.consoleCommands.Info" target="commands.consoleCommands.Command" relationship="GENERALIZATION">
+      <point x="6.037341410735962" y="-0.0" />
+      <point x="6.037341410735735" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.ScriptFromFile" target="commands.consoleCommands.Command" relationship="CREATE">
+      <point x="2.099571038809927" y="4.537819019417839" />
+      <point x="2.099571038809927" y="4.537819019417839" />
+    </edge>
+    <edge source="utils.InputManager" target="utils.OutputManager" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.utils.readers.EnumReader" target="utils.OutputManager" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.CountByMeleeWeapon" target="commands.CommandReceiver" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="basicClasses.SpaceMarine" target="basicClasses.Chapter" relationship="CREATE">
+      <point x="-4.139177267292553" y="2.804854996239442" />
+      <point x="-4.139177267292553" y="2.804854996239442" />
+    </edge>
+    <edge source="commands.consoleCommands.Clear" target="commands.CommandReceiver" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.RemoveLower" target="commands.CommandReceiver" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.utils.Creator" target="commands.utils.readers.EnumReader" relationship="CREATE">
+      <point x="2.2737367544323206E-13" y="5.002989967709198" />
+      <point x="0.0" y="5.002989967709226" />
+    </edge>
+    <edge source="utils.Console" target="commands.consoleCommands.Save" relationship="CREATE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="utils.Console" target="collection.CollectionManager" relationship="CREATE">
+      <point x="-1.7892204926623947" y="4.668906727343938" />
+      <point x="-1.7892204926623663" y="4.668906727343938" />
+    </edge>
+    <edge source="basicClasses.SpaceMarine" target="basicClasses.Coordinates" relationship="TO_ONE">
+      <point x="5.79087774057416" y="1.1368683772161603E-13" />
+      <point x="5.79087774057416" y="-0.0" />
+    </edge>
+    <edge source="commands.utils.readers.EnumReader" target="utils.InputManager" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.utils.readers.BooleanReader" target="utils.OutputManager" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.FilterByChapter" target="commands.consoleCommands.Command" relationship="GENERALIZATION">
+      <point x="7.365715825013467" y="-0.0" />
+      <point x="7.365715825013581" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.AddMin" target="commands.consoleCommands.Command" relationship="CREATE">
+      <point x="-0.5121280096036571" y="4.973703338738687" />
+      <point x="-0.5121280096036571" y="4.973703338738687" />
+    </edge>
+    <edge source="commands.utils.readers.StringReader" target="utils.InputManager" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="utils.Console" target="commands.consoleCommands.RemoveLower" relationship="CREATE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.RemoveGreater" target="commands.consoleCommands.Command" relationship="GENERALIZATION">
+      <point x="0.0" y="-5.105511246950073" />
+      <point x="0.0" y="-5.105511246950073" />
+    </edge>
+    <edge source="commands.CommandReceiver" target="collection.CollectionManager" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="utils.Console" target="commands.consoleCommands.RemoveID" relationship="CREATE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.Help" target="commands.consoleCommands.Command" relationship="CREATE">
+      <point x="1.7463203472772193" y="4.685121689421294" />
+      <point x="1.7463203472772193" y="4.685121689421294" />
+    </edge>
+    <edge source="commands.CommandInvoker" target="utils.OutputManager" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="utils.Console" target="commands.CommandReceiver" relationship="CREATE">
+      <point x="6.388227358896813" y="-0.0" />
+      <point x="0.0" y="8.03326335474327" />
+    </edge>
+    <edge source="commands.utils.readers.FloatReader" target="utils.OutputManager" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="utils.Console" target="commands.consoleCommands.RemoveGreater" relationship="CREATE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.Show" target="commands.CommandReceiver" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.RemoveAnyChapter" target="commands.consoleCommands.Command" relationship="GENERALIZATION">
+      <point x="0.0" y="-5.001695729164112" />
+      <point x="0.0" y="-5.001695729164339" />
+    </edge>
+    <edge source="commands.consoleCommands.RemoveID" target="commands.CommandReceiver" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="utils.Console" target="commands.consoleCommands.FilterByChapter" relationship="CREATE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.CommandReceiver" target="utils.OutputManager" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.ScriptFromFile" target="commands.CommandReceiver" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.consoleCommands.Exit" target="commands.consoleCommands.Command" relationship="CREATE">
+      <point x="1.3828373272371692" y="4.804972520878664" />
+      <point x="1.3828373272372119" y="4.804972520878664" />
+    </edge>
+    <edge source="commands.consoleCommands.Clear" target="commands.consoleCommands.Command" relationship="CREATE">
+      <point x="-3.1033235081431485" y="-3.9203804922233303" />
+      <point x="-3.1033235081431485" y="-3.9203804922233303" />
+    </edge>
+    <edge source="commands.utils.Creator" target="commands.utils.readers.BooleanReader" relationship="TO_ONE">
+      <point x="0.0" y="5.00409967314863" />
+      <point x="0.0" y="5.004099673148573" />
+    </edge>
+    <edge source="commands.utils.Creator" target="basicClasses.SpaceMarine" relationship="CREATE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="utils.Console" target="commands.consoleCommands.Update" relationship="CREATE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.utils.Creator" target="commands.utils.readers.FloatReader" relationship="TO_ONE">
+      <point x="2.1267242296814857" y="-4.525156798486194" />
+      <point x="2.1267242296814857" y="-4.52515679848625" />
+    </edge>
+    <edge source="commands.utils.Creator" target="commands.utils.readers.IntReader" relationship="TO_ONE">
+      <point x="-4.9802372631941125" y="0.44411350158907226" />
+      <point x="-4.9802372631941125" y="0.4441135015890963" />
+    </edge>
+    <edge source="commands.utils.readers.StringReader" target="utils.OutputManager" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="commands.utils.Creator" target="basicClasses.Chapter" relationship="CREATE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="utils.Console" target="commands.CommandInvoker" relationship="TO_ONE">
+      <point x="7.133949607221837" y="-0.0" />
+      <point x="7.133949607221439" y="-1.4210854715202004E-14" />
+    </edge>
+    <edge source="commands.utils.readers.LongReader" target="utils.InputManager" relationship="TO_ONE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+    <edge source="utils.Console" target="commands.consoleCommands.Info" relationship="CREATE">
+      <point x="0.0" y="-0.0" />
+      <point x="0.0" y="-0.0" />
+    </edge>
+  </edges>
+  <settings layout="Single Cycle" zoom="0.5806270472625177" showDependencies="true" x="2146.625" y="2493.2199387491937" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
