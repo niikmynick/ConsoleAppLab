@@ -1,9 +1,9 @@
 package utils
 
 import basicClasses.SpaceMarine
+import collection.CollectionManager
 import com.charleskorn.kaml.Yaml
 import java.io.FileReader
-import java.util.*
 
 /**
  * Class that contains environment variables and handles files
@@ -11,13 +11,13 @@ import java.util.*
  */
 class FileManager(private val outputManager: OutputManager) {
 
-    private val collectionFileName = System.getenv("COLLECTION_FILENAME")
+    private val collectionFileName = System.getenv("COLLECTION")
 
     /**
      * Reads data from the file provided in [collectionFileName] and adds objects to [collection]
-     * @param collection Current collection
+     * @param collectionManager Current collection
      */
-    fun load(collection: TreeSet<SpaceMarine>) {
+    fun load(collectionManager: CollectionManager) {
 
         try {
             val file = FileReader(collectionFileName)
@@ -26,12 +26,12 @@ class FileManager(private val outputManager: OutputManager) {
                 data.trim()
                 if (data.isNotBlank()) {
                     val spaceMarine = Yaml.default.decodeFromString(SpaceMarine.serializer(), data)
-                    collection.add(spaceMarine)
+                    collectionManager.add(spaceMarine)
                 }
             }
             file.close()
 
-            outputManager.println("Loaded ${collection.size} elements successfully")
+            outputManager.println("Loaded ${collectionManager.getCollection().size} elements successfully")
         } catch (e: Exception) {
             outputManager.println(e.toString())
         }

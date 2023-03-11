@@ -47,7 +47,7 @@ class Console {
 
         commandInvoker.register("help", Help(commandReceiver))
 
-        fileManager.load(collectionManager.getCollection())
+        fileManager.load(collectionManager)
     }
     fun startInteractiveMode() {
         var executeFlag:Boolean? = true

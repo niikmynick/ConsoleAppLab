@@ -10,7 +10,7 @@ class LongReader(private val outputManager: OutputManager, private val inputMana
      */
     fun read(message: String, a:Long, b:Long): Long {
         outputManager.println(message)
-        var value: Long = -1
+        var value: Long = a-1
 
         while (value !in a..b) {
             try {
