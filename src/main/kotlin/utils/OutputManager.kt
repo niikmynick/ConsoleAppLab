@@ -9,7 +9,7 @@ class OutputManager() {
     private var outputMode = OutputMode.ACTIVE
 
     private enum class OutputMode {
-        SILENT, ACTIVE
+        SILENT, ACTIVE,
     }
 
     constructor(outputStream: OutputStream) : this() {

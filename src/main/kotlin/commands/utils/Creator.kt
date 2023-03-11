@@ -36,10 +36,6 @@ class Creator(private val outputManager: OutputManager, private val inputManager
         return SpaceMarine(name, coordinates, health, loyal, category!!, weapon, chapter)
     }
 
-    fun createScriptMarine(parameters: ArrayList<String>): SpaceMarine {
-        return SpaceMarine(parameters[0], Coordinates(parameters[1].toDouble(), parameters[2].toInt()), parameters[3].toFloat(), parameters[4].toBooleanStrict(), enumValueOf<AstartesCategory>(parameters[5].uppercase()), enumValueOf<MeleeWeapon>(parameters[6].uppercase()), Chapter(parameters[7],parameters[8].toLong()))
-    }
-
     /**
      * Creates and returns a new [Chapter] object
      * @return [Chapter] from entered values

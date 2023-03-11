@@ -1,6 +1,7 @@
 package commands.utils
 
 import basicClasses.SpaceMarine
+import collection.CollectionManager
 import com.charleskorn.kaml.Yaml
 import utils.OutputManager
 import java.io.FileOutputStream
@@ -13,16 +14,16 @@ class Saver(private val outputManager: OutputManager) {
      * @param filename Name of the file
      * @return true if elements were saved, false an exception occurred
      */
-    fun save(filename: String, collection: TreeSet<SpaceMarine>) {
+    fun save(filename: String, collectionManager: CollectionManager) {
         try {
             val file = if (filename == "") {
-                FileOutputStream(System.getProperty("COLLECTION_FILENAME"))
+                FileOutputStream(System.getenv("COLLECTION"))
             } else {
                 FileOutputStream(filename)
             }
 
             val output = OutputStreamWriter(file)
-            for (element in collection) {
+            for (element in collectionManager.getCollection()) {
                 output.write(Yaml.default.encodeToString(SpaceMarine.serializer(), element))
                 output.write("\n#ENDOFSPACEMARINE\n")
             }

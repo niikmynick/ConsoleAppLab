@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="collection.CollectionManagerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2023-03-11T11:02:27" hostname="MSI" time="0.16">
+  <properties/>
+  <testcase name="Showing CollectionManager contents" classname="collection.CollectionManagerTest" time="0.082"/>
+  <testcase name="Updating a SpaceMarine in CollectionManager" classname="collection.CollectionManagerTest" time="0.017"/>
+  <testcase name="Creating empty CollectionManager" classname="collection.CollectionManagerTest" time="0.057"/>
+  <testcase name="Creating CollectionManager and adding SpaceMarines" classname="collection.CollectionManagerTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

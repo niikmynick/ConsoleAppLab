@@ -2,6 +2,7 @@ package commands
 
 import basicClasses.Chapter
 import basicClasses.MeleeWeapon
+import basicClasses.SpaceMarine
 import collection.CollectionManager
 import commands.consoleCommands.Command
 import commands.utils.Creator
@@ -113,8 +114,7 @@ class CommandReceiver(private val commandInvoker: CommandInvoker,
 
     fun save(filepath:String) {
         try {
-            val collection = collectionManager.getCollection()
-            Saver(outputManager).save(filepath, collection)
+            Saver(outputManager).save(filepath, collectionManager)
             outputManager.println("Collection was saved successfully")
         } catch (e:Exception) {
             outputManager.println(e.toString())
@@ -224,8 +224,9 @@ class CommandReceiver(private val commandInvoker: CommandInvoker,
 
     fun filterByChapter() {
         val chapter = creator.createChapter()
-        for (i in collectionManager.filterByChapter(chapter)) {
-            outputManager.println(i)
+
+        for (i in collectionManager.filter { e -> e.getChapter()!! == chapter }) {
+            outputManager.println(i.toString())
         }
     }
 }

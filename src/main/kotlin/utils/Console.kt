@@ -1,5 +1,6 @@
 package utils
 
+import basicClasses.SpaceMarine
 import collection.CollectionManager
 import commands.CommandInvoker
 import commands.CommandReceiver

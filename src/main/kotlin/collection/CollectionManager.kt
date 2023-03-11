@@ -5,6 +5,7 @@ import basicClasses.SpaceMarine
 import exceptions.SpaceMarineIdAlreadyExists
 import java.util.Date
 import java.util.TreeSet
+import java.util.function.Predicate
 
 /**
  * A [TreeSet] collection of [SpaceMarine]
@@ -19,10 +20,10 @@ class CollectionManager {
         return collection
     }
 
-    fun add(spaceMarine: SpaceMarine) {
-        if (spaceMarine == this.getByID(spaceMarine.getId())) throw SpaceMarineIdAlreadyExists("Space Marine" +
-                "$spaceMarine cannot be added to collection as a Space Marine with this id already exists")
-        collection.add(spaceMarine)
+    fun add(element: SpaceMarine) {
+        if (element == this.getByID(element.getId())) throw SpaceMarineIdAlreadyExists("Space Marine" +
+                "$element cannot be added to collection as a Space Marine with this id already exists")
+        collection.add(element)
     }
 
     /**
@@ -87,19 +88,8 @@ class CollectionManager {
         return null
     }
 
-    /**
-     * Prints all elements with provided [Chapter]
-     * @param chapter Chapter searched in elements of collection
-     */
-    fun filterByChapter(chapter: Chapter): MutableList<String> {
-        val result = mutableListOf<String>()
-
-        for (spaceMarine in collection) {
-            if (spaceMarine.getChapter() == chapter) {
-                result.add(spaceMarine.toString())
-            }
-        }
-        return result
+    fun filter(predicate: Predicate<SpaceMarine>): List<SpaceMarine> {
+        return collection.filter { e -> predicate.test(e)}
     }
 
 }
