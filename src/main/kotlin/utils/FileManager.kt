@@ -3,6 +3,7 @@ package utils
 import basicClasses.SpaceMarine
 import collection.CollectionManager
 import com.charleskorn.kaml.Yaml
+import exceptions.NoEnvironmentVariableFound
 import java.io.FileReader
 
 /**
@@ -11,15 +12,21 @@ import java.io.FileReader
  */
 class FileManager(private val outputManager: OutputManager) {
 
-    private val collectionFileName = System.getenv("COLLECTION")
-
+    private val collectionFileName = try {
+        System.getenv("COLLECTION")
+    } catch (e:Exception) {
+        throw NoEnvironmentVariableFound()
+    }
     /**
      * Reads data from the file provided in [collectionFileName] and adds objects to [collection]
      * @param collectionManager Current collection
      */
     fun load(collectionManager: CollectionManager) {
-
         try {
+            if (collectionFileName == null) {
+                throw NoEnvironmentVariableFound()
+            }
+
             val file = FileReader(collectionFileName)
             val datalist = file.readText().split("#ENDOFSPACEMARINE")
             for (data in datalist) {
@@ -33,7 +40,7 @@ class FileManager(private val outputManager: OutputManager) {
 
             outputManager.println("Loaded ${collectionManager.getCollection().size} elements successfully")
         } catch (e: Exception) {
-            outputManager.println(e.toString())
+            outputManager.println(e.message.toString())
         }
 
 

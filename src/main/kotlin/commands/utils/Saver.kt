@@ -3,6 +3,7 @@ package commands.utils
 import basicClasses.SpaceMarine
 import collection.CollectionManager
 import com.charleskorn.kaml.Yaml
+import exceptions.NoEnvironmentVariableFound
 import utils.OutputManager
 import java.io.FileOutputStream
 import java.io.OutputStreamWriter
@@ -16,7 +17,11 @@ class Saver(private val outputManager: OutputManager) {
     fun save(filename: String, collectionManager: CollectionManager) {
         try {
             val file = if (filename == "") {
-                FileOutputStream(System.getenv("COLLECTION"))
+                try {
+                    FileOutputStream(System.getenv("COLLECTION"))
+                } catch (e:Exception) {
+                    throw NoEnvironmentVariableFound()
+                }
             } else {
                 FileOutputStream(filename)
             }

@@ -2,6 +2,7 @@ package commands.utils
 
 import basicClasses.*
 import commands.utils.readers.*
+import exceptions.MarinesCountValueError
 import utils.InputManager
 import utils.OutputManager
 
@@ -36,6 +37,27 @@ class Creator(private val outputManager: OutputManager, private val inputManager
         return SpaceMarine(name, coordinates, health, loyal, category!!, weapon, chapter)
     }
 
+    fun createSpaceMarine(args:List<String>): SpaceMarine? {
+        try {
+            val name = args[1].trim()
+            val coordinates = createCoordinates(args[2].trim().toDouble(), args[3].trim().toInt())
+            val health = args[4].trim().toFloat()
+            val loyal = args[5].toBooleanStrict()
+
+            val category = enumValueOf<AstartesCategory>(args[6].uppercase())
+
+            val weapon = enumValueOf<MeleeWeapon>(args[7].uppercase())
+
+            val chapter = createChapter(args[8], args[9].toLong())
+
+            return SpaceMarine(name, coordinates, health, loyal, category, weapon, chapter)
+
+        } catch (e:Exception) {
+            outputManager.println("entered invalid ")
+            return null
+        }
+    }
+
     /**
      * Creates and returns a new [Chapter] object
      * @return [Chapter] from entered values
@@ -44,6 +66,9 @@ class Creator(private val outputManager: OutputManager, private val inputManager
         val name:String = stringReader.read("Enter name of the Chapter: ")
         val marinesCount: Long = longReader.read("Enter amount of Space Marines: ", 0, 1000)
 
+        return Chapter(name, marinesCount)
+    }
+    fun createChapter(name:String, marinesCount:Long) : Chapter {
         return Chapter(name, marinesCount)
     }
 
@@ -55,6 +80,9 @@ class Creator(private val outputManager: OutputManager, private val inputManager
         val x: Double = doubleReader.read("Enter value of X: ")
         val y: Int = intReader.read("Enter value of Y: ")
 
+        return Coordinates(x, y)
+    }
+    fun createCoordinates(x:Double, y:Int) : Coordinates {
         return Coordinates(x, y)
     }
 }

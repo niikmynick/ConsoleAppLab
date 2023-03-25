@@ -8,6 +8,7 @@ import commands.consoleCommands.Command
 import commands.utils.Creator
 import commands.utils.Saver
 import commands.utils.readers.EnumReader
+import exceptions.InvalidArgumentException
 import utils.InputManager
 import utils.OutputManager
 
@@ -58,13 +59,22 @@ class CommandReceiver(private val commandInvoker: CommandInvoker,
         }
     }
 
-    /**
-     * Creates new Space Marine and add it into collection
-     */
     fun add() {
         val spaceMarine = creator.createSpaceMarine()
         collectionManager.add(spaceMarine)
         outputManager.println("Space Marine ${spaceMarine.getName()} has been created and added to the collection")
+    }
+    /**
+     * Creates new Space Marine and add it into collection
+     */
+    fun add(args: List<String>) {
+        val spaceMarine = creator.createSpaceMarine(args)
+        if (spaceMarine != null) {
+            collectionManager.add(spaceMarine)
+            outputManager.println("Space Marine ${spaceMarine.getName()} has been created and added to the collection")
+        } else {
+            throw InvalidArgumentException("Entered invalid argument")
+        }
     }
 
     /**

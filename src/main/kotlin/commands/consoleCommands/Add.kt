@@ -25,6 +25,8 @@ class Add() : Command() {
     override fun execute(args: List<String>) {
         if (Validator.verifyNoArgs(args)) {
             commandReceiver.add()
-        } else throw InvalidArgumentException("Too many arguments were entered")
+        } else if (Validator.verifyList(args)) {
+            commandReceiver.add(args)
+        } else throw InvalidArgumentException("Invalid arguments were entered. Use HELP command to check")
     }
 }

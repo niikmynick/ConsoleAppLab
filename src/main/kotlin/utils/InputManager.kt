@@ -6,6 +6,7 @@ import java.io.File
 import java.io.FileReader
 import java.io.InputStream
 import java.util.*
+import kotlin.collections.List
 
 class InputManager(private val outputManager: OutputManager) {
     private val scanners: Stack<Scanner> = Stack()
@@ -55,5 +56,6 @@ class InputManager(private val outputManager: OutputManager) {
         scanners.pop()
         outputManager.enableOutput()
         outputManager.println("Script from file was executed")
+        files.pop()
     }
 }

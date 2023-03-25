@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="basicClasses.SpaceMarineTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2023-03-11T11:02:25" hostname="MSI" time="1.679">
+<testsuite name="basicClasses.SpaceMarineTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2023-03-11T13:42:31" hostname="MSI" time="1.236">
   <properties/>
-  <testcase name="Setting name of a Space Marine" classname="basicClasses.SpaceMarineTest" time="0.033"/>
-  <testcase name="Creating default Space Marine and checking getters" classname="basicClasses.SpaceMarineTest" time="0.001"/>
-  <testcase name="Setting coordinates of a Space Marine" classname="basicClasses.SpaceMarineTest" time="1.402"/>
-  <testcase name="Creating Space Marine with unacceptable values" classname="basicClasses.SpaceMarineTest" time="0.239"/>
+  <testcase name="Setting name of a Space Marine" classname="basicClasses.SpaceMarineTest" time="0.032"/>
+  <testcase name="Creating default Space Marine and checking getters" classname="basicClasses.SpaceMarineTest" time="0.002"/>
+  <testcase name="Setting coordinates of a Space Marine" classname="basicClasses.SpaceMarineTest" time="1.08"/>
+  <testcase name="Creating Space Marine with unacceptable values" classname="basicClasses.SpaceMarineTest" time="0.119"/>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[мар. 11, 2023 2:02:26 PM io.mockk.impl.log.JULLogger warn
+  <system-err><![CDATA[мар. 11, 2023 4:42:31 PM io.mockk.impl.log.JULLogger warn
 WARNING: Failed to transform class java/lang/Object
 java.lang.IllegalArgumentException: Unsupported class file major version 61
 	at net.bytebuddy.jar.asm.ClassReader.<init>(ClassReader.java:196)
@@ -119,7 +119,7 @@ java.lang.IllegalArgumentException: Unsupported class file major version 61
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
 
-мар. 11, 2023 2:02:26 PM io.mockk.impl.log.JULLogger warn
+мар. 11, 2023 4:42:32 PM io.mockk.impl.log.JULLogger warn
 WARNING: Failed to transform class java/time/LocalDate
 java.lang.IllegalArgumentException: Unsupported class file major version 61
 	at net.bytebuddy.jar.asm.ClassReader.<init>(ClassReader.java:196)
@@ -232,7 +232,7 @@ java.lang.IllegalArgumentException: Unsupported class file major version 61
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
 
-мар. 11, 2023 2:02:27 PM io.mockk.impl.log.JULLogger warn
+мар. 11, 2023 4:42:32 PM io.mockk.impl.log.JULLogger warn
 WARNING: Failed to transform class java/time/temporal/Temporal
 java.lang.IllegalArgumentException: Unsupported class file major version 61
 	at net.bytebuddy.jar.asm.ClassReader.<init>(ClassReader.java:196)
@@ -345,7 +345,7 @@ java.lang.IllegalArgumentException: Unsupported class file major version 61
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
 
-мар. 11, 2023 2:02:27 PM io.mockk.impl.log.JULLogger warn
+мар. 11, 2023 4:42:32 PM io.mockk.impl.log.JULLogger warn
 WARNING: Failed to transform class java/time/temporal/TemporalAccessor
 java.lang.IllegalArgumentException: Unsupported class file major version 61
 	at net.bytebuddy.jar.asm.ClassReader.<init>(ClassReader.java:196)
@@ -458,7 +458,7 @@ java.lang.IllegalArgumentException: Unsupported class file major version 61
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
 
-мар. 11, 2023 2:02:27 PM io.mockk.impl.log.JULLogger warn
+мар. 11, 2023 4:42:32 PM io.mockk.impl.log.JULLogger warn
 WARNING: Failed to transform class java/time/temporal/TemporalAdjuster
 java.lang.IllegalArgumentException: Unsupported class file major version 61
 	at net.bytebuddy.jar.asm.ClassReader.<init>(ClassReader.java:196)
@@ -571,7 +571,7 @@ java.lang.IllegalArgumentException: Unsupported class file major version 61
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
 
-мар. 11, 2023 2:02:27 PM io.mockk.impl.log.JULLogger warn
+мар. 11, 2023 4:42:32 PM io.mockk.impl.log.JULLogger warn
 WARNING: Failed to transform class java/time/chrono/ChronoLocalDate
 java.lang.IllegalArgumentException: Unsupported class file major version 61
 	at net.bytebuddy.jar.asm.ClassReader.<init>(ClassReader.java:196)
@@ -684,7 +684,7 @@ java.lang.IllegalArgumentException: Unsupported class file major version 61
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
 
-мар. 11, 2023 2:02:27 PM io.mockk.impl.log.JULLogger warn
+мар. 11, 2023 4:42:32 PM io.mockk.impl.log.JULLogger warn
 WARNING: Failed to transform class java/lang/Comparable
 java.lang.IllegalArgumentException: Unsupported class file major version 61
 	at net.bytebuddy.jar.asm.ClassReader.<init>(ClassReader.java:196)
@@ -797,7 +797,7 @@ java.lang.IllegalArgumentException: Unsupported class file major version 61
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
 
-мар. 11, 2023 2:02:27 PM io.mockk.impl.log.JULLogger warn
+мар. 11, 2023 4:42:32 PM io.mockk.impl.log.JULLogger warn
 WARNING: Failed to transform class java/io/Serializable
 java.lang.IllegalArgumentException: Unsupported class file major version 61
 	at net.bytebuddy.jar.asm.ClassReader.<init>(ClassReader.java:196)
